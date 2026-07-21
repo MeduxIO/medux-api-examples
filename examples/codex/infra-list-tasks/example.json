@@ -1,0 +1,48 @@
+{
+  "id": "infra_list_tasks_codex_mcp",
+  "slug": "infra-list-tasks",
+  "agent": "codex",
+  "category": "infra",
+  "title": "How to List Tasks with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to list media tasks created by the authenticated user, including setup, request fields, tool approval, and results.",
+  "operation": "List media tasks created by the authenticated user.",
+  "method": "GET",
+  "endpoint": "/api/app/v1/tasks",
+  "mcp_tool": "medux_list_tasks",
+  "prompt": "Use Medux to run List Tasks. Review the required inputs, call medux_list_tasks, wait for the result if a task is returned, and report the output clearly.",
+  "tutorial_url": "https://medux.io/tutorials/infra_list_tasks_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/infra/list-tasks",
+  "fields": [
+    {
+      "name": "cursor",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Provide the value described in the API reference."
+    },
+    {
+      "name": "limit",
+      "type": "int32",
+      "requirement": "Optional",
+      "purpose": "Provide the value described in the API reference."
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Allowed values: - TASK STATUS UNDEFINED - Not specified. - QUEUED - Task is waiting to run. - PROCESSING - Task is running. - SUCCEEDED - Task finished successfully. - FAILED - Task failed. - EXPIRED - Task output is…"
+    },
+    {
+      "name": "media_type",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Provide the value described in the API reference."
+    },
+    {
+      "name": "capability_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Provide the value described in the API reference."
+    }
+  ],
+  "source_file": "infra_list_tasks_codex_mcp.html"
+}

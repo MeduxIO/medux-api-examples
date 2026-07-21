@@ -1,0 +1,54 @@
+{
+  "id": "generate_image_audio_driven_video_claude_mcp",
+  "slug": "generate-image-audio-driven-video",
+  "agent": "claude",
+  "category": "generate",
+  "title": "How to Create Image Audio Driven Video with Claude MCP and Medux",
+  "description": "Learn how to use Claude MCP and Medux to generate a talking video from a reference image, driving audio, and prompt text, including setup, request fields,…",
+  "operation": "Generate a talking video from a reference image, driving audio, and prompt text.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/generate/video/image_audio_driven",
+  "mcp_tool": "medux_image_audio_driven_video",
+  "prompt": "Generate a talking video from a reference image, driving audio, and prompt text.",
+  "tutorial_url": "https://medux.io/tutorials/generate_image_audio_driven_video_claude_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/generate/image-audio-driven-video",
+  "fields": [
+    {
+      "name": "prompt_text",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Talking prompt text used to guide video generation."
+    },
+    {
+      "name": "prompt_image_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Reference image file id."
+    },
+    {
+      "name": "prompt_audio_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Driving audio file id."
+    },
+    {
+      "name": "resolution",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Prompt image or prompt video frame resize target before generation. Default: 720p."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Image audio driven video model id. Default: image-audio-driven-video-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "generate_image_audio_driven_video_claude_mcp.html"
+}

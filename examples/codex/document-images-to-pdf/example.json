@@ -1,0 +1,36 @@
+{
+  "id": "document_images_to_pdf_codex_mcp",
+  "slug": "document-images-to-pdf",
+  "agent": "codex",
+  "category": "document",
+  "title": "How to Images to PDF with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to combine multiple images into a single pdf, including setup, request fields, tool approval, and results.",
+  "operation": "Combine multiple images into a single PDF.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/asset/images_to_pdf",
+  "mcp_tool": "medux_images_to_pdf",
+  "prompt": "Combine multiple images into a single PDF.",
+  "tutorial_url": "https://medux.io/tutorials/document_images_to_pdf_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/document/images-to-pdf",
+  "fields": [
+    {
+      "name": "input_file_ids",
+      "type": "array<string>",
+      "requirement": "Required",
+      "purpose": "Input image file id list."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Model Default: images-to-pdf-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "document_images_to_pdf_codex_mcp.html"
+}

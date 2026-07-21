@@ -1,0 +1,1 @@
+# Example project layout project/ avatar.mp4 reference_voice.wav tts.txt config/ output/

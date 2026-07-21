@@ -1,0 +1,36 @@
+{
+  "id": "media_reverse_audio_claude_mcp",
+  "slug": "media-reverse-audio",
+  "agent": "claude",
+  "category": "media",
+  "title": "How to Reverse Audio with Claude MCP and Medux",
+  "description": "Learn how to use Claude MCP and Medux to reverse an audio file, including setup, request fields, tool approval, and results.",
+  "operation": "Reverse an audio file.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/audio/reverse_audio",
+  "mcp_tool": "medux_reverse_audio",
+  "prompt": "Reverse an audio file.",
+  "tutorial_url": "https://medux.io/tutorials/media_reverse_audio_claude_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/media/reverse-audio",
+  "fields": [
+    {
+      "name": "input_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Input audio file id."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Model Default: reverse-audio-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "media_reverse_audio_claude_mcp.html"
+}

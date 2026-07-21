@@ -1,0 +1,17 @@
+{
+  "id": "doc_to_pdf_claude_mcp",
+  "slug": "doc-to-pdf",
+  "agent": "claude",
+  "category": "media",
+  "title": "How to Convert DOCX to PDF with Claude MCP and Medux",
+  "description": "Use a simple natural-language request to let Claude call Medux through MCP, upload a document from your terminal, convert it, and download the finished PDF.",
+  "operation": "Use a simple natural-language request to let Claude call Medux through MCP, upload a document from your terminal, convert it, and download the finished PDF.",
+  "method": "",
+  "endpoint": "",
+  "mcp_tool": "MEDUX_TEMPORARY_UPLOAD_URL",
+  "prompt": "Use Medux to convert \"Artificial Intelligence and Transformer Models.docx\" to a PDF file. Upload the file using curl.",
+  "tutorial_url": "https://medux.io/tutorials/doc_to_pdf_claude_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/document/word-to-pdf",
+  "fields": [],
+  "source_file": "doc_to_pdf_claude_mcp.html"
+}

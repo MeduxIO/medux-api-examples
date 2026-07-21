@@ -1,0 +1,1 @@
+Remove a logo from a video using an optional logo reference and motion mode.

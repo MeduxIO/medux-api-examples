@@ -1,0 +1,42 @@
+{
+  "id": "media_add_audio_to_video_codex_mcp",
+  "slug": "media-add-audio-to-video",
+  "agent": "codex",
+  "category": "media",
+  "title": "How to Add Audio to Video with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to replace or add an audio track to a video, including setup, request fields, tool approval, and results.",
+  "operation": "Replace or add an audio track to a video.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/video/add_audio_to_video",
+  "mcp_tool": "medux_add_audio_to_video",
+  "prompt": "Replace or add an audio track to a video.",
+  "tutorial_url": "https://medux.io/tutorials/media_add_audio_to_video_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/media/add-audio-to-video",
+  "fields": [
+    {
+      "name": "video_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Input video file id."
+    },
+    {
+      "name": "audio_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Input audio file id."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Model Default: add-audio-to-video-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "media_add_audio_to_video_codex_mcp.html"
+}

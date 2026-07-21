@@ -1,0 +1,30 @@
+{
+  "id": "clone_create_voice_claude_mcp",
+  "slug": "clone-create-voice",
+  "agent": "claude",
+  "category": "clone",
+  "title": "How to Create Voice with Claude MCP and Medux",
+  "description": "Learn how to use Claude MCP and Medux to create a reusable voice asset from an uploaded audio file, including setup, request fields, tool approval, and…",
+  "operation": "Create a reusable voice asset from an uploaded audio file.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/clone/voice",
+  "mcp_tool": "medux_clone_voice",
+  "prompt": "Clone a reusable voice from the uploaded audio file {file id}. Title it Official voice clone sample.",
+  "tutorial_url": "https://medux.io/tutorials/clone_create_voice_claude_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/clone/create-voice",
+  "fields": [
+    {
+      "name": "file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Provide the value described in the API reference."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Provide the value described in the API reference."
+    }
+  ],
+  "source_file": "clone_create_voice_claude_mcp.html"
+}

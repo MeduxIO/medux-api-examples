@@ -1,0 +1,42 @@
+{
+  "id": "media_adjust_audio_volume_codex_mcp",
+  "slug": "media-adjust-audio-volume",
+  "agent": "codex",
+  "category": "media",
+  "title": "How to Adjust Audio Volume with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to adjust the volume of an audio file, including setup, request fields, tool approval, and results.",
+  "operation": "Adjust the volume of an audio file.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/audio/adjust_audio_volume",
+  "mcp_tool": "medux_adjust_audio_volume",
+  "prompt": "Adjust the volume of an audio file.",
+  "tutorial_url": "https://medux.io/tutorials/media_adjust_audio_volume_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/media/adjust-audio-volume",
+  "fields": [
+    {
+      "name": "input_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Input audio file id."
+    },
+    {
+      "name": "volume",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "ffmpeg volume expression e.g. 1.5, 0.8, 2dB."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Model Default: adjust-audio-volume-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "media_adjust_audio_volume_codex_mcp.html"
+}

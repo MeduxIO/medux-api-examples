@@ -1,0 +1,48 @@
+{
+  "id": "media_shift_audio_pitch_codex_mcp",
+  "slug": "media-shift-audio-pitch",
+  "agent": "codex",
+  "category": "media",
+  "title": "How to Shift Audio Pitch with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to shift the pitch of an audio file, including setup, request fields, tool approval, and results.",
+  "operation": "Shift the pitch of an audio file.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/audio/shift_audio_pitch",
+  "mcp_tool": "medux_shift_audio_pitch",
+  "prompt": "Shift the pitch of an audio file.",
+  "tutorial_url": "https://medux.io/tutorials/media_shift_audio_pitch_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/media/shift-audio-pitch",
+  "fields": [
+    {
+      "name": "input_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Input audio file id."
+    },
+    {
+      "name": "semitones",
+      "type": "number",
+      "requirement": "Required",
+      "purpose": "Pitch shift amount in semitones."
+    },
+    {
+      "name": "sample_rate",
+      "type": "integer",
+      "requirement": "Optional",
+      "purpose": "Output sample rate, default 44100. Default: 44100."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Model Default: shift-audio-pitch-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "media_shift_audio_pitch_codex_mcp.html"
+}

@@ -1,0 +1,42 @@
+{
+  "id": "media_change_video_speed_claude_mcp",
+  "slug": "media-change-video-speed",
+  "agent": "claude",
+  "category": "media",
+  "title": "How to Change Video Speed with Claude MCP and Medux",
+  "description": "Learn how to use Claude MCP and Medux to speed up or slow down a video, including setup, request fields, tool approval, and results.",
+  "operation": "Speed up or slow down a video.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/video/change_video_speed",
+  "mcp_tool": "medux_change_video_speed",
+  "prompt": "Speed up or slow down a video.",
+  "tutorial_url": "https://medux.io/tutorials/media_change_video_speed_claude_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/media/change-video-speed",
+  "fields": [
+    {
+      "name": "input_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Input video file id."
+    },
+    {
+      "name": "speed",
+      "type": "number",
+      "requirement": "Required",
+      "purpose": "Positive float, e.g. 1.5 for 1.5x speed."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Model Default: change-video-speed-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "media_change_video_speed_claude_mcp.html"
+}

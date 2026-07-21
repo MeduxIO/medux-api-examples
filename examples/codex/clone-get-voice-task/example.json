@@ -1,0 +1,24 @@
+{
+  "id": "clone_get_voice_task_codex_mcp",
+  "slug": "clone-get-voice-task",
+  "agent": "codex",
+  "category": "clone",
+  "title": "How to Get Voice Task with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to return the current state of a voice cloning task, including setup, request fields, tool approval, and results.",
+  "operation": "Return the current state of a voice cloning task.",
+  "method": "GET",
+  "endpoint": "/api/app/v1/clone/voice/tasks/{task_id}",
+  "mcp_tool": "medux_get_voice_task",
+  "prompt": "Use Medux to run Get Voice Task. Review the required inputs, call medux_get_voice_task, wait for the result if a task is returned, and report the output clearly.",
+  "tutorial_url": "https://medux.io/tutorials/clone_get_voice_task_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/clone/get-voice-task",
+  "fields": [
+    {
+      "name": "task_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Provide the value described in the API reference."
+    }
+  ],
+  "source_file": "clone_get_voice_task_codex_mcp.html"
+}

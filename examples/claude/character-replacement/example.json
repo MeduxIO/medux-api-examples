@@ -1,0 +1,17 @@
+{
+  "id": "character_replacement_claude_mcp",
+  "slug": "character-replacement",
+  "agent": "claude",
+  "category": "media",
+  "title": "How to Replace a Video Character with Claude MCP and Medux",
+  "description": "Use Claude as the operator and Medux as the media engine. In one guided workflow, Claude prepares the assets, uploads them, starts the character-replacement job, monitors progress, and returns the finished video.",
+  "operation": "Use Claude as the operator and Medux as the media engine. In one guided workflow, Claude prepares the assets, uploads them, starts the character-replacement job, monitors progress, and returns the finished video.",
+  "method": "",
+  "endpoint": "",
+  "mcp_tool": "medux_file_create_upload_url",
+  "prompt": "Example project folder/Users/your-name/projects/medux-character-replacement/ ├── character.mp4 └── character.jpg",
+  "tutorial_url": "https://medux.io/tutorials/character_replacement_claude_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/edit/character-replacement",
+  "fields": [],
+  "source_file": "character_replacement_claude_mcp.html"
+}

@@ -1,0 +1,36 @@
+{
+  "id": "document_pdf_to_jpg_codex_mcp",
+  "slug": "document-pdf-to-jpg",
+  "agent": "codex",
+  "category": "document",
+  "title": "How to PDF to JPG with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to convert pdf pages to jpeg images (zip output), including setup, request fields, tool approval, and results.",
+  "operation": "Convert PDF pages to JPEG images (zip output).",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/asset/pdf_to_jpg",
+  "mcp_tool": "medux_pdf_to_jpg",
+  "prompt": "Convert PDF pages to JPEG images (zip output).",
+  "tutorial_url": "https://medux.io/tutorials/document_pdf_to_jpg_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/document/pdf-to-jpg",
+  "fields": [
+    {
+      "name": "input_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Input PDF file id."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Model Default: pdf-to-jpg-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "document_pdf_to_jpg_codex_mcp.html"
+}

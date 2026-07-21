@@ -1,0 +1,1 @@
+Example project folder/Users/your-name/projects/medux-character-replacement/ ├── character.mp4 └── character.jpg

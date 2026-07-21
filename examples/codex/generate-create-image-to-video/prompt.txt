@@ -1,0 +1,1 @@
+Generate a 5 second 720P 16:9 video from uploaded image {file id} and this motion prompt using model id wan-2-6-image-to-video. This model requires Starter or higher.

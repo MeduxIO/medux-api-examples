@@ -1,0 +1,1 @@
+Remove an object from a video by mask regions.

@@ -1,0 +1,42 @@
+{
+  "id": "infra_list_assets_codex_mcp",
+  "slug": "infra-list-assets",
+  "agent": "codex",
+  "category": "infra",
+  "title": "How to List Assets with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to list assets owned by the authenticated user, including setup, request fields, tool approval, and results.",
+  "operation": "List assets owned by the authenticated user.",
+  "method": "GET",
+  "endpoint": "/api/app/v1/assets",
+  "mcp_tool": "medux_list_assets",
+  "prompt": "Use Medux to run List Assets. Review the required inputs, call medux_list_assets, wait for the result if a task is returned, and report the output clearly.",
+  "tutorial_url": "https://medux.io/tutorials/infra_list_assets_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/infra/list-assets",
+  "fields": [
+    {
+      "name": "cursor",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Provide the value described in the API reference."
+    },
+    {
+      "name": "limit",
+      "type": "int32",
+      "requirement": "Optional",
+      "purpose": "Provide the value described in the API reference."
+    },
+    {
+      "name": "category",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Allowed values: - CATEGORY UNDEFINED - Not specified. - MEDIA - Uploaded source media. - AVATAR - Reusable avatar asset. - VOICE - Reusable voice asset."
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": ". assethpb.Status:\\ ... enums:\\ ..... STATUS UNDEFINED\\ ..... PROCESSING\\ ..... ACTIVE\\ ..... LOCKED\\ ..... EXPIRING SOON\\ ..... EXPIRED\\ ..... DELETED"
+    }
+  ],
+  "source_file": "infra_list_assets_codex_mcp.html"
+}

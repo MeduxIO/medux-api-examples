@@ -1,0 +1,17 @@
+{
+  "id": "add_logo_codex_mcp",
+  "slug": "add-logo",
+  "agent": "codex",
+  "category": "media",
+  "title": "How to Add a Logo Watermark to Video with Codex MCP and Medux",
+  "description": "This guide turns the screen-recorded workflow into a clean, publish-ready tutorial. Codex reads the request, locates the input video and logo, calls Medux through MCP, and returns a new MP4 with the logo placed in the top-right corner.",
+  "operation": "This guide turns the screen-recorded workflow into a clean, publish-ready tutorial. Codex reads the request, locates the input video and logo, calls Medux through MCP, and returns a new MP4 with the logo placed in the top-right corner.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/video/add_logo_to_video",
+  "mcp_tool": "add_logo_to_video",
+  "prompt": "Use Medux to add logo2.png to sample.mp4. Resize the logo to an appropriate size and place it in the top-right corner of the video.",
+  "tutorial_url": "https://medux.io/tutorials/add_logo_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/media/add-logo-to-video",
+  "fields": [],
+  "source_file": "add_logo_codex_mcp.html"
+}

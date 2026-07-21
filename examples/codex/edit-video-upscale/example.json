@@ -1,0 +1,42 @@
+{
+  "id": "edit_video_upscale_codex_mcp",
+  "slug": "edit-video-upscale",
+  "agent": "codex",
+  "category": "edit",
+  "title": "How to Video Upscale with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to upscale a video to a higher resolution, including setup, request fields, tool approval, and results.",
+  "operation": "Upscale a video to a higher resolution.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/video/video_upscale",
+  "mcp_tool": "medux_video_upscale",
+  "prompt": "Upscale a video to a higher resolution.",
+  "tutorial_url": "https://medux.io/tutorials/edit_video_upscale_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/edit/video-upscale",
+  "fields": [
+    {
+      "name": "input_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Input video file id."
+    },
+    {
+      "name": "new_resolution",
+      "type": "integer",
+      "requirement": "Optional",
+      "purpose": "Target maximum side length after upscale, e.g. 2160. Default: 2160."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Video upscale model id. Default: video-upscale-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "edit_video_upscale_codex_mcp.html"
+}

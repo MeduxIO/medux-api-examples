@@ -1,0 +1,1 @@
+Remove the background from the uploaded image {file id}.

@@ -1,0 +1,90 @@
+{
+  "id": "generate_text_to_image_claude_mcp",
+  "slug": "generate-text-to-image",
+  "agent": "claude",
+  "category": "generate",
+  "title": "How to Create Text to Image with Claude MCP and Medux",
+  "description": "Learn how to use Claude MCP and Medux to generate an image from a text prompt, including setup, request fields, tool approval, and results.",
+  "operation": "Generate an image from a text prompt.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/generate/image/text_to_image",
+  "mcp_tool": "medux_text_to_image",
+  "prompt": "Generate an image from a text prompt.",
+  "tutorial_url": "https://medux.io/tutorials/generate_text_to_image_claude_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/generate/text-to-image",
+  "fields": [
+    {
+      "name": "prompt",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Prompt text used to generate the image."
+    },
+    {
+      "name": "negative_prompt",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional negative prompt."
+    },
+    {
+      "name": "height",
+      "type": "integer",
+      "requirement": "Optional",
+      "purpose": "Output image height. Default: 1024."
+    },
+    {
+      "name": "width",
+      "type": "integer",
+      "requirement": "Optional",
+      "purpose": "Output image width. Default: 1024."
+    },
+    {
+      "name": "seed",
+      "type": "integer",
+      "requirement": "Optional",
+      "purpose": "Random seed. Use -1 to auto-generate. Default: -1."
+    },
+    {
+      "name": "num_inference_steps",
+      "type": "integer",
+      "requirement": "Optional",
+      "purpose": "Number of inference steps. Default: 9."
+    },
+    {
+      "name": "guidance_scale",
+      "type": "number",
+      "requirement": "Optional",
+      "purpose": "Guidance scale. Default: 0.0."
+    },
+    {
+      "name": "cfg_normalization",
+      "type": "boolean",
+      "requirement": "Optional",
+      "purpose": "Whether to enable CFG normalization. Default: false."
+    },
+    {
+      "name": "cfg_truncation",
+      "type": "number",
+      "requirement": "Optional",
+      "purpose": "CFG truncation value. Default: 1.0."
+    },
+    {
+      "name": "max_sequence_length",
+      "type": "integer",
+      "requirement": "Optional",
+      "purpose": "Maximum text sequence length. Default: 512."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Text-to-image model id. Default: text-to-image-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "generate_text_to_image_claude_mcp.html"
+}

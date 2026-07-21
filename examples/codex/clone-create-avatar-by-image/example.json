@@ -1,0 +1,30 @@
+{
+  "id": "clone_create_avatar_by_image_codex_mcp",
+  "slug": "clone-create-avatar-by-image",
+  "agent": "codex",
+  "category": "clone",
+  "title": "How to Create Avatar by Image with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to create a reusable avatar asset from an uploaded image file, including setup, request fields, tool approval, and…",
+  "operation": "Create a reusable avatar asset from an uploaded image file.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/clone/avatar/by_image",
+  "mcp_tool": "medux_avatar_clone_by_image",
+  "prompt": "Clone a reusable avatar from the uploaded portrait image {file id}. Title it Official avatar image clone sample.",
+  "tutorial_url": "https://medux.io/tutorials/clone_create_avatar_by_image_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/clone/create-avatar-by-image",
+  "fields": [
+    {
+      "name": "file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Provide the value described in the API reference."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Provide the value described in the API reference."
+    }
+  ],
+  "source_file": "clone_create_avatar_by_image_codex_mcp.html"
+}

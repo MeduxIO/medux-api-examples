@@ -1,0 +1,17 @@
+{
+  "id": "remove_subtitle_codex_mcp",
+  "slug": "remove-subtitle",
+  "agent": "codex",
+  "category": "media",
+  "title": "How to Remove Video Subtitles with Codex MCP and Medux",
+  "description": "This guide turns the recorded workflow into a clean, publish-ready tutorial: Codex uploads a local video, calls Medux through MCP, waits for processing, and saves a subtitle-free MP4 back into the workspace.",
+  "operation": "This guide turns the recorded workflow into a clean, publish-ready tutorial: Codex uploads a local video, calls Medux through MCP, waits for processing, and saves a subtitle-free MP4 back into the workspace.",
+  "method": "",
+  "endpoint": "",
+  "mcp_tool": "medux_signed_upload_url",
+  "prompt": "/Users/chuan/projects/test_mudex/remove_subtitle.mp4",
+  "tutorial_url": "https://medux.io/tutorials/remove_subtitle_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/process/create-video-subtitle-removal",
+  "fields": [],
+  "source_file": "remove_subtitle_codex_mcp.html"
+}

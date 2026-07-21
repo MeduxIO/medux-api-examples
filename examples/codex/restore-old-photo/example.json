@@ -1,0 +1,17 @@
+{
+  "id": "restore_old_photo_codex_mcp",
+  "slug": "restore-old-photo",
+  "agent": "codex",
+  "category": "media",
+  "title": "How to Restore Old Photos with Codex MCP and Medux",
+  "description": "This tutorial shows a clean agent workflow: Codex finds the local old photo, calls the Medux photo-repair tool through MCP, uploads the image, tracks the task, and saves the restored PNG back into the workspace.",
+  "operation": "This tutorial shows a clean agent workflow: Codex finds the local old photo, calls the Medux photo-repair tool through MCP, uploads the image, tracks the task, and saves the restored PNG back into the workspace.",
+  "method": "",
+  "endpoint": "",
+  "mcp_tool": "MEDUX_FILE_URL",
+  "prompt": "User prompt: Using medux to restore Old Photo (repair.jpeg).",
+  "tutorial_url": "https://medux.io/tutorials/restore_old_photo_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/edit/photo-repair",
+  "fields": [],
+  "source_file": "restore_old_photo_codex_mcp.html"
+}

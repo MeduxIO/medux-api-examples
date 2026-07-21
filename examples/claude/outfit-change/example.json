@@ -1,0 +1,17 @@
+{
+  "id": "outfit_change_claude_mcp",
+  "slug": "outfit-change",
+  "agent": "claude",
+  "category": "media",
+  "title": "How to Change an Outfit in an Image with Claude MCP and Medux",
+  "description": "Use a simple natural-language request in Claude, let MCP connect to Medux, upload a person image and a clothing reference, then download the generated outfit-swap result.",
+  "operation": "Use a simple natural-language request in Claude, let MCP connect to Medux, upload a person image and a clothing reference, then download the generated outfit-swap result.",
+  "method": "",
+  "endpoint": "",
+  "mcp_tool": "MEDUX_PRESIGNED_UPLOAD_URL",
+  "prompt": "Using Medux, change the girl's outfit in girl.JPEG to match the clothing shown in clothes.PNG. Upload the files using a curl command.",
+  "tutorial_url": "https://medux.io/tutorials/outfit_change_claude_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/edit/outfit-swap",
+  "fields": [],
+  "source_file": "outfit_change_claude_mcp.html"
+}

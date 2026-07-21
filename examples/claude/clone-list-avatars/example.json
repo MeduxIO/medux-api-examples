@@ -1,0 +1,30 @@
+{
+  "id": "clone_list_avatars_claude_mcp",
+  "slug": "clone-list-avatars",
+  "agent": "claude",
+  "category": "clone",
+  "title": "How to List Avatars with Claude MCP and Medux",
+  "description": "Learn how to use Claude MCP and Medux to list reusable avatar assets owned by the authenticated user, including setup, request fields, tool approval, and…",
+  "operation": "List reusable avatar assets owned by the authenticated user.",
+  "method": "GET",
+  "endpoint": "/api/app/v1/clone/avatars",
+  "mcp_tool": "medux_list_avatars",
+  "prompt": "Use Medux to run List Avatars. Review the required inputs, call medux_list_avatars, wait for the result if a task is returned, and report the output clearly.",
+  "tutorial_url": "https://medux.io/tutorials/clone_list_avatars_claude_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/clone/list-avatars",
+  "fields": [
+    {
+      "name": "cursor",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Provide the value described in the API reference."
+    },
+    {
+      "name": "limit",
+      "type": "int32",
+      "requirement": "Optional",
+      "purpose": "Provide the value described in the API reference."
+    }
+  ],
+  "source_file": "clone_list_avatars_claude_mcp.html"
+}

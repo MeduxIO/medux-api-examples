@@ -1,0 +1,54 @@
+{
+  "id": "media_trim_audio_codex_mcp",
+  "slug": "media-trim-audio",
+  "agent": "codex",
+  "category": "media",
+  "title": "How to Trim Audio with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to cut an audio file to a specified time range, including setup, request fields, tool approval, and results.",
+  "operation": "Cut an audio file to a specified time range.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/audio/trim_audio",
+  "mcp_tool": "medux_trim_audio",
+  "prompt": "Cut an audio file to a specified time range.",
+  "tutorial_url": "https://medux.io/tutorials/media_trim_audio_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/media/trim-audio",
+  "fields": [
+    {
+      "name": "input_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Input audio file id."
+    },
+    {
+      "name": "start_time",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "e.g. 00:00:05"
+    },
+    {
+      "name": "end_time",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "e.g. 00:01:00"
+    },
+    {
+      "name": "duration",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "e.g. 00:00:55. At least one of start time/end time/duration required."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Model Default: trim-audio-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "media_trim_audio_codex_mcp.html"
+}

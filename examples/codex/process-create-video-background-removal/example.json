@@ -1,0 +1,54 @@
+{
+  "id": "process_create_video_background_removal_codex_mcp",
+  "slug": "process-create-video-background-removal",
+  "agent": "codex",
+  "category": "process",
+  "title": "How to Create Video Background Removal with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to create a video processing task that removes the background from an uploaded video, including setup, request fields,…",
+  "operation": "Create a video processing task that removes the background from an uploaded video.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/video/background_removal",
+  "mcp_tool": "medux_video_remove_background",
+  "prompt": "Remove the background from the uploaded source video {file id}.",
+  "tutorial_url": "https://medux.io/tutorials/process_create_video_background_removal_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/process/create-video-background-removal",
+  "fields": [
+    {
+      "name": "file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Provide the value described in the API reference."
+    },
+    {
+      "name": "region.height",
+      "type": "int32",
+      "requirement": "Optional",
+      "purpose": "Provide the value described in the API reference."
+    },
+    {
+      "name": "region.width",
+      "type": "int32",
+      "requirement": "Optional",
+      "purpose": "Provide the value described in the API reference."
+    },
+    {
+      "name": "region.x",
+      "type": "int32",
+      "requirement": "Optional",
+      "purpose": "X coordinate of the region's top-left corner in pixels."
+    },
+    {
+      "name": "region.y",
+      "type": "int32",
+      "requirement": "Optional",
+      "purpose": "Y coordinate of the region's top-left corner in pixels."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Provide the value described in the API reference."
+    }
+  ],
+  "source_file": "process_create_video_background_removal_codex_mcp.html"
+}

@@ -1,0 +1,1 @@
+Convert JPG or PNG images into a PDF.

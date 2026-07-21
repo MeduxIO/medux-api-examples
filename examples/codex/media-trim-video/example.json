@@ -1,0 +1,54 @@
+{
+  "id": "media_trim_video_codex_mcp",
+  "slug": "media-trim-video",
+  "agent": "codex",
+  "category": "media",
+  "title": "How to Trim Video with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to cut a video to a specified time range, including setup, request fields, tool approval, and results.",
+  "operation": "Cut a video to a specified time range.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/video/trim_video",
+  "mcp_tool": "medux_trim_video",
+  "prompt": "Cut a video to a specified time range.",
+  "tutorial_url": "https://medux.io/tutorials/media_trim_video_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/media/trim-video",
+  "fields": [
+    {
+      "name": "input_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Input video file id."
+    },
+    {
+      "name": "start_time",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "e.g. 00:00:05"
+    },
+    {
+      "name": "end_time",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "e.g. 00:00:30"
+    },
+    {
+      "name": "duration",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "e.g. 00:00:25. At least one of start time/end time/duration required."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Model Default: trim-video-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "media_trim_video_codex_mcp.html"
+}

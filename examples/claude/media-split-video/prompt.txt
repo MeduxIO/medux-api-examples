@@ -1,0 +1,1 @@
+Split a video into multiple segments by time range.

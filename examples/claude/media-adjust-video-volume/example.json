@@ -1,0 +1,42 @@
+{
+  "id": "media_adjust_video_volume_claude_mcp",
+  "slug": "media-adjust-video-volume",
+  "agent": "claude",
+  "category": "media",
+  "title": "How to Adjust Video Volume with Claude MCP and Medux",
+  "description": "Learn how to use Claude MCP and Medux to adjust the audio volume of a video, including setup, request fields, tool approval, and results.",
+  "operation": "Adjust the audio volume of a video.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/video/adjust_video_volume",
+  "mcp_tool": "medux_adjust_video_volume",
+  "prompt": "Adjust the audio volume of a video.",
+  "tutorial_url": "https://medux.io/tutorials/media_adjust_video_volume_claude_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/media/adjust-video-volume",
+  "fields": [
+    {
+      "name": "input_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Input video file id."
+    },
+    {
+      "name": "volume",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "ffmpeg volume expression e.g. 1.5, 0.8, 2dB."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Model Default: adjust-video-volume-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "media_adjust_video_volume_claude_mcp.html"
+}

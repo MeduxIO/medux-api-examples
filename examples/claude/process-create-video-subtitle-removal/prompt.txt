@@ -1,0 +1,1 @@
+Remove burned-in subtitles from the uploaded source video {file id}. If the subtitle area is known, pass region {x, y, width, height}.

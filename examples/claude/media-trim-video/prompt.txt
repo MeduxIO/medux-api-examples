@@ -1,0 +1,1 @@
+Cut a video to a specified time range.

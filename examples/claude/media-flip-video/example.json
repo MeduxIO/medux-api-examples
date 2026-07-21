@@ -1,0 +1,42 @@
+{
+  "id": "media_flip_video_claude_mcp",
+  "slug": "media-flip-video",
+  "agent": "claude",
+  "category": "media",
+  "title": "How to Flip Video with Claude MCP and Medux",
+  "description": "Learn how to use Claude MCP and Medux to flip a video horizontally, vertically, or both, including setup, request fields, tool approval, and results.",
+  "operation": "Flip a video horizontally, vertically, or both.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/video/flip_video",
+  "mcp_tool": "medux_flip_video",
+  "prompt": "Flip a video horizontally, vertically, or both.",
+  "tutorial_url": "https://medux.io/tutorials/media_flip_video_claude_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/media/flip-video",
+  "fields": [
+    {
+      "name": "input_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Input video file id."
+    },
+    {
+      "name": "flip_mode",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Flip direction."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Model Default: flip-video-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "media_flip_video_claude_mcp.html"
+}

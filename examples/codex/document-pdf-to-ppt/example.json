@@ -1,0 +1,42 @@
+{
+  "id": "document_pdf_to_ppt_codex_mcp",
+  "slug": "document-pdf-to-ppt",
+  "agent": "codex",
+  "category": "document",
+  "title": "How to PDF to PPT with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to convert a pdf to a powerpoint (.pptx) file, including setup, request fields, tool approval, and results.",
+  "operation": "Convert a PDF to a PowerPoint (.pptx) file.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/asset/pdf_to_ppt",
+  "mcp_tool": "medux_pdf_to_ppt",
+  "prompt": "Convert a PDF to a PowerPoint (.pptx) file.",
+  "tutorial_url": "https://medux.io/tutorials/document_pdf_to_ppt_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/document/pdf-to-ppt",
+  "fields": [
+    {
+      "name": "input_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Input PDF file id."
+    },
+    {
+      "name": "render_scale",
+      "type": "number",
+      "requirement": "Optional",
+      "purpose": "Page render scale, default 2.0. Default: 2.0."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Model Default: pdf-to-ppt-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "document_pdf_to_ppt_codex_mcp.html"
+}

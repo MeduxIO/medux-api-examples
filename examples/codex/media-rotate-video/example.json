@@ -1,0 +1,42 @@
+{
+  "id": "media_rotate_video_codex_mcp",
+  "slug": "media-rotate-video",
+  "agent": "codex",
+  "category": "media",
+  "title": "How to Rotate Video with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to rotate a video by 90, 180, or 270 degrees, including setup, request fields, tool approval, and results.",
+  "operation": "Rotate a video by 90, 180, or 270 degrees.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/video/rotate_video",
+  "mcp_tool": "medux_rotate_video",
+  "prompt": "Rotate a video by 90, 180, or 270 degrees.",
+  "tutorial_url": "https://medux.io/tutorials/media_rotate_video_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/media/rotate-video",
+  "fields": [
+    {
+      "name": "input_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Input video file id."
+    },
+    {
+      "name": "rotation",
+      "type": "integer",
+      "requirement": "Required",
+      "purpose": "Degrees to rotate. Default: 90."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Model Default: rotate-video-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "media_rotate_video_codex_mcp.html"
+}

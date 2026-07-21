@@ -1,0 +1,1 @@
+Use Medux to run Get Voice Task. Review the required inputs, call medux_get_voice_task, wait for the result if a task is returned, and report the output clearly.

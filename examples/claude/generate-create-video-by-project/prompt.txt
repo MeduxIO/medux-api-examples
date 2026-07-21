@@ -1,0 +1,1 @@
+Use Medux to run Create Video by Project. Review the required inputs, call medux_create_video_by_project, wait for the result if a task is returned, and report the output clearly.

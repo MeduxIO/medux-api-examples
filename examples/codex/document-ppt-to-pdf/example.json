@@ -1,0 +1,36 @@
+{
+  "id": "document_ppt_to_pdf_codex_mcp",
+  "slug": "document-ppt-to-pdf",
+  "agent": "codex",
+  "category": "document",
+  "title": "How to PPT to PDF with Codex MCP and Medux",
+  "description": "Learn how to use Codex MCP and Medux to convert a powerpoint (.pptx) file to pdf, including setup, request fields, tool approval, and results.",
+  "operation": "Convert a PowerPoint (.pptx) file to PDF.",
+  "method": "POST",
+  "endpoint": "/api/app/v1/process/asset/ppt_to_pdf",
+  "mcp_tool": "medux_ppt_to_pdf",
+  "prompt": "Convert a PowerPoint (.pptx) file to PDF.",
+  "tutorial_url": "https://medux.io/tutorials/document_ppt_to_pdf_codex_mcp.html",
+  "api_reference_url": "https://medux.io/api-reference/document/ppt-to-pdf",
+  "fields": [
+    {
+      "name": "input_file_id",
+      "type": "string",
+      "requirement": "Required",
+      "purpose": "Input PowerPoint file id."
+    },
+    {
+      "name": "model_id",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Model Default: ppt-to-pdf-default."
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "requirement": "Optional",
+      "purpose": "Optional task title."
+    }
+  ],
+  "source_file": "document_ppt_to_pdf_codex_mcp.html"
+}
