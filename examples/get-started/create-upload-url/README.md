@@ -81,7 +81,7 @@ See [`example.mjs`](./example.mjs).
 
 | Field | Type | Requirement | Location | Description / options |
 | --- | --- | --- | --- | --- |
-| `code` | `int32` | Optional | `RESPONSE` | Application response code.<br><br>\| Code \| Meaning \|<br>\| ---- \| ------- \|<br>\| `0` \| OK \|<br>\| `12` \| Invalid input \|<br>\| `13` \| Authentication is required \|<br>\| `16` \| Rate limit exceeded \|<br>\| `99` \| Server error \|<br>Options: `0`, `12`, `13`, `16`, `99` |
+| `code` | `int32` | Optional | `RESPONSE` | Application response code. Full catalog: [error-codes.md](../../../docs/error-codes.md).<br>- `0` — OK<br>- `12` — Invalid input<br>- `13` — Authentication is required<br>- `16` — Rate limit exceeded<br>- `99` — Server error |
 | `data.content_type` | `string` | Optional | `RESPONSE` | Content-Type expected by the direct upload request. |
 | `data.file` | `object` | Optional | `RESPONSE` | File reference to pass into later media APIs. |
 | `data.upload_url` | `string` | Optional | `RESPONSE` | Pre-signed URL the client should upload the file to. |
@@ -91,7 +91,7 @@ See [`example.mjs`](./example.mjs).
 
 Check both the HTTP status and the application-level `code` and `message` fields before consuming `data`.
 
-Application response codes and meanings are reproduced in the response-field table above from the official reference. Handle the documented non-success messages explicitly: `invalid input`, `unauthenticated`, `rate limit`, `server error`.
+The response-field table above lists the `code` values this endpoint can return, each with its meaning. Handle the documented non-success messages explicitly: `invalid input`, `unauthenticated`, `rate limit`, `server error`. See [error-codes.md](../../../docs/error-codes.md) for the full catalog and retry guidance.
 
 ## Official sample
 

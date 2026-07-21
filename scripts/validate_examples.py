@@ -42,6 +42,14 @@ def main() -> None:
     if (REPO / "examples" / "claude").exists() or (REPO / "examples" / "codex").exists():
         failures.append("API examples must not be partitioned by Claude or Codex")
 
+    for required in ("LICENSE", ".env.example", "docs/concepts.md", "docs/error-codes.md", "docs/authentication.md"):
+        if not (REPO / required).exists():
+            failures.append(f"missing hand-maintained file: {required}")
+    root_readme = (REPO / "README.md").read_text(encoding="utf-8")
+    for heading in ("## Prerequisites", "## Documentation"):
+        if heading not in root_readme:
+            failures.append(f"README.md missing {heading}")
+
     expected_dirs = set()
     for page in endpoints:
         meta = page["meta"]

@@ -86,7 +86,7 @@ See [`example.mjs`](./example.mjs).
 
 | Field | Type | Requirement | Location | Description / options |
 | --- | --- | --- | --- | --- |
-| `code` | `int32` | Optional | `RESPONSE` | Application response code.<br><br>\| Code \| Meaning \|<br>\| ---- \| ------- \|<br>\| `0` \| OK \|<br>\| `12` \| Invalid input \|<br>\| `16` \| Rate limit exceeded \|<br>\| `99` \| Server error \|<br>Options: `0`, `12`, `1406`, `13`, `16`, `99` |
+| `code` | `int32` | Optional | `RESPONSE` | Application response code. Full catalog: [error-codes.md](../../../docs/error-codes.md).<br>- `0` — OK<br>- `12` — Invalid input<br>- `1406` — Reserved media-domain error; meaning not published in the reference.<br>- `13` — Authentication is required<br>- `16` — Rate limit exceeded<br>- `99` — Server error |
 | `data.asset` | `object` | Optional | `RESPONSE` | Asset created or returned by the operation when available. |
 | `message` | `string` | Optional | `RESPONSE` | Human-readable application status or error message.<br>Options: `ok`, `invalid input`, `asset limit reached`, `unauthenticated`, `rate limit`, `server error` |
 
@@ -94,7 +94,7 @@ See [`example.mjs`](./example.mjs).
 
 Check both the HTTP status and the application-level `code` and `message` fields before consuming `data`.
 
-Application response codes and meanings are reproduced in the response-field table above from the official reference. Handle the documented non-success messages explicitly: `invalid input`, `asset limit reached`, `unauthenticated`, `rate limit`, `server error`.
+The response-field table above lists the `code` values this endpoint can return, each with its meaning. Handle the documented non-success messages explicitly: `invalid input`, `asset limit reached`, `unauthenticated`, `rate limit`, `server error`. See [error-codes.md](../../../docs/error-codes.md) for the full catalog and retry guidance.
 
 ## Official sample
 

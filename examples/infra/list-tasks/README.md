@@ -87,7 +87,7 @@ See [`example.mjs`](./example.mjs).
 
 | Field | Type | Requirement | Location | Description / options |
 | --- | --- | --- | --- | --- |
-| `code` | `int32` | Optional | `RESPONSE` | Application response code.<br><br>\| Code \| Meaning \|<br>\| ---- \| ------- \|<br>\| `0` \| OK \|<br>\| `12` \| Invalid input \|<br>\| `13` \| Authentication is required \|<br>\| `99` \| Server error \|<br>Options: `0`, `12`, `13`, `99` |
+| `code` | `int32` | Optional | `RESPONSE` | Application response code. Full catalog: [error-codes.md](../../../docs/error-codes.md).<br>- `0` — OK<br>- `12` — Invalid input<br>- `13` — Authentication is required<br>- `99` — Server error |
 | `data.items` | `array<object>` | Optional | `RESPONSE` | Collection of records returned by a list operation. |
 | `data.next_cursor` | `string` | Optional | `RESPONSE` | Opaque cursor to request the next page; absent or empty when no next page is available. |
 | `message` | `string` | Optional | `RESPONSE` | Human-readable application status or error message.<br>Options: `ok`, `invalid input`, `unauthenticated`, `server error` |
@@ -96,7 +96,7 @@ See [`example.mjs`](./example.mjs).
 
 Check both the HTTP status and the application-level `code` and `message` fields before consuming `data`.
 
-Application response codes and meanings are reproduced in the response-field table above from the official reference. Handle the documented non-success messages explicitly: `invalid input`, `unauthenticated`, `server error`.
+The response-field table above lists the `code` values this endpoint can return, each with its meaning. Handle the documented non-success messages explicitly: `invalid input`, `unauthenticated`, `server error`. See [error-codes.md](../../../docs/error-codes.md) for the full catalog and retry guidance.
 
 ## Official sample
 

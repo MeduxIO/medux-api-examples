@@ -4,16 +4,27 @@ Complete API-first examples generated from the [official Medux API Reference](ht
 
 The REST API does not differ between Claude, Codex, or other clients. Each of the **68 APIs** has one canonical example containing its contract, curl command, runnable Python and JavaScript clients, response handling, official sample data, and optional MCP mapping.
 
+## Prerequisites
+
+- A Medux API key — see [docs/authentication.md](./docs/authentication.md).
+- Python 3.9+ (for `example.py`) and/or Node.js 18+ (for `example.mjs`).
+- `curl` and `bash` (for `curl.sh`).
+
+New to the API? Read [docs/concepts.md](./docs/concepts.md) first: it covers the
+upload flow, the asynchronous task lifecycle, credits, and pagination that the
+per-endpoint pages assume.
+
 ## Quick start
 
 ```bash
 git clone https://github.com/MeduxAI/medux-api-examples.git
 cd medux-api-examples
+cp .env.example .env            # then edit .env with your key
 export MEDUX_API_KEY="your_api_key"
 python3 -m pip install -r requirements.txt
 ```
 
-Choose an API below. For Python and JavaScript, set the placeholder environment variables documented in its README. For curl, replace the uppercase placeholders inline before running `curl.sh`.
+Choose an API below. For Python and JavaScript, set the placeholder environment variables documented in its README; set `MEDUX_API_BASE_URL` only to target a non-production host. For curl, replace the uppercase placeholders inline before running `curl.sh`.
 
 ## API catalog
 
@@ -147,6 +158,12 @@ python3 scripts/validate_examples.py
 ```
 
 The committed `api-reference.json` is a reviewable snapshot of the public reference used to generate the repository.
+
+## Documentation
+
+- [docs/authentication.md](./docs/authentication.md) — prerequisites, API key, and environment variables.
+- [docs/concepts.md](./docs/concepts.md) — files vs. assets, upload flow, async task lifecycle, credits, and pagination.
+- [docs/error-codes.md](./docs/error-codes.md) — the consolidated response-code catalog and retry guidance.
 
 ## Security
 

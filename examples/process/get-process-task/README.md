@@ -79,7 +79,7 @@ See [`example.mjs`](./example.mjs).
 
 | Field | Type | Requirement | Location | Description / options |
 | --- | --- | --- | --- | --- |
-| `code` | `int32` | Optional | `RESPONSE` | Application response code.<br><br>\| Code \| Meaning \|<br>\| ---- \| ------- \|<br>\| `0` \| OK \|<br>\| `1404` \| Provider returned an error \|<br>\| `1405` \| Provider request timed out \|<br>\| `13` \| Authentication is required \|<br>\| `15` \| Resource not found \|<br>\| `99` \| Server error \|<br>Options: `0`, `1404`, `1405`, `13`, `15`, `99` |
+| `code` | `int32` | Optional | `RESPONSE` | Application response code. Full catalog: [error-codes.md](../../../docs/error-codes.md).<br>- `0` — OK<br>- `1404` — Provider returned an error<br>- `1405` — Provider request timed out<br>- `13` — Authentication is required<br>- `15` — Resource not found<br>- `99` — Server error |
 | `data.task` | `object` | Optional | `RESPONSE` | Task record created or returned by an asynchronous operation. |
 | `message` | `string` | Optional | `RESPONSE` | Human-readable application status or error message.<br>Options: `ok`, `provider error`, `provider timeout`, `unauthenticated`, `not found`, `server error` |
 
@@ -87,7 +87,7 @@ See [`example.mjs`](./example.mjs).
 
 This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../process/get-process-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
 
-Application response codes and meanings are reproduced in the response-field table above from the official reference. Handle the documented non-success messages explicitly: `provider error`, `provider timeout`, `unauthenticated`, `not found`, `server error`.
+The response-field table above lists the `code` values this endpoint can return, each with its meaning. Handle the documented non-success messages explicitly: `provider error`, `provider timeout`, `unauthenticated`, `not found`, `server error`. See [error-codes.md](../../../docs/error-codes.md) for the full catalog and retry guidance.
 
 ## Official sample
 

@@ -15,6 +15,31 @@ from pathlib import Path
 API_BASE_URL = "https://api.medux.io"
 PLACEHOLDER_RE = re.compile(r"^[A-Z][A-Z0-9_]{2,}$")
 UNAVAILABLE_PREVIEWS: set[str] = set()
+# Canonical, normalized meanings for the application-level response `code`.
+# The reference publishes these inconsistently (a markdown table for some
+# endpoints, a "\.. N: msg" list for others, occasionally with untranslated
+# text). We render a uniform list from this map and point to docs/error-codes.md
+# for the full catalog. Codes with no published meaning are labelled explicitly.
+CODE_MEANINGS = {
+    "0": "OK",
+    "12": "Invalid input",
+    "13": "Authentication is required",
+    "15": "Resource not found",
+    "16": "Rate limit exceeded",
+    "99": "Server error",
+    "1401": "Insufficient credits",
+    "1402": "Asset category does not match this operation",
+    "1403": "Voice asset is required",
+    "1404": "Provider returned an error",
+    "1405": "Provider request timed out",
+    "1409": "Paid plan required",
+    "1410": "Invalid model",
+}
+CODE_UNDOCUMENTED = "Reserved media-domain error; meaning not published in the reference."
+ERROR_CODES_DOC = "../../../docs/error-codes.md"
+# Detects raw, non-prose descriptions leaked from the reference: dotted-enum
+# bullets ("... enums:", "..... ACTIVE") and protobuf type names.
+MALFORMED_DESC_RE = re.compile(r"\.\.+ |enums:|[a-z]+hpb\.")
 FIELD_DESCRIPTIONS = {
     "audio_file_id": "Identifier of the uploaded audio file used by this operation.",
     "capability_id": "Filter records by Medux capability identifier.",
@@ -28,6 +53,7 @@ FIELD_DESCRIPTIONS = {
     "region.height": "Height of the target processing region.",
     "region.width": "Width of the target processing region.",
     "speed": "Voice or media speed adjustment value.",
+    "status": "Filter records by lifecycle status.",
     "storage_object.key": "Storage object key returned by the upload flow.",
     "storage_object.url": "Storage object URL associated with the uploaded file.",
     "task_id": "Identifier of the Medux task to retrieve or synchronize.",
@@ -52,14 +78,34 @@ def md(value: object) -> str:
     return str(value).replace("\\\n", "\n").replace("|", "\\|").replace("\n", "<br>")
 
 
+def code_details(enum_values: list[str]) -> str:
+    """Render a uniform, complete meaning list for the response `code` field."""
+    lines = [
+        f"Application response code. Full catalog: [error-codes.md]({ERROR_CODES_DOC}).",
+    ]
+    for value in enum_values:
+        meaning = CODE_MEANINGS.get(value, CODE_UNDOCUMENTED)
+        lines.append(f"- `{value}` — {meaning}")
+    return "\n".join(lines)
+
+
 def field_rows(fields: list[dict]) -> str:
     if not fields:
         return "| — | — | — | — | No fields documented. |"
     rows = []
     for field in fields:
-        details = field.get("description") or FIELD_DESCRIPTIONS.get(field.get("name"), "No additional description is documented.")
-        if field.get("enum_values"):
-            details += "\nOptions: " + ", ".join(f"`{value}`" for value in field["enum_values"])
+        if field.get("name") == "code" and field.get("enum_values"):
+            details = code_details(field["enum_values"])
+        else:
+            raw = field.get("description") or ""
+            if not raw or MALFORMED_DESC_RE.search(raw):
+                # Reference sometimes leaks raw proto/dotted-enum text; fall back
+                # to a curated description and let the Options line carry values.
+                details = FIELD_DESCRIPTIONS.get(field.get("name"), "No additional description is documented.")
+            else:
+                details = raw
+            if field.get("enum_values"):
+                details += "\nOptions: " + ", ".join(f"`{value}`" for value in field["enum_values"])
         rows.append(
             "| `{name}` | `{type}` | {required} | `{location}` | {details} |".format(
                 name=md(field.get("name")),
@@ -449,7 +495,7 @@ See [`example.mjs`](./example.mjs).
 
 {task_note}
 
-Application response codes and meanings are reproduced in the response-field table above from the official reference. Handle the documented non-success messages explicitly: {error_note}.
+The response-field table above lists the `code` values this endpoint can return, each with its meaning. Handle the documented non-success messages explicitly: {error_note}. See [error-codes.md]({ERROR_CODES_DOC}) for the full catalog and retry guidance.
 
 ## Official sample
 
@@ -492,16 +538,27 @@ Complete API-first examples generated from the [official Medux API Reference](ht
 
 The REST API does not differ between Claude, Codex, or other clients. Each of the **{snapshot['endpoint_count']} APIs** has one canonical example containing its contract, curl command, runnable Python and JavaScript clients, response handling, official sample data, and optional MCP mapping.
 
+## Prerequisites
+
+- A Medux API key — see [docs/authentication.md](./docs/authentication.md).
+- Python 3.9+ (for `example.py`) and/or Node.js 18+ (for `example.mjs`).
+- `curl` and `bash` (for `curl.sh`).
+
+New to the API? Read [docs/concepts.md](./docs/concepts.md) first: it covers the
+upload flow, the asynchronous task lifecycle, credits, and pagination that the
+per-endpoint pages assume.
+
 ## Quick start
 
 ```bash
 git clone https://github.com/MeduxAI/medux-api-examples.git
 cd medux-api-examples
+cp .env.example .env            # then edit .env with your key
 export MEDUX_API_KEY="your_api_key"
 python3 -m pip install -r requirements.txt
 ```
 
-Choose an API below. For Python and JavaScript, set the placeholder environment variables documented in its README. For curl, replace the uppercase placeholders inline before running `curl.sh`.
+Choose an API below. For Python and JavaScript, set the placeholder environment variables documented in its README; set `MEDUX_API_BASE_URL` only to target a non-production host. For curl, replace the uppercase placeholders inline before running `curl.sh`.
 
 ## API catalog
 
@@ -528,6 +585,12 @@ python3 scripts/validate_examples.py
 ```
 
 The committed `api-reference.json` is a reviewable snapshot of the public reference used to generate the repository.
+
+## Documentation
+
+- [docs/authentication.md](./docs/authentication.md) — prerequisites, API key, and environment variables.
+- [docs/concepts.md](./docs/concepts.md) — files vs. assets, upload flow, async task lifecycle, credits, and pagination.
+- [docs/error-codes.md](./docs/error-codes.md) — the consolidated response-code catalog and retry guidance.
 
 ## Security
 
