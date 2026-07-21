@@ -1,0 +1,7 @@
+{
+  "model_id": "image-audio-driven-video-default",
+  "prompt_audio_file_id": "AUDIO_FILE_ID",
+  "prompt_image_file_id": "FILE_ID",
+  "prompt_text": "Hello from Medux",
+  "resolution": "720p"
+}

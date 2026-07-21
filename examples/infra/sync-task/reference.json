@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Sync Task",
+    "summary": "Pull the latest provider-side task state into the local task record.",
+    "module": "infra",
+    "endpoint_slug": "sync-task",
+    "tags": [
+      "Infra",
+      "Task"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Asset",
+      "slug": "create-asset",
+      "module": "infra",
+      "endpoint_slug": "create-asset"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Get Task",
+      "slug": "get-task",
+      "module": "infra",
+      "endpoint_slug": "get-task"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Assets",
+      "slug": "list-assets",
+      "module": "infra",
+      "endpoint_slug": "list-assets"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Results",
+      "slug": "list-results",
+      "module": "infra",
+      "endpoint_slug": "list-results"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Tasks",
+      "slug": "list-tasks",
+      "module": "infra",
+      "endpoint_slug": "list-tasks"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Sync Task",
+      "slug": "sync-task",
+      "module": "infra",
+      "endpoint_slug": "sync-task"
+    }
+  ],
+  "hero": {
+    "title": "Sync Task",
+    "summary": "Pull the latest provider-side task state into the local task record."
+  },
+  "endpoint_summary": {
+    "method": "POST",
+    "path": "/api/app/v1/tasks/{task_id}/sync",
+    "summary": "Sync the task with the upstream provider and return the latest local state."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Requires a task_id created by a clone, generate, or process request.",
+      "Use this when you want to refresh task state outside the default polling loop."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "task_id",
+        "type": "string",
+        "required": true,
+        "location": "PATH"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `13` | Authentication is required |\n| `15` | Resource not found |\n| `99` | Server error |",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "13",
+          "15",
+          "99"
+        ]
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "unauthenticated",
+          "not found",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/tasks/TASK_ID/sync \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/tasks/TASK_ID/sync \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY'"
+  },
+  "source_url": "https://medux.io/api-reference/infra/sync-task"
+}

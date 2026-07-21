@@ -1,0 +1,273 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Create Avatar by Image",
+    "summary": "Start an avatar clone task from a source image asset.",
+    "module": "clone",
+    "endpoint_slug": "create-avatar-by-image",
+    "tags": [
+      "Clone",
+      "Avatar"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Avatar by Image",
+      "slug": "create-avatar-by-image",
+      "module": "clone",
+      "endpoint_slug": "create-avatar-by-image"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Avatar by Video",
+      "slug": "create-avatar-by-video",
+      "module": "clone",
+      "endpoint_slug": "create-avatar-by-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Voice",
+      "slug": "create-voice",
+      "module": "clone",
+      "endpoint_slug": "create-voice"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Edit Voice Parameters",
+      "slug": "edit-voice-parameters",
+      "module": "clone",
+      "endpoint_slug": "edit-voice-parameters"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Get Avatar Task",
+      "slug": "get-avatar-task",
+      "module": "clone",
+      "endpoint_slug": "get-avatar-task"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Get Voice Task",
+      "slug": "get-voice-task",
+      "module": "clone",
+      "endpoint_slug": "get-voice-task"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Avatars",
+      "slug": "list-avatars",
+      "module": "clone",
+      "endpoint_slug": "list-avatars"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Voices",
+      "slug": "list-voices",
+      "module": "clone",
+      "endpoint_slug": "list-voices"
+    }
+  ],
+  "hero": {
+    "title": "Create Avatar by Image",
+    "summary": "Start an avatar clone task from a source image asset."
+  },
+  "endpoint_summary": {
+    "method": "POST",
+    "path": "/api/app/v1/clone/avatar/by_image",
+    "summary": "Create a reusable avatar asset from an uploaded image file."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Requires a valid image file_id.",
+      "Use a clear portrait-style image for best results."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "file_id",
+        "type": "string",
+        "required": true,
+        "location": "BODY"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "location": "BODY"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `1401` | Insufficient credits |\n| `1402` | Asset category does not match this operation |\n| `1404` | Provider returned an error |\n| `1405` | Provider request timed out |\n| `13` | Authentication is required |\n| `16` | Rate limit exceeded |\n| `99` | Server error |",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "1410",
+          "1409",
+          "1401",
+          "1406",
+          "1402",
+          "1404",
+          "1405",
+          "13",
+          "16",
+          "99"
+        ]
+      },
+      {
+        "name": "data.asset",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.paid_plan_required",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "invalid model",
+          "paid plan required",
+          "insufficient credits",
+          "asset limit reached",
+          "asset category mismatch",
+          "provider error",
+          "provider timeout",
+          "unauthenticated",
+          "rate limit",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/clone/avatar/by_image \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"file_id\":\"FILE_ID\",\"title\":\"Demo title\"}'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/clone/avatar/by_image \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"file_id\":\"FILE_ID\",\"title\":\"Demo title\"}'",
+    "samples": [
+      {
+        "capability_id": "clone.avatar.by_image",
+        "sample_id": "sample_clone_avatar_by_image_001",
+        "title": "Official avatar clone from image",
+        "sample_input": {
+          "title": "Example input",
+          "summary": "Clone a reusable avatar from a portrait image.",
+          "fields": [
+            {
+              "key": "file_id",
+              "value": "{file_id}"
+            },
+            {
+              "key": "source",
+              "value": "Official sample portrait image for testing"
+            }
+          ]
+        },
+        "sample_output": {
+          "title": "Official example output",
+          "summary": "Official example output for preview only. It is not a user Media Result.",
+          "preview_url": "https://medux-cdn-dev.hifly.cc/demo/3460404a-0df9-4ca0-bb50-4f1e3fa167cd.png",
+          "fields": [
+            {
+              "key": "avatar_asset_id",
+              "value": "official_avatar_demo_image_001"
+            }
+          ]
+        },
+        "output_type": "AVATAR_ASSET",
+        "model_id": "avatar-image-clone-standard",
+        "parameters": [
+          {
+            "key": "title",
+            "value": "Official avatar image clone sample"
+          },
+          {
+            "key": "model_id",
+            "value": "avatar-image-clone-standard"
+          }
+        ],
+        "display_locations": [
+          "PLAYGROUND_SAMPLE",
+          "API_REFERENCE_SAMPLE",
+          "CAPABILITY_DETAIL_SAMPLE"
+        ],
+        "created_at": 1779148800,
+        "review_status": "APPROVED",
+        "minimum_plan": "free"
+      }
+    ]
+  },
+  "related_links": [
+    {
+      "title": "List Avatars",
+      "kind": "API_REFERENCE_LINK",
+      "description": "Review reusable avatar assets.",
+      "module": "clone",
+      "endpoint_slug": "list-avatars"
+    }
+  ],
+  "mcp_tool": {
+    "title": "Avatar / Clone by Image",
+    "summary": "Clone a reusable avatar from a portrait image file.",
+    "capability_id": "clone.avatar.by_image",
+    "mcp_tool_id": "medux_avatar_clone_by_image",
+    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "invocation_example": "Clone a reusable avatar from a portrait image asset and return the queued task id.",
+    "prompt_samples": [
+      {
+        "capability_id": "clone.avatar.by_image",
+        "mcp_tool_id": "medux_avatar_clone_by_image",
+        "prompt_sample_id": "prompt_clone_avatar_by_image_001",
+        "natural_language_prompt": "Clone a reusable avatar from the uploaded portrait image {file_id}. Title it Official avatar image clone sample.",
+        "expected_tool_call": "medux_avatar_clone_by_image",
+        "key_arguments": [
+          {
+            "key": "file_id",
+            "value": "{file_id}"
+          },
+          {
+            "key": "title",
+            "value": "Official avatar image clone sample"
+          }
+        ],
+        "expected_result_type": "AVATAR_ASSET",
+        "display_location": "MCP_INVOCATION_SAMPLE",
+        "minimum_plan": "free",
+        "review_status": "APPROVED"
+      }
+    ]
+  },
+  "source_url": "https://medux.io/api-reference/clone/create-avatar-by-image"
+}

@@ -1,0 +1,290 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "PDF to PPT",
+    "summary": "Convert a PDF to a PowerPoint (.pptx) file.",
+    "module": "document",
+    "endpoint_slug": "pdf-to-ppt",
+    "tags": [
+      "Document",
+      "Asset"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Word to PDF",
+      "slug": "word-to-pdf",
+      "module": "document",
+      "endpoint_slug": "word-to-pdf"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Excel to PDF",
+      "slug": "excel-to-pdf",
+      "module": "document",
+      "endpoint_slug": "excel-to-pdf"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "PPT to PDF",
+      "slug": "ppt-to-pdf",
+      "module": "document",
+      "endpoint_slug": "ppt-to-pdf"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "PDF to Word",
+      "slug": "pdf-to-word",
+      "module": "document",
+      "endpoint_slug": "pdf-to-word"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "PDF to DOCX",
+      "slug": "pdf-to-docx",
+      "module": "document",
+      "endpoint_slug": "pdf-to-docx"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "PDF to Excel",
+      "slug": "pdf-to-excel",
+      "module": "document",
+      "endpoint_slug": "pdf-to-excel"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "PDF to PPT",
+      "slug": "pdf-to-ppt",
+      "module": "document",
+      "endpoint_slug": "pdf-to-ppt"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "PDF to Images",
+      "slug": "pdf-to-images",
+      "module": "document",
+      "endpoint_slug": "pdf-to-images"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "PDF to JPG",
+      "slug": "pdf-to-jpg",
+      "module": "document",
+      "endpoint_slug": "pdf-to-jpg"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "PDF to PNG",
+      "slug": "pdf-to-png",
+      "module": "document",
+      "endpoint_slug": "pdf-to-png"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Images to PDF",
+      "slug": "images-to-pdf",
+      "module": "document",
+      "endpoint_slug": "images-to-pdf"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "JPG/PNG to PDF",
+      "slug": "jpg-png-to-pdf",
+      "module": "document",
+      "endpoint_slug": "jpg-png-to-pdf"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Merge PDF",
+      "slug": "merge-pdf",
+      "module": "document",
+      "endpoint_slug": "merge-pdf"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Split PDF",
+      "slug": "split-pdf",
+      "module": "document",
+      "endpoint_slug": "split-pdf"
+    }
+  ],
+  "hero": {
+    "title": "PDF to PPT",
+    "summary": "Convert a PDF to a PowerPoint (.pptx) file."
+  },
+  "endpoint_summary": {
+    "method": "POST",
+    "path": "/api/app/v1/process/asset/pdf_to_ppt",
+    "summary": "Convert a PDF to a PowerPoint (.pptx) file."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Upload the source file and create a file reference before calling this endpoint.",
+      "Successful requests return a Medux task record immediately. Use the task query or sync endpoints to track completion.",
+      "All file inputs must be uploaded and persisted as file references before submission."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "input_file_id",
+        "type": "string",
+        "required": true,
+        "description": "Input PDF file_id.",
+        "location": "BODY"
+      },
+      {
+        "name": "render_scale",
+        "type": "number",
+        "description": "Page render scale, default 2.0. Default: 2.0.",
+        "location": "BODY",
+        "default_value": "2.0"
+      },
+      {
+        "name": "model_id",
+        "type": "string",
+        "description": "Model Default: pdf-to-ppt-default.",
+        "location": "BODY",
+        "default_value": "pdf-to-ppt-default"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "description": "Optional task title.",
+        "location": "BODY"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `1401` | Insufficient credits |\n| `1404` | Provider returned an error |\n| `1405` | Provider request timed out |\n| `13` | Authentication is required |\n| `16` | Rate limit exceeded |\n| `99` | Server error |",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "1410",
+          "1409",
+          "1401",
+          "1404",
+          "1405",
+          "13",
+          "16",
+          "99"
+        ]
+      },
+      {
+        "name": "data.asset",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.paid_plan_required",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "invalid model",
+          "paid plan required",
+          "insufficient credits",
+          "provider error",
+          "provider timeout",
+          "unauthenticated",
+          "rate limit",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/process/asset/pdf_to_ppt \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"input_file_id\":\"FILE_ID\",\"model_id\":\"pdf-to-ppt-default\",\"render_scale\":2}'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/process/asset/pdf_to_ppt \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"input_file_id\":\"FILE_ID\",\"model_id\":\"pdf-to-ppt-default\",\"render_scale\":2}'",
+    "samples": [
+      {
+        "capability_id": "pdf_to_ppt",
+        "sample_id": "sample_pdf_to_ppt_001",
+        "title": "Official pdf to ppt sample",
+        "sample_input": {
+          "title": "Example input",
+          "summary": "Example input for this capability.",
+          "fields": [
+            {
+              "key": "input_file_id",
+              "value": "{file_id}"
+            },
+            {
+              "key": "render_scale",
+              "value": "2"
+            }
+          ]
+        },
+        "sample_output": {
+          "title": "Official example output",
+          "summary": "Official example output for preview only. It is not a user Media Result.",
+          "preview_url": "https://cdn.medux.io/medux/samples/pdf_to_ppt.pptx"
+        },
+        "output_type": "DOCUMENT",
+        "model_id": "pdf-to-ppt-default",
+        "display_locations": [
+          "PLAYGROUND_SAMPLE",
+          "API_REFERENCE_SAMPLE",
+          "CAPABILITY_DETAIL_SAMPLE",
+          "MCP_INVOCATION_SAMPLE"
+        ],
+        "created_at": 1782351325,
+        "review_status": "APPROVED",
+        "minimum_plan": "free"
+      }
+    ]
+  },
+  "related_links": [
+    {
+      "title": "Sync Task",
+      "kind": "API_REFERENCE_LINK",
+      "description": "Refresh task state from the upstream provider.",
+      "module": "infra",
+      "endpoint_slug": "sync-task"
+    }
+  ],
+  "mcp_tool": {
+    "title": "PDF to PPT",
+    "summary": "Convert a PDF to a PowerPoint (.pptx) file.",
+    "capability_id": "pdf_to_ppt",
+    "mcp_tool_id": "medux_pdf_to_ppt",
+    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "invocation_example": "Convert a PDF to a PowerPoint (.pptx) file."
+  },
+  "source_url": "https://medux.io/api-reference/document/pdf-to-ppt"
+}

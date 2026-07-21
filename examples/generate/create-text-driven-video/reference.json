@@ -1,0 +1,346 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Create Text Driven Video",
+    "summary": "Generate a video from text, a reusable avatar, and a reusable voice.",
+    "module": "generate",
+    "endpoint_slug": "create-text-driven-video",
+    "tags": [
+      "Generate",
+      "Video"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Audio",
+      "slug": "create-audio",
+      "module": "generate",
+      "endpoint_slug": "create-audio"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Audio Driven Video",
+      "slug": "create-audio-driven-video",
+      "module": "generate",
+      "endpoint_slug": "create-audio-driven-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Image to Video",
+      "slug": "create-image-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-image-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text Driven Video",
+      "slug": "create-text-driven-video",
+      "module": "generate",
+      "endpoint_slug": "create-text-driven-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text to Video",
+      "slug": "create-text-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-text-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Video by Project",
+      "slug": "create-video-by-project",
+      "module": "generate",
+      "endpoint_slug": "create-video-by-project"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Get Creation Task",
+      "slug": "get-creation-task",
+      "module": "generate",
+      "endpoint_slug": "get-creation-task"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text to Image",
+      "slug": "text-to-image",
+      "module": "generate",
+      "endpoint_slug": "text-to-image"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Image Audio Driven Video",
+      "slug": "image-audio-driven-video",
+      "module": "generate",
+      "endpoint_slug": "image-audio-driven-video"
+    }
+  ],
+  "hero": {
+    "title": "Create Text Driven Video",
+    "summary": "Generate a video from text, a reusable avatar, and a reusable voice."
+  },
+  "endpoint_summary": {
+    "method": "POST",
+    "path": "/api/app/v1/generate/video/text_driven",
+    "summary": "Generate an avatar video from text using a reusable avatar and voice."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Prepare avatar and voice assets before calling this endpoint.",
+      "Requires avatar_asset_id, voice_asset_id, and non-empty text.",
+      "Avatar and voice IDs can come from your Media Assets or official public assets.",
+      "Also accepts optional duration_seconds, links, clarity, aspect_ratio, and model."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "aspect_ratio",
+        "type": "string",
+        "description": "Requested output aspect ratio, such as 16:9 or 9:16.",
+        "location": "BODY"
+      },
+      {
+        "name": "avatar_asset_id",
+        "type": "string",
+        "required": true,
+        "description": "Reusable avatar asset ID owned by the current user or listed as an official public asset.",
+        "location": "BODY"
+      },
+      {
+        "name": "clarity",
+        "type": "string",
+        "description": "Requested output resolution label, such as 1080P or 2K.",
+        "location": "BODY"
+      },
+      {
+        "name": "duration_seconds",
+        "type": "int32",
+        "description": "Requested output duration, in seconds.",
+        "location": "BODY"
+      },
+      {
+        "name": "links",
+        "type": "array<string>",
+        "description": "Optional reference links submitted from the Playground form.",
+        "location": "BODY"
+      },
+      {
+        "name": "model",
+        "type": "string",
+        "description": "Generation model label or version selected in the Playground form.",
+        "location": "BODY"
+      },
+      {
+        "name": "model_id",
+        "type": "string",
+        "description": "Stable public Medux model identifier.",
+        "location": "BODY"
+      },
+      {
+        "name": "text",
+        "type": "string",
+        "location": "BODY"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "location": "BODY"
+      },
+      {
+        "name": "voice_asset_id",
+        "type": "string",
+        "required": true,
+        "description": "Reusable voice asset used for text-driven lip sync.",
+        "location": "BODY"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `1401` | Insufficient credits |\n| `1402` | Asset category does not match this operation |\n| `1403` | Voice asset is required |\n| `1404` | Provider returned an error |\n| `1405` | Provider request timed out |\n| `13` | Authentication is required |\n| `16` | Rate limit exceeded |\n| `99` | Server error |",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "1410",
+          "1409",
+          "1401",
+          "1402",
+          "1403",
+          "1407",
+          "1408",
+          "1404",
+          "1405",
+          "13",
+          "16",
+          "99"
+        ]
+      },
+      {
+        "name": "data.asset",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.paid_plan_required",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "invalid model",
+          "paid plan required",
+          "insufficient credits",
+          "asset category mismatch",
+          "voice asset required",
+          "asset locked",
+          "asset expired",
+          "provider error",
+          "provider timeout",
+          "unauthenticated",
+          "rate limit",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/generate/video/text_driven \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"aspect_ratio\":\"ASPECT_RATIO\",\"avatar_asset_id\":\"AVATAR_ASSET_ID\",\"clarity\":\"CLARITY\",\"duration_seconds\":1,\"links\":[\"https://example.com/reference\"],\"model\":\"MODEL\",\"model_id\":\"MODEL_ID\",\"text\":\"Hello from Medux\",\"title\":\"Demo title\",\"voice_asset_id\":\"VOICE_ASSET_ID\"}'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/generate/video/text_driven \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"aspect_ratio\":\"ASPECT_RATIO\",\"avatar_asset_id\":\"AVATAR_ASSET_ID\",\"clarity\":\"CLARITY\",\"duration_seconds\":1,\"links\":[\"https://example.com/reference\"],\"model\":\"MODEL\",\"model_id\":\"MODEL_ID\",\"text\":\"Hello from Medux\",\"title\":\"Demo title\",\"voice_asset_id\":\"VOICE_ASSET_ID\"}'",
+    "samples": [
+      {
+        "capability_id": "generate.video.text_driven",
+        "sample_id": "sample_generate_video_text_driven_001",
+        "title": "Official text-driven talking video",
+        "sample_input": {
+          "title": "Example input",
+          "summary": "Example input for this capability.",
+          "fields": [
+            {
+              "key": "avatar_asset_id",
+              "value": "KdEddBNsbdgN"
+            },
+            {
+              "key": "voice_asset_id",
+              "value": "LOCOOfzykO4f"
+            },
+            {
+              "key": "text",
+              "value": "Welcome to Medux. This clip was generated from text and reusable assets."
+            }
+          ]
+        },
+        "sample_output": {
+          "title": "Official example output",
+          "summary": "Official example output for preview only. It is not a user Media Result.",
+          "preview_url": "https://cdn.medux.io/demo/G7qPpzNfYQ.mp4",
+          "fields": [
+            {
+              "key": "output_url",
+              "value": "Official example video output"
+            }
+          ]
+        },
+        "output_type": "VIDEO",
+        "model_id": "talking-video-text-standard",
+        "parameters": [
+          {
+            "key": "duration_seconds",
+            "value": "7"
+          },
+          {
+            "key": "clarity",
+            "value": "1080P"
+          },
+          {
+            "key": "aspect_ratio",
+            "value": "16:9"
+          },
+          {
+            "key": "model_id",
+            "value": "talking-video-text-standard"
+          }
+        ],
+        "display_locations": [
+          "PLAYGROUND_SAMPLE",
+          "API_REFERENCE_SAMPLE",
+          "CAPABILITY_DETAIL_SAMPLE"
+        ],
+        "created_at": 1780657131,
+        "review_status": "APPROVED",
+        "minimum_plan": "free"
+      }
+    ]
+  },
+  "mcp_tool": {
+    "title": "Video / Text-Driven Lip Sync",
+    "summary": "Create an avatar video from text and a reusable avatar.",
+    "capability_id": "generate.video.text_driven",
+    "mcp_tool_id": "medux_video_create_text_driven",
+    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "invocation_example": "Generate a talking video from an avatar asset and text input.",
+    "prompt_samples": [
+      {
+        "capability_id": "generate.video.text_driven",
+        "mcp_tool_id": "medux_video_create_text_driven",
+        "prompt_sample_id": "prompt_generate_video_text_driven_001",
+        "natural_language_prompt": "Create a 7 second 1080P 16:9 talking video from this script using avatar_asset_id {avatar_asset_id}, voice_asset_id {voice_asset_id}, and model_id talking-video-text-standard.",
+        "expected_tool_call": "medux_video_create_text_driven",
+        "key_arguments": [
+          {
+            "key": "avatar_asset_id",
+            "value": "{avatar_asset_id}"
+          },
+          {
+            "key": "voice_asset_id",
+            "value": "{voice_asset_id}"
+          },
+          {
+            "key": "text",
+            "value": "{script}"
+          },
+          {
+            "key": "model_id",
+            "value": "talking-video-text-standard"
+          }
+        ],
+        "expected_result_type": "VIDEO",
+        "display_location": "MCP_INVOCATION_SAMPLE",
+        "minimum_plan": "free",
+        "review_status": "APPROVED"
+      }
+    ]
+  },
+  "source_url": "https://medux.io/api-reference/generate/create-text-driven-video"
+}

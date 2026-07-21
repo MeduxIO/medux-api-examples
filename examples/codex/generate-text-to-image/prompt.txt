@@ -1,1 +1,0 @@
-Generate an image from a text prompt.

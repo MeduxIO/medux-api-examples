@@ -1,0 +1,10 @@
+{
+  "links": [
+    "https://example.com/reference"
+  ],
+  "model": "MODEL",
+  "model_id": "MODEL_ID",
+  "text": "Hello from Medux",
+  "title": "Demo title",
+  "voice_asset_id": "VOICE_ASSET_ID"
+}

@@ -1,0 +1,5 @@
+{
+  "model_id": "image-head-swap-default",
+  "source_image_file_id": "FILE_ID",
+  "target_head_image_file_id": "FILE_ID"
+}

@@ -1,1 +1,0 @@
-Animate a swapped face image with a driving video to produce a head swap video.

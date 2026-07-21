@@ -1,0 +1,9 @@
+{
+  "category": "MEDIA",
+  "file_size_bytes": 1,
+  "name": "NAME",
+  "storage_object": {
+    "key": "STORAGE_OBJECT_KEY",
+    "url": "https://example.com/callback"
+  }
+}

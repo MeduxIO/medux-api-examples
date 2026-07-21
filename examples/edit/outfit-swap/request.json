@@ -1,0 +1,5 @@
+{
+  "model_id": "image-outfit-swap-default",
+  "source_image_file_id": "FILE_ID",
+  "target_outfit_image_file_id": "FILE_ID"
+}

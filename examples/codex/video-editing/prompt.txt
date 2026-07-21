@@ -1,1 +1,0 @@
-Use Medux to merge two video clips: sample-clip-3s.mp4 and sample-clip-7s.mp4.

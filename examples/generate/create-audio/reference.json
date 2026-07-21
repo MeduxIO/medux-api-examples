@@ -1,0 +1,304 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Create Audio",
+    "summary": "Generate speech audio from text with a reusable voice asset.",
+    "module": "generate",
+    "endpoint_slug": "create-audio",
+    "tags": [
+      "Generate",
+      "Speech"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Audio",
+      "slug": "create-audio",
+      "module": "generate",
+      "endpoint_slug": "create-audio"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Audio Driven Video",
+      "slug": "create-audio-driven-video",
+      "module": "generate",
+      "endpoint_slug": "create-audio-driven-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Image to Video",
+      "slug": "create-image-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-image-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text Driven Video",
+      "slug": "create-text-driven-video",
+      "module": "generate",
+      "endpoint_slug": "create-text-driven-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text to Video",
+      "slug": "create-text-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-text-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Video by Project",
+      "slug": "create-video-by-project",
+      "module": "generate",
+      "endpoint_slug": "create-video-by-project"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Get Creation Task",
+      "slug": "get-creation-task",
+      "module": "generate",
+      "endpoint_slug": "get-creation-task"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text to Image",
+      "slug": "text-to-image",
+      "module": "generate",
+      "endpoint_slug": "text-to-image"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Image Audio Driven Video",
+      "slug": "image-audio-driven-video",
+      "module": "generate",
+      "endpoint_slug": "image-audio-driven-video"
+    }
+  ],
+  "hero": {
+    "title": "Create Audio",
+    "summary": "Generate speech audio from text with a reusable voice asset."
+  },
+  "endpoint_summary": {
+    "method": "POST",
+    "path": "/api/app/v1/generate/audio",
+    "summary": "Generate speech audio from text using a reusable voice asset."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Requires a voice_asset_id.",
+      "Requires voice_asset_id from your Media Assets or official public assets, plus non-empty text.",
+      "Also accepts optional links and model."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "links",
+        "type": "array<string>",
+        "description": "Optional reference links submitted from the Playground form.",
+        "location": "BODY"
+      },
+      {
+        "name": "model",
+        "type": "string",
+        "description": "Generation model label or version selected in the Playground form.",
+        "location": "BODY"
+      },
+      {
+        "name": "model_id",
+        "type": "string",
+        "description": "Stable public Medux model identifier.",
+        "location": "BODY"
+      },
+      {
+        "name": "text",
+        "type": "string",
+        "location": "BODY"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "location": "BODY"
+      },
+      {
+        "name": "voice_asset_id",
+        "type": "string",
+        "required": true,
+        "description": "Reusable voice asset used for text-to-speech generation.",
+        "location": "BODY"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `1401` | Insufficient credits |\n| `1402` | Asset category does not match this operation |\n| `1403` | Voice asset is required |\n| `1404` | Provider returned an error |\n| `1405` | Provider request timed out |\n| `13` | Authentication is required |\n| `16` | Rate limit exceeded |\n| `99` | Server error |",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "1410",
+          "1409",
+          "1401",
+          "1402",
+          "1403",
+          "1407",
+          "1408",
+          "1404",
+          "1405",
+          "13",
+          "16",
+          "99"
+        ]
+      },
+      {
+        "name": "data.asset",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.paid_plan_required",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "invalid model",
+          "paid plan required",
+          "insufficient credits",
+          "asset category mismatch",
+          "voice asset required",
+          "asset locked",
+          "asset expired",
+          "provider error",
+          "provider timeout",
+          "unauthenticated",
+          "rate limit",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/generate/audio \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"links\":[\"https://example.com/reference\"],\"model\":\"MODEL\",\"model_id\":\"MODEL_ID\",\"text\":\"Hello from Medux\",\"title\":\"Demo title\",\"voice_asset_id\":\"VOICE_ASSET_ID\"}'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/generate/audio \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"links\":[\"https://example.com/reference\"],\"model\":\"MODEL\",\"model_id\":\"MODEL_ID\",\"text\":\"Hello from Medux\",\"title\":\"Demo title\",\"voice_asset_id\":\"VOICE_ASSET_ID\"}'",
+    "samples": [
+      {
+        "capability_id": "generate.audio",
+        "sample_id": "sample_generate_audio_001",
+        "title": "Official text-to-speech audio",
+        "sample_input": {
+          "title": "Example input",
+          "summary": "Generate speech audio from text with an official public voice.",
+          "fields": [
+            {
+              "key": "voice_asset_id",
+              "value": "official_voice_demo_001"
+            },
+            {
+              "key": "text",
+              "value": "Welcome to Medux. This audio was generated from text."
+            }
+          ]
+        },
+        "sample_output": {
+          "title": "Official example output",
+          "summary": "Official example output for preview only. It is not a user Media Result.",
+          "preview_url": "https://medux-cdn-dev.hifly.cc/demo/14bb9aadd2fb4a1c5703ac0f8cfeb1c6.mp3",
+          "fields": [
+            {
+              "key": "output_url",
+              "value": "Official example audio output"
+            }
+          ]
+        },
+        "output_type": "AUDIO",
+        "model_id": "speech-standard",
+        "parameters": [
+          {
+            "key": "model_id",
+            "value": "speech-standard"
+          },
+          {
+            "key": "model_id",
+            "value": "speech-standard"
+          }
+        ],
+        "display_locations": [
+          "PLAYGROUND_SAMPLE",
+          "API_REFERENCE_SAMPLE",
+          "CAPABILITY_DETAIL_SAMPLE"
+        ],
+        "created_at": 1779148800,
+        "review_status": "APPROVED",
+        "minimum_plan": "free"
+      }
+    ]
+  },
+  "mcp_tool": {
+    "title": "Speech / Text-to-Speech Audio",
+    "summary": "Create speech audio from text and an optional reusable voice asset.",
+    "capability_id": "generate.audio",
+    "mcp_tool_id": "medux_speech_create_audio",
+    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "invocation_example": "Generate speech audio from text with an optional reusable voice asset.",
+    "prompt_samples": [
+      {
+        "capability_id": "generate.audio",
+        "mcp_tool_id": "medux_speech_create_audio",
+        "prompt_sample_id": "prompt_generate_audio_001",
+        "natural_language_prompt": "Generate speech audio from this text using voice_asset_id {voice_asset_id} and model_id speech-standard.",
+        "expected_tool_call": "medux_speech_create_audio",
+        "key_arguments": [
+          {
+            "key": "voice_asset_id",
+            "value": "{voice_asset_id}"
+          },
+          {
+            "key": "text",
+            "value": "{text}"
+          },
+          {
+            "key": "model_id",
+            "value": "speech-standard"
+          }
+        ],
+        "expected_result_type": "AUDIO",
+        "display_location": "MCP_INVOCATION_SAMPLE",
+        "minimum_plan": "free",
+        "review_status": "APPROVED"
+      }
+    ]
+  },
+  "source_url": "https://medux.io/api-reference/generate/create-audio"
+}

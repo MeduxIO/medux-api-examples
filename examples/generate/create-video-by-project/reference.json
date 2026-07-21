@@ -1,0 +1,185 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Create Video by Project",
+    "summary": "Trigger video generation from an existing provider-side project identifier.",
+    "module": "generate",
+    "endpoint_slug": "create-video-by-project",
+    "tags": [
+      "Generate",
+      "Video"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Audio",
+      "slug": "create-audio",
+      "module": "generate",
+      "endpoint_slug": "create-audio"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Audio Driven Video",
+      "slug": "create-audio-driven-video",
+      "module": "generate",
+      "endpoint_slug": "create-audio-driven-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Image to Video",
+      "slug": "create-image-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-image-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text Driven Video",
+      "slug": "create-text-driven-video",
+      "module": "generate",
+      "endpoint_slug": "create-text-driven-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text to Video",
+      "slug": "create-text-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-text-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Video by Project",
+      "slug": "create-video-by-project",
+      "module": "generate",
+      "endpoint_slug": "create-video-by-project"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Get Creation Task",
+      "slug": "get-creation-task",
+      "module": "generate",
+      "endpoint_slug": "get-creation-task"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text to Image",
+      "slug": "text-to-image",
+      "module": "generate",
+      "endpoint_slug": "text-to-image"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Image Audio Driven Video",
+      "slug": "image-audio-driven-video",
+      "module": "generate",
+      "endpoint_slug": "image-audio-driven-video"
+    }
+  ],
+  "hero": {
+    "title": "Create Video by Project",
+    "summary": "Trigger video generation from an existing provider-side project identifier."
+  },
+  "endpoint_summary": {
+    "method": "POST",
+    "path": "/api/app/v1/generate/video/by_project",
+    "summary": "Start video generation from an existing Flyworks provider project."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Requires an existing project_id.",
+      "Useful when the provider project already exists upstream."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "project_id",
+        "type": "string",
+        "location": "BODY"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "location": "BODY"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `1401` | Insufficient credits |\n| `1402` | Asset category does not match this operation |\n| `1404` | Provider returned an error |\n| `1405` | Provider request timed out |\n| `13` | Authentication is required |\n| `16` | Rate limit exceeded |\n| `99` | Server error |",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "1410",
+          "1409",
+          "1401",
+          "1402",
+          "1404",
+          "1405",
+          "13",
+          "16",
+          "99"
+        ]
+      },
+      {
+        "name": "data.asset",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.paid_plan_required",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "invalid model",
+          "paid plan required",
+          "insufficient credits",
+          "asset category mismatch",
+          "provider error",
+          "provider timeout",
+          "unauthenticated",
+          "rate limit",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/generate/video/by_project \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"project_id\":\"PROJECT_ID\",\"title\":\"Demo title\"}'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/generate/video/by_project \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"project_id\":\"PROJECT_ID\",\"title\":\"Demo title\"}'"
+  },
+  "source_url": "https://medux.io/api-reference/generate/create-video-by-project"
+}

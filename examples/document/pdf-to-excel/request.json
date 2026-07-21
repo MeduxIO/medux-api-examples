@@ -1,0 +1,6 @@
+{
+  "flavor": "stream",
+  "input_file_id": "FILE_ID",
+  "model_id": "pdf-to-excel-default",
+  "pages": "all"
+}

@@ -1,1 +1,0 @@
-/Users/chuan/projects/test_mudex/ ├── reference_voice.wav # Reference voice used for cloning ├── tts.txt # Text to synthesize └── config/

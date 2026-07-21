@@ -1,0 +1,315 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Create Image to Video",
+    "summary": "Generate a video from a source image and text prompt.",
+    "module": "generate",
+    "endpoint_slug": "create-image-to-video",
+    "tags": [
+      "Generate",
+      "Video"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Audio",
+      "slug": "create-audio",
+      "module": "generate",
+      "endpoint_slug": "create-audio"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Audio Driven Video",
+      "slug": "create-audio-driven-video",
+      "module": "generate",
+      "endpoint_slug": "create-audio-driven-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Image to Video",
+      "slug": "create-image-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-image-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text Driven Video",
+      "slug": "create-text-driven-video",
+      "module": "generate",
+      "endpoint_slug": "create-text-driven-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text to Video",
+      "slug": "create-text-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-text-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Video by Project",
+      "slug": "create-video-by-project",
+      "module": "generate",
+      "endpoint_slug": "create-video-by-project"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Get Creation Task",
+      "slug": "get-creation-task",
+      "module": "generate",
+      "endpoint_slug": "get-creation-task"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text to Image",
+      "slug": "text-to-image",
+      "module": "generate",
+      "endpoint_slug": "text-to-image"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Image Audio Driven Video",
+      "slug": "image-audio-driven-video",
+      "module": "generate",
+      "endpoint_slug": "image-audio-driven-video"
+    }
+  ],
+  "hero": {
+    "title": "Create Image to Video",
+    "summary": "Generate a video from a source image and text prompt."
+  },
+  "endpoint_summary": {
+    "method": "POST",
+    "path": "/api/app/v1/generate/video/image_to_video",
+    "summary": "Generate a video from a source image and text prompt."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Upload the source image and create a file reference before calling this endpoint.",
+      "Requires an uploaded image file_id and a non-empty prompt.",
+      "Also accepts optional duration_seconds, clarity, aspect_ratio, and model_id."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "aspect_ratio",
+        "type": "string",
+        "description": "Requested output aspect ratio, for example 16:9 or 9:16.",
+        "location": "BODY"
+      },
+      {
+        "name": "clarity",
+        "type": "string",
+        "description": "Requested output clarity, for example 720P or 1080P.",
+        "location": "BODY"
+      },
+      {
+        "name": "duration_seconds",
+        "type": "int32",
+        "description": "Requested output duration in seconds.",
+        "location": "BODY"
+      },
+      {
+        "name": "file_id",
+        "type": "string",
+        "location": "BODY"
+      },
+      {
+        "name": "model_id",
+        "type": "string",
+        "description": "Stable public Medux model identifier.",
+        "location": "BODY"
+      },
+      {
+        "name": "prompt",
+        "type": "string",
+        "location": "BODY"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "location": "BODY"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "response code enums:\\\n.. 0: ok\\\n.. 12: invalid input\\\n.. 1410: invalid model\\\n.. 1409: paid plan required\\\n.. 1401: insufficient credits\\\n.... 1401 ~ 1499 是 media\\\n.. 1402: asset category mismatch\\\n.. 1404: provider error\\\n.. 1405: provider timeout\\\n.. 13: unauthenticated\\\n.. 16: rate limit\\\n.. 99: server error",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "1410",
+          "1409",
+          "1401",
+          "1402",
+          "1404",
+          "1405",
+          "13",
+          "16",
+          "99"
+        ]
+      },
+      {
+        "name": "data.asset",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.paid_plan_required",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "invalid model",
+          "paid plan required",
+          "insufficient credits",
+          "asset category mismatch",
+          "provider error",
+          "provider timeout",
+          "unauthenticated",
+          "rate limit",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/generate/video/image_to_video \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"aspect_ratio\":\"ASPECT_RATIO\",\"clarity\":\"CLARITY\",\"duration_seconds\":1,\"file_id\":\"FILE_ID\",\"model_id\":\"MODEL_ID\",\"prompt\":\"PROMPT\",\"title\":\"Demo title\"}'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/generate/video/image_to_video \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"aspect_ratio\":\"ASPECT_RATIO\",\"clarity\":\"CLARITY\",\"duration_seconds\":1,\"file_id\":\"FILE_ID\",\"model_id\":\"MODEL_ID\",\"prompt\":\"PROMPT\",\"title\":\"Demo title\"}'",
+    "samples": [
+      {
+        "capability_id": "generate.video.image_to_video",
+        "sample_id": "sample_generate_video_image_to_video_001",
+        "title": "Official image-to-video generation",
+        "sample_input": {
+          "title": "Example input",
+          "summary": "Generate a short video from a source image and motion prompt.",
+          "fields": [
+            {
+              "key": "file_id",
+              "value": "{file_id}"
+            },
+            {
+              "key": "prompt",
+              "value": "Add a gentle dolly-in camera move while preserving the subject."
+            }
+          ]
+        },
+        "sample_output": {
+          "title": "Official example output",
+          "summary": "Official example output for preview only. It is not a user Media Result.",
+          "preview_url": "https://medux-cdn-dev.hifly.cc/demo/G7qPpzNfYQ.mp4",
+          "fields": [
+            {
+              "key": "output_url",
+              "value": "Official example video output"
+            }
+          ]
+        },
+        "output_type": "VIDEO",
+        "model_id": "wan-2-6-image-to-video",
+        "parameters": [
+          {
+            "key": "duration_seconds",
+            "value": "5"
+          },
+          {
+            "key": "clarity",
+            "value": "720P"
+          },
+          {
+            "key": "aspect_ratio",
+            "value": "16:9"
+          },
+          {
+            "key": "model_id",
+            "value": "wan-2-6-image-to-video"
+          }
+        ],
+        "display_locations": [
+          "PLAYGROUND_SAMPLE",
+          "API_REFERENCE_SAMPLE",
+          "CAPABILITY_DETAIL_SAMPLE"
+        ],
+        "created_at": 1779148800,
+        "review_status": "APPROVED",
+        "minimum_plan": "starter"
+      }
+    ]
+  },
+  "mcp_tool": {
+    "title": "Video / Image to Video",
+    "summary": "Generate a video from a source image and text prompt. Default model wan-2-6-image-to-video requires Starter or higher and bills per generated video second.",
+    "capability_id": "generate.video.image_to_video",
+    "mcp_tool_id": "medux_video_generate_image_to_video",
+    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "invocation_example": "Generate a video from an uploaded image and text prompt.",
+    "prompt_samples": [
+      {
+        "capability_id": "generate.video.image_to_video",
+        "mcp_tool_id": "medux_video_generate_image_to_video",
+        "prompt_sample_id": "prompt_generate_video_image_to_video_001",
+        "natural_language_prompt": "Generate a 5 second 720P 16:9 video from uploaded image {file_id} and this motion prompt using model_id wan-2-6-image-to-video. This model requires Starter or higher.",
+        "expected_tool_call": "medux_video_generate_image_to_video",
+        "key_arguments": [
+          {
+            "key": "file_id",
+            "value": "{file_id}"
+          },
+          {
+            "key": "prompt",
+            "value": "{prompt}"
+          },
+          {
+            "key": "model_id",
+            "value": "wan-2-6-image-to-video"
+          },
+          {
+            "key": "duration_seconds",
+            "value": "5"
+          }
+        ],
+        "expected_result_type": "VIDEO",
+        "display_location": "MCP_INVOCATION_SAMPLE",
+        "minimum_plan": "free",
+        "error_case": "paid_plan_required if the account is below Starter.",
+        "review_status": "APPROVED"
+      }
+    ]
+  },
+  "source_url": "https://medux.io/api-reference/generate/create-image-to-video"
+}

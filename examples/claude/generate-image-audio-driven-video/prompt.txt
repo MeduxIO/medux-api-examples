@@ -1,1 +1,0 @@
-Generate a talking video from a reference image, driving audio, and prompt text.

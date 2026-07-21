@@ -1,0 +1,5 @@
+{
+  "model_id": "image-face-swap-default",
+  "source_image_file_id": "FILE_ID",
+  "target_face_image_file_id": "FILE_ID"
+}

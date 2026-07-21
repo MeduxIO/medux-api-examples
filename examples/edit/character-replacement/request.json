@@ -1,0 +1,5 @@
+{
+  "model_id": "video-character-replacement-default",
+  "source_video_file_id": "FILE_ID",
+  "target_character_image_file_id": "FILE_ID"
+}

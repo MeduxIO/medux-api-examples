@@ -1,1 +1,0 @@
-Upscale a video to a higher resolution.

@@ -1,1 +1,0 @@
-Clone a reusable avatar from the uploaded source video {file id}. Title it Official avatar clone sample.

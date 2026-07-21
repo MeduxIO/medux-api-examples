@@ -1,1 +1,0 @@
-Use Medux to run Sync Task. Review the required inputs, call medux_sync_task, wait for the result if a task is returned, and report the output clearly.

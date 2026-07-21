@@ -1,1 +1,0 @@
-Generate speech audio from this text using voice asset id {voice asset id} and model id speech-standard.

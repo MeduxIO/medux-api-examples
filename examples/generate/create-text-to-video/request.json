@@ -1,0 +1,8 @@
+{
+  "aspect_ratio": "ASPECT_RATIO",
+  "clarity": "CLARITY",
+  "duration_seconds": 1,
+  "model_id": "MODEL_ID",
+  "prompt": "PROMPT",
+  "title": "Demo title"
+}

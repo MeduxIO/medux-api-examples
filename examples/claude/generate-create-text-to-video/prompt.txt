@@ -1,1 +1,0 @@
-Generate a 5 second 720P 16:9 video from this prompt using model id wan-2-6-text-to-video. This model requires Starter or higher.

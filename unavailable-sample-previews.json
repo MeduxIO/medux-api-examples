@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-07-21",
+  "urls": [
+    "https://cdn.medux.io/demo/G7qPpzNfYQ.mp4",
+    "https://cdn.medux.io/medux/samples/add_audio_to_video.mp4",
+    "https://cdn.medux.io/medux/samples/add_logo_to_video.mp4",
+    "https://cdn.medux.io/medux/samples/change_audio_speed.mp3",
+    "https://cdn.medux.io/medux/samples/change_video_speed.mp4",
+    "https://cdn.medux.io/medux/samples/merge_audio.mp3",
+    "https://cdn.medux.io/medux/samples/merge_video.mp4",
+    "https://cdn.medux.io/medux/samples/pdf_to_docx.docx",
+    "https://cdn.medux.io/medux/samples/pdf_to_images.jpg",
+    "https://cdn.medux.io/medux/samples/pdf_to_jpg.jpg",
+    "https://cdn.medux.io/medux/samples/remove_video_object.mp4",
+    "https://cdn.medux.io/medux/samples/resize_video.mp4",
+    "https://cdn.medux.io/medux/samples/reverse_audio.mp3",
+    "https://cdn.medux.io/medux/samples/rotate_video.mp4",
+    "https://cdn.medux.io/medux/samples/shift_audio_pitch.mp3",
+    "https://cdn.medux.io/medux/samples/trim_video.mp4"
+  ]
+}

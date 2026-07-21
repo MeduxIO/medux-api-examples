@@ -1,0 +1,9 @@
+{
+  "edit_prompt": "人脸保持不变",
+  "face_image_file_id": "FILE_ID",
+  "height": 832,
+  "input_video_file_id": "FILE_ID",
+  "model_id": "animate-head-swap-default",
+  "positive_prompt": "一个角色在说话",
+  "width": 480
+}

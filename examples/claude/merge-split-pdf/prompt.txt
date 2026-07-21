@@ -1,1 +1,0 @@
-Use Medux to merge a.pdf and b.pdf into one PDF. Upload the files with curl, run the merge task, and save the final result in the current project folder.

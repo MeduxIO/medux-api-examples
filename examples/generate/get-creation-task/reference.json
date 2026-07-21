@@ -1,0 +1,157 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Get Creation Task",
+    "summary": "Read the current state of a generation task.",
+    "module": "generate",
+    "endpoint_slug": "get-creation-task",
+    "tags": [
+      "Generate",
+      "Task"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Audio",
+      "slug": "create-audio",
+      "module": "generate",
+      "endpoint_slug": "create-audio"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Audio Driven Video",
+      "slug": "create-audio-driven-video",
+      "module": "generate",
+      "endpoint_slug": "create-audio-driven-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Image to Video",
+      "slug": "create-image-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-image-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text Driven Video",
+      "slug": "create-text-driven-video",
+      "module": "generate",
+      "endpoint_slug": "create-text-driven-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text to Video",
+      "slug": "create-text-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-text-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Video by Project",
+      "slug": "create-video-by-project",
+      "module": "generate",
+      "endpoint_slug": "create-video-by-project"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Get Creation Task",
+      "slug": "get-creation-task",
+      "module": "generate",
+      "endpoint_slug": "get-creation-task"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text to Image",
+      "slug": "text-to-image",
+      "module": "generate",
+      "endpoint_slug": "text-to-image"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Image Audio Driven Video",
+      "slug": "image-audio-driven-video",
+      "module": "generate",
+      "endpoint_slug": "image-audio-driven-video"
+    }
+  ],
+  "hero": {
+    "title": "Get Creation Task",
+    "summary": "Read the current state of a generation task."
+  },
+  "endpoint_summary": {
+    "method": "GET",
+    "path": "/api/app/v1/generate/tasks/{task_id}",
+    "summary": "Return the current state of a media generation task."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Requires a task_id returned by a generation request.",
+      "Use this for polling any generation task created under the Generate module."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "task_id",
+        "type": "string",
+        "required": true,
+        "location": "PATH"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `13` | Authentication is required |\n| `15` | Resource not found |\n| `99` | Server error |",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "13",
+          "15",
+          "99"
+        ]
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "unauthenticated",
+          "not found",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X GET https://api.medux.io/api/app/v1/generate/tasks/TASK_ID \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY'",
+    "curl_command": "curl -X GET https://api.medux.io/api/app/v1/generate/tasks/TASK_ID \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY'"
+  },
+  "source_url": "https://medux.io/api-reference/generate/get-creation-task"
+}

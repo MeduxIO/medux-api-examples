@@ -1,1 +1,0 @@
-Clone a reusable voice from the uploaded audio file {file id}. Title it Official voice clone sample.

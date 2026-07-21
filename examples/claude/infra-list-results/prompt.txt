@@ -1,1 +1,0 @@
-Use Medux to run List Results. Review the required inputs, call medux_list_results, wait for the result if a task is returned, and report the output clearly.

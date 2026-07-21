@@ -1,1 +1,0 @@
-Prompt used in Claude Use Medux to add logo.png to sample.mp4. Resize the logo to an appropriate size and place it in the top-right corner of the video. Upload the files using the curl command.

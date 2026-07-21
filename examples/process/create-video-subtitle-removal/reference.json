@@ -1,0 +1,268 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Create Video Subtitle Removal",
+    "summary": "Submit a subtitle removal processing task for a video asset.",
+    "module": "process",
+    "endpoint_slug": "create-video-subtitle-removal",
+    "tags": [
+      "Process",
+      "Video"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Image Background Removal",
+      "slug": "create-image-background-removal",
+      "module": "process",
+      "endpoint_slug": "create-image-background-removal"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Video Background Removal",
+      "slug": "create-video-background-removal",
+      "module": "process",
+      "endpoint_slug": "create-video-background-removal"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Video Subtitle Removal",
+      "slug": "create-video-subtitle-removal",
+      "module": "process",
+      "endpoint_slug": "create-video-subtitle-removal"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Video Watermark Removal",
+      "slug": "create-video-watermark-removal",
+      "module": "process",
+      "endpoint_slug": "create-video-watermark-removal"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Get Process Task",
+      "slug": "get-process-task",
+      "module": "process",
+      "endpoint_slug": "get-process-task"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Video Logo Removal",
+      "slug": "video-logo-removal",
+      "module": "process",
+      "endpoint_slug": "video-logo-removal"
+    }
+  ],
+  "hero": {
+    "title": "Create Video Subtitle Removal",
+    "summary": "Submit a subtitle removal processing task for a video asset."
+  },
+  "endpoint_summary": {
+    "method": "POST",
+    "path": "/api/app/v1/process/video/subtitle_removal",
+    "summary": "Create a video processing task that removes subtitles from an uploaded video."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Requires a previously uploaded video asset.",
+      "Requires an existing video file_id."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "file_id",
+        "type": "string",
+        "required": true,
+        "location": "BODY"
+      },
+      {
+        "name": "region.height",
+        "type": "int32",
+        "location": "BODY"
+      },
+      {
+        "name": "region.width",
+        "type": "int32",
+        "location": "BODY"
+      },
+      {
+        "name": "region.x",
+        "type": "int32",
+        "description": "X coordinate of the region's top-left corner in pixels.",
+        "location": "BODY"
+      },
+      {
+        "name": "region.y",
+        "type": "int32",
+        "description": "Y coordinate of the region's top-left corner in pixels.",
+        "location": "BODY"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "location": "BODY"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `1401` | Insufficient credits |\n| `1404` | Provider returned an error |\n| `1405` | Provider request timed out |\n| `13` | Authentication is required |\n| `16` | Rate limit exceeded |\n| `99` | Server error |",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "1410",
+          "1409",
+          "1401",
+          "1404",
+          "1405",
+          "13",
+          "16",
+          "99"
+        ]
+      },
+      {
+        "name": "data.asset",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.paid_plan_required",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "invalid model",
+          "paid plan required",
+          "insufficient credits",
+          "provider error",
+          "provider timeout",
+          "unauthenticated",
+          "rate limit",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/process/video/subtitle_removal \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"file_id\":\"FILE_ID\",\"region\":{\"height\":1,\"width\":1,\"x\":1,\"y\":1},\"title\":\"Demo title\"}'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/process/video/subtitle_removal \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"file_id\":\"FILE_ID\",\"region\":{\"height\":1,\"width\":1,\"x\":1,\"y\":1},\"title\":\"Demo title\"}'",
+    "samples": [
+      {
+        "capability_id": "process.video.subtitle_removal",
+        "sample_id": "sample_process_video_subtitle_removal_001",
+        "title": "Official subtitle removal",
+        "sample_input": {
+          "title": "Example input",
+          "summary": "Remove burned-in subtitles from an official sample video.",
+          "fields": [
+            {
+              "key": "file_id",
+              "value": "{file_id}"
+            },
+            {
+              "key": "source",
+              "value": "Official sample video for testing"
+            }
+          ]
+        },
+        "sample_output": {
+          "title": "Official example output",
+          "summary": "Official example output for preview only. It is not a user Media Result.",
+          "preview_url": "https://medux-cdn-dev.hifly.cc/demo/G7qPpzNfYQ.mp4",
+          "fields": [
+            {
+              "key": "output_url",
+              "value": "Official example video output"
+            }
+          ]
+        },
+        "output_type": "VIDEO",
+        "model_id": "video-subtitle-removal-standard",
+        "parameters": [
+          {
+            "key": "region",
+            "value": "optional"
+          },
+          {
+            "key": "model_id",
+            "value": "video-subtitle-removal-standard"
+          }
+        ],
+        "display_locations": [
+          "PLAYGROUND_SAMPLE",
+          "API_REFERENCE_SAMPLE",
+          "CAPABILITY_DETAIL_SAMPLE"
+        ],
+        "created_at": 1779148800,
+        "review_status": "APPROVED",
+        "minimum_plan": "free"
+      }
+    ]
+  },
+  "mcp_tool": {
+    "title": "Video / Subtitle Removal",
+    "summary": "Remove burned-in subtitles from an uploaded video file.",
+    "capability_id": "process.video.subtitle_removal",
+    "mcp_tool_id": "medux_video_remove_subtitle",
+    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "invocation_example": "Remove burned-in subtitles from an uploaded video asset and return the processing task id.",
+    "prompt_samples": [
+      {
+        "capability_id": "process.video.subtitle_removal",
+        "mcp_tool_id": "medux_video_remove_subtitle",
+        "prompt_sample_id": "prompt_process_video_subtitle_removal_001",
+        "natural_language_prompt": "Remove burned-in subtitles from the uploaded source video {file_id}. If the subtitle area is known, pass region {x, y, width, height}.",
+        "expected_tool_call": "medux_video_remove_subtitle",
+        "key_arguments": [
+          {
+            "key": "file_id",
+            "value": "{file_id}"
+          },
+          {
+            "key": "region",
+            "value": "optional"
+          }
+        ],
+        "expected_result_type": "VIDEO",
+        "display_location": "MCP_INVOCATION_SAMPLE",
+        "minimum_plan": "free",
+        "review_status": "APPROVED"
+      }
+    ]
+  },
+  "source_url": "https://medux.io/api-reference/process/create-video-subtitle-removal"
+}

@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Get Task",
+    "summary": "Get a single task record from the current account history.",
+    "module": "infra",
+    "endpoint_slug": "get-task",
+    "tags": [
+      "Infra",
+      "Task"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Asset",
+      "slug": "create-asset",
+      "module": "infra",
+      "endpoint_slug": "create-asset"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Get Task",
+      "slug": "get-task",
+      "module": "infra",
+      "endpoint_slug": "get-task"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Assets",
+      "slug": "list-assets",
+      "module": "infra",
+      "endpoint_slug": "list-assets"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Results",
+      "slug": "list-results",
+      "module": "infra",
+      "endpoint_slug": "list-results"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Tasks",
+      "slug": "list-tasks",
+      "module": "infra",
+      "endpoint_slug": "list-tasks"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Sync Task",
+      "slug": "sync-task",
+      "module": "infra",
+      "endpoint_slug": "sync-task"
+    }
+  ],
+  "hero": {
+    "title": "Get Task",
+    "summary": "Get a single task record from the current account history."
+  },
+  "endpoint_summary": {
+    "method": "GET",
+    "path": "/api/app/v1/tasks/{task_id}",
+    "summary": "Return one task record by its ID."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Requires a task_id from account history or task creation responses.",
+      "Useful for account-side history views."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "task_id",
+        "type": "string",
+        "required": true,
+        "location": "PATH"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `13` | Authentication is required |\n| `15` | Resource not found |\n| `99` | Server error |",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "13",
+          "15",
+          "99"
+        ]
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "unauthenticated",
+          "not found",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X GET https://api.medux.io/api/app/v1/tasks/TASK_ID \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY'",
+    "curl_command": "curl -X GET https://api.medux.io/api/app/v1/tasks/TASK_ID \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY'"
+  },
+  "source_url": "https://medux.io/api-reference/infra/get-task"
+}

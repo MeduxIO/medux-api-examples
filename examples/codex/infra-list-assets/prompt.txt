@@ -1,1 +1,0 @@
-Use Medux to run List Assets. Review the required inputs, call medux_list_assets, wait for the result if a task is returned, and report the output clearly.

@@ -1,0 +1,239 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Create Image Audio Driven Video",
+    "summary": "Generate a talking video from a reference image, driving audio, and prompt text.",
+    "module": "generate",
+    "endpoint_slug": "image-audio-driven-video",
+    "tags": [
+      "Generate",
+      "Video"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Audio",
+      "slug": "create-audio",
+      "module": "generate",
+      "endpoint_slug": "create-audio"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Audio Driven Video",
+      "slug": "create-audio-driven-video",
+      "module": "generate",
+      "endpoint_slug": "create-audio-driven-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Image to Video",
+      "slug": "create-image-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-image-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text Driven Video",
+      "slug": "create-text-driven-video",
+      "module": "generate",
+      "endpoint_slug": "create-text-driven-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text to Video",
+      "slug": "create-text-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-text-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Video by Project",
+      "slug": "create-video-by-project",
+      "module": "generate",
+      "endpoint_slug": "create-video-by-project"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Get Creation Task",
+      "slug": "get-creation-task",
+      "module": "generate",
+      "endpoint_slug": "get-creation-task"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Text to Image",
+      "slug": "text-to-image",
+      "module": "generate",
+      "endpoint_slug": "text-to-image"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Image Audio Driven Video",
+      "slug": "image-audio-driven-video",
+      "module": "generate",
+      "endpoint_slug": "image-audio-driven-video"
+    }
+  ],
+  "hero": {
+    "title": "Create Image Audio Driven Video",
+    "summary": "Generate a talking video from a reference image, driving audio, and prompt text."
+  },
+  "endpoint_summary": {
+    "method": "POST",
+    "path": "/api/app/v1/generate/video/image_audio_driven",
+    "summary": "Generate a talking video from a reference image, driving audio, and prompt text."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Upload the source file and create a file reference before calling this endpoint.",
+      "Successful requests return a Medux task record immediately. Use the task query or sync endpoints to track completion.",
+      "All file inputs must be uploaded and persisted as file references before submission."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "prompt_text",
+        "type": "string",
+        "required": true,
+        "description": "Talking prompt text used to guide video generation.",
+        "location": "BODY"
+      },
+      {
+        "name": "prompt_image_file_id",
+        "type": "string",
+        "required": true,
+        "description": "Reference image file_id.",
+        "location": "BODY"
+      },
+      {
+        "name": "prompt_audio_file_id",
+        "type": "string",
+        "required": true,
+        "description": "Driving audio file_id.",
+        "location": "BODY"
+      },
+      {
+        "name": "resolution",
+        "type": "string",
+        "description": "Prompt image or prompt video frame resize target before generation. Default: 720p.",
+        "location": "BODY",
+        "default_value": "720p"
+      },
+      {
+        "name": "model_id",
+        "type": "string",
+        "description": "Image audio driven video model id. Default: image-audio-driven-video-default.",
+        "location": "BODY",
+        "default_value": "image-audio-driven-video-default"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "description": "Optional task title.",
+        "location": "BODY"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `1401` | Insufficient credits |\n| `1404` | Provider returned an error |\n| `1405` | Provider request timed out |\n| `13` | Authentication is required |\n| `16` | Rate limit exceeded |\n| `99` | Server error |",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "1410",
+          "1409",
+          "1401",
+          "1404",
+          "1405",
+          "13",
+          "16",
+          "99"
+        ]
+      },
+      {
+        "name": "data.asset",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.paid_plan_required",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "invalid model",
+          "paid plan required",
+          "insufficient credits",
+          "provider error",
+          "provider timeout",
+          "unauthenticated",
+          "rate limit",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/generate/video/image_audio_driven \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"model_id\":\"image-audio-driven-video-default\",\"prompt_audio_file_id\":\"AUDIO_FILE_ID\",\"prompt_image_file_id\":\"FILE_ID\",\"prompt_text\":\"Hello from Medux\",\"resolution\":\"720p\"}'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/generate/video/image_audio_driven \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"model_id\":\"image-audio-driven-video-default\",\"prompt_audio_file_id\":\"AUDIO_FILE_ID\",\"prompt_image_file_id\":\"FILE_ID\",\"prompt_text\":\"Hello from Medux\",\"resolution\":\"720p\"}'"
+  },
+  "related_links": [
+    {
+      "title": "Sync Task",
+      "kind": "API_REFERENCE_LINK",
+      "description": "Refresh task state from the upstream provider.",
+      "module": "infra",
+      "endpoint_slug": "sync-task"
+    },
+    {
+      "title": "Get Creation Task",
+      "kind": "API_REFERENCE_LINK",
+      "description": "Read the current state of a generation task.",
+      "module": "generate",
+      "endpoint_slug": "get-creation-task"
+    }
+  ],
+  "mcp_tool": {
+    "title": "Create Image Audio Driven Video",
+    "summary": "Generate a talking video from a reference image, driving audio, and prompt text.",
+    "capability_id": "image_audio_driven_video",
+    "mcp_tool_id": "medux_image_audio_driven_video",
+    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "invocation_example": "Generate a talking video from a reference image, driving audio, and prompt text."
+  },
+  "source_url": "https://medux.io/api-reference/generate/image-audio-driven-video"
+}

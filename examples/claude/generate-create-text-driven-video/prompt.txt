@@ -1,1 +1,0 @@
-Create a 7 second 1080P 16:9 talking video from this script using avatar asset id {avatar asset id}, voice asset id {voice asset id}, and model id talking-video-text-standard.

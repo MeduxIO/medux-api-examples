@@ -1,0 +1,177 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "List Assets",
+    "summary": "List recorded assets for the current account.",
+    "module": "infra",
+    "endpoint_slug": "list-assets",
+    "tags": [
+      "Infra",
+      "Asset"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Asset",
+      "slug": "create-asset",
+      "module": "infra",
+      "endpoint_slug": "create-asset"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Get Task",
+      "slug": "get-task",
+      "module": "infra",
+      "endpoint_slug": "get-task"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Assets",
+      "slug": "list-assets",
+      "module": "infra",
+      "endpoint_slug": "list-assets"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Results",
+      "slug": "list-results",
+      "module": "infra",
+      "endpoint_slug": "list-results"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Tasks",
+      "slug": "list-tasks",
+      "module": "infra",
+      "endpoint_slug": "list-tasks"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Sync Task",
+      "slug": "sync-task",
+      "module": "infra",
+      "endpoint_slug": "sync-task"
+    }
+  ],
+  "hero": {
+    "title": "List Assets",
+    "summary": "List recorded assets for the current account."
+  },
+  "endpoint_summary": {
+    "method": "GET",
+    "path": "/api/app/v1/assets",
+    "summary": "List assets owned by the authenticated user."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Try it lists the current account's assets.",
+      "Use the category filter to narrow reusable asset types."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "cursor",
+        "type": "string",
+        "location": "QUERY"
+      },
+      {
+        "name": "limit",
+        "type": "int32",
+        "location": "QUERY"
+      },
+      {
+        "name": "category",
+        "type": "string",
+        "description": "Allowed values:\n- `CATEGORY_UNDEFINED` - Not specified.\n- `MEDIA` - Uploaded source media.\n- `AVATAR` - Reusable avatar asset.\n- `VOICE` - Reusable voice asset.",
+        "location": "QUERY",
+        "enum_values": [
+          "CATEGORY_UNDEFINED",
+          "MEDIA",
+          "AVATAR",
+          "VOICE"
+        ]
+      },
+      {
+        "name": "status",
+        "type": "string",
+        "description": ". assethpb.Status:\\\n... enums:\\\n..... STATUS_UNDEFINED\\\n..... PROCESSING\\\n..... ACTIVE\\\n..... LOCKED\\\n..... EXPIRING_SOON\\\n..... EXPIRED\\\n..... DELETED",
+        "location": "QUERY",
+        "enum_values": [
+          "STATUS_UNDEFINED",
+          "PROCESSING",
+          "ACTIVE",
+          "LOCKED",
+          "EXPIRING_SOON",
+          "EXPIRED",
+          "DELETED"
+        ]
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `99` | Server error |",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "13",
+          "99"
+        ]
+      },
+      {
+        "name": "data.entitlement",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.items",
+        "type": "array<object>",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.next_cursor",
+        "type": "string",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "unauthenticated",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X GET https://api.medux.io/api/app/v1/assets?cursor=CURSOR&limit=LIMIT&category=MEDIA&status=PROCESSING \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY'",
+    "curl_command": "curl -X GET https://api.medux.io/api/app/v1/assets?cursor=CURSOR&limit=LIMIT&category=MEDIA&status=PROCESSING \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY'"
+  },
+  "source_url": "https://medux.io/api-reference/infra/list-assets"
+}

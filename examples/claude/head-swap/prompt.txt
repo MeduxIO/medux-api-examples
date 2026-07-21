@@ -1,1 +1,0 @@
-Swap the head in "swap_head_src.jpg" with the head in "swap_head_target.jpg". Use Medux through MCP, upload the files with curl, run the head-swap task, and save the result in the current project folder.

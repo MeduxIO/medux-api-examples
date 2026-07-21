@@ -1,1 +1,0 @@
-Swap the head in "swap_head_src.jpg" with the head in "swap_head_target.jpg". Use medux. head swap!

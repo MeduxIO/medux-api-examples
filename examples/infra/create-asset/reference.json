@@ -1,0 +1,168 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Create Asset",
+    "summary": "Persist a reusable avatar or voice asset record.",
+    "module": "infra",
+    "endpoint_slug": "create-asset",
+    "tags": [
+      "Infra",
+      "Asset"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Asset",
+      "slug": "create-asset",
+      "module": "infra",
+      "endpoint_slug": "create-asset"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Get Task",
+      "slug": "get-task",
+      "module": "infra",
+      "endpoint_slug": "get-task"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Assets",
+      "slug": "list-assets",
+      "module": "infra",
+      "endpoint_slug": "list-assets"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Results",
+      "slug": "list-results",
+      "module": "infra",
+      "endpoint_slug": "list-results"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Tasks",
+      "slug": "list-tasks",
+      "module": "infra",
+      "endpoint_slug": "list-tasks"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Sync Task",
+      "slug": "sync-task",
+      "module": "infra",
+      "endpoint_slug": "sync-task"
+    }
+  ],
+  "hero": {
+    "title": "Create Asset",
+    "summary": "Persist a reusable avatar or voice asset record."
+  },
+  "endpoint_summary": {
+    "method": "POST",
+    "path": "/api/app/v1/assets",
+    "summary": "Create an asset record from a file that was uploaded through a direct upload URL."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Requires reusable asset metadata.",
+      "Uploaded MEDIA files use file_id directly and do not need this endpoint."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "category",
+        "type": "string",
+        "description": "Asset category, used for validation and later rendering.\n\nAllowed values:\n- `CATEGORY_UNDEFINED` - Not specified.\n- `MEDIA` - Uploaded source media.\n- `AVATAR` - Reusable avatar asset.\n- `VOICE` - Reusable voice asset.",
+        "location": "BODY",
+        "enum_values": [
+          "CATEGORY_UNDEFINED",
+          "MEDIA",
+          "AVATAR",
+          "VOICE"
+        ]
+      },
+      {
+        "name": "file_size_bytes",
+        "type": "int64",
+        "description": "Original file size, in bytes.",
+        "location": "BODY"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "description": "Display name provided by the user. This value may be empty.",
+        "location": "BODY"
+      },
+      {
+        "name": "storage_object.key",
+        "type": "string",
+        "location": "BODY"
+      },
+      {
+        "name": "storage_object.url",
+        "type": "string",
+        "location": "BODY"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `16` | Rate limit exceeded |\n| `99` | Server error |",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "1406",
+          "13",
+          "16",
+          "99"
+        ]
+      },
+      {
+        "name": "data.asset",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "asset limit reached",
+          "unauthenticated",
+          "rate limit",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/assets \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"category\":\"MEDIA\",\"file_size_bytes\":1,\"name\":\"NAME\",\"storage_object\":{\"key\":\"STORAGE_OBJECT_KEY\",\"url\":\"https://example.com/callback\"}}'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/assets \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"category\":\"MEDIA\",\"file_size_bytes\":1,\"name\":\"NAME\",\"storage_object\":{\"key\":\"STORAGE_OBJECT_KEY\",\"url\":\"https://example.com/callback\"}}'"
+  },
+  "source_url": "https://medux.io/api-reference/infra/create-asset"
+}

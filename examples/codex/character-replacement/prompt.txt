@@ -1,1 +1,0 @@
-project/ ├── character.mp4 # source video with the original person └── character.jpg # reference character image for replacement

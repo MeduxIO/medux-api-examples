@@ -1,1 +1,0 @@
-Remove the watermark from the uploaded source video {file id}. If the watermark area is known, pass region {x, y, width, height}.

@@ -1,1 +1,0 @@
-Using Medux, change the girl's outfit in girl.JPEG to match the clothing shown in clothes.PNG. Upload the files using a curl command.

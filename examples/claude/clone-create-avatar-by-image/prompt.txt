@@ -1,1 +1,0 @@
-Clone a reusable avatar from the uploaded portrait image {file id}. Title it Official avatar image clone sample.

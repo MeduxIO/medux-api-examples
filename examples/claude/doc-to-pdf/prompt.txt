@@ -1,1 +1,0 @@
-Use Medux to convert "Artificial Intelligence and Transformer Models.docx" to a PDF file. Upload the file using curl.

@@ -1,250 +1,537 @@
 #!/usr/bin/env python3
-"""Generate GitHub examples from the canonical Medux tutorial HTML files."""
+"""Generate API-first examples from the official Medux API Reference snapshot."""
 
 from __future__ import annotations
 
 import argparse
-import html
 import json
 import re
+import shutil
+import urllib.parse
 from collections import defaultdict
 from pathlib import Path
 
 
-TAG_RE = re.compile(r"<[^>]+>")
+API_BASE_URL = "https://api.medux.io"
+PLACEHOLDER_RE = re.compile(r"^[A-Z][A-Z0-9_]{2,}$")
+UNAVAILABLE_PREVIEWS: set[str] = set()
+FIELD_DESCRIPTIONS = {
+    "audio_file_id": "Identifier of the uploaded audio file used by this operation.",
+    "capability_id": "Filter records by Medux capability identifier.",
+    "cursor": "Opaque pagination cursor returned by the previous page.",
+    "emotion": "Voice emotion adjustment value.",
+    "file_id": "Identifier of a file created through the Medux upload flow.",
+    "limit": "Maximum number of records to return in this page.",
+    "media_type": "Media-type filter for the returned records.",
+    "project_id": "Identifier of the Medux project used to create the output.",
+    "prompt": "Natural-language instruction describing the requested output.",
+    "region.height": "Height of the target processing region.",
+    "region.width": "Width of the target processing region.",
+    "speed": "Voice or media speed adjustment value.",
+    "storage_object.key": "Storage object key returned by the upload flow.",
+    "storage_object.url": "Storage object URL associated with the uploaded file.",
+    "task_id": "Identifier of the Medux task to retrieve or synchronize.",
+    "text": "Text content used to generate speech or media.",
+    "title": "Optional user-facing title for the task or generated asset.",
+    "tone": "Voice tone adjustment value.",
+    "voice_asset_id": "Identifier of the reusable Medux voice asset.",
+    "data.asset": "Asset created or returned by the operation when available.",
+    "data.entitlement": "Plan or entitlement information relevant to the request.",
+    "data.items": "Collection of records returned by a list operation.",
+    "data.next_cursor": "Opaque cursor to request the next page; absent or empty when no next page is available.",
+    "data.paid_plan_required": "Paid-plan requirement details when the selected capability is unavailable on the current plan.",
+    "data.retention_notice": "Retention-policy information associated with the returned data.",
+    "data.task": "Task record created or returned by an asynchronous operation.",
+    "message": "Human-readable application status or error message.",
+}
 
 
-def clean(value: str) -> str:
-    value = TAG_RE.sub("", value)
-    return " ".join(html.unescape(value).split())
+def md(value: object) -> str:
+    if value is None or value == "":
+        return "—"
+    return str(value).replace("\\\n", "\n").replace("|", "\\|").replace("\n", "<br>")
 
 
-def capture(source: str, pattern: str, *, required: bool = True) -> str:
-    match = re.search(pattern, source, re.I | re.S)
-    if not match:
-        if required:
-            raise ValueError(f"Missing expected pattern: {pattern}")
-        return ""
-    return clean(match.group(1))
+def field_rows(fields: list[dict]) -> str:
+    if not fields:
+        return "| — | — | — | — | No fields documented. |"
+    rows = []
+    for field in fields:
+        details = field.get("description") or FIELD_DESCRIPTIONS.get(field.get("name"), "No additional description is documented.")
+        if field.get("enum_values"):
+            details += "\nOptions: " + ", ".join(f"`{value}`" for value in field["enum_values"])
+        rows.append(
+            "| `{name}` | `{type}` | {required} | `{location}` | {details} |".format(
+                name=md(field.get("name")),
+                type=md(field.get("type")),
+                required="Required" if field.get("required") else "Optional",
+                location=md(field.get("location")),
+                details=md(details),
+            )
+        )
+    return "\n".join(rows)
 
 
-def parse_fields(source: str) -> list[dict[str, str]]:
-    section = re.search(
-        r"<h2>Request fields to review</h2>.*?<tbody>(.*?)</tbody>",
-        source,
-        re.I | re.S,
+def executable_curl(command: str) -> str:
+    command = command.replace(
+        "-H 'Authorization: Bearer $MEDUX_API_KEY'",
+        '-H "Authorization: Bearer $MEDUX_API_KEY"',
     )
-    if not section:
-        return []
-    fields = []
-    for row in re.findall(r"<tr>(.*?)</tr>", section.group(1), re.I | re.S):
-        cells = [clean(cell) for cell in re.findall(r"<td>(.*?)</td>", row, re.I | re.S)]
-        if len(cells) == 4:
-            fields.append(dict(zip(("name", "type", "requirement", "purpose"), cells)))
-    return fields
-
-
-def parse_tutorial(path: Path) -> dict:
-    source = path.read_text(encoding="utf-8")
-    filename = path.name
-    agent = capture(source, r'<meta\s+name="medux-agent"\s+content="([^"]+)"', required=False)
-    if not agent:
-        agent_match = re.search(r"_(claude|codex)_mcp$", path.stem, re.I)
-        if not agent_match:
-            raise ValueError(f"Cannot infer agent from {path}")
-        agent = agent_match.group(1).title()
-    slug = re.sub(r"_(?:claude|codex)_mcp$", "", path.stem).replace("_", "-")
-    prompt = capture(
-        source,
-        rf"<h2>Prompt\s+{re.escape(agent)}</h2>.*?<pre><code>(.*?)</code></pre>",
-        required=False,
+    return re.sub(
+        r"https://[^\s\\]+",
+        lambda match: f"'{match.group(0)}'" if "?" in match.group(0) else match.group(0),
+        command,
+        count=1,
     )
-    if not prompt:
-        prompt = capture(source, r"<pre><code>(.*?)</code></pre>")
-
-    category = capture(source, r'<span class="eyebrow">[^<]*?·\s*([^<]+)</span>', required=False)
-    if not category:
-        prefix = path.stem.split("_", 1)[0]
-        category = prefix if prefix in {"clone", "document", "edit", "generate", "infra", "media", "process"} else "media"
-
-    mcp_tool = capture(source, r'<strong>MCP tool</strong><br\s*/?>\s*<code>(.*?)</code>', required=False)
-    if not mcp_tool:
-        plain_source = clean(source)
-        tools = re.findall(r"\b(medux_[a-z0-9_]+)\b", plain_source, re.I)
-        ignored = {"medux_task_query", "medux_create_upload_url", "medux_upload_url"}
-        mcp_tool = next((tool for tool in tools if tool.lower() not in ignored), tools[0] if tools else "")
-    if not mcp_tool:
-        tool_match = re.search(r'["\']?tool["\']?\s*:\s*["\']([a-z0-9_]+)', plain_source, re.I)
-        if tool_match:
-            mcp_tool = tool_match.group(1)
-    if not mcp_tool:
-        mcp_tool = slug.replace("-", "_")
-
-    endpoint = capture(source, r'<span class="method">.*?</span>\s*<code>(.*?)</code>', required=False)
-    method = capture(source, r'<span class="method">(.*?)</span>', required=False)
-    if not endpoint:
-        endpoint_match = re.search(r"\b(GET|POST|PUT|PATCH|DELETE)\s+(/api/[A-Za-z0-9_{}?&=./:-]+)", clean(source))
-        if endpoint_match:
-            method, endpoint = endpoint_match.groups()
-
-    api_reference_url = capture(source, r'<a\s+class="api-link"\s+href="([^"]+)"', required=False)
-    if not api_reference_url:
-        links = re.findall(r'href="(https://medux\.io/api-reference/[^"]+)"', source, re.I)
-        if not links:
-            raise ValueError(f"Cannot find API reference in {path}")
-        api_reference_url = html.unescape(links[0])
-
-    title = capture(source, r'<h1[^>]*id="page-title"[^>]*>(.*?)</h1>')
-    description = capture(source, r'<p class="lead">(.*?)</p>')
-    operation = capture(source, r'<h2>What this tutorial does</h2>.*?<strong>Medux operation</strong><p>(.*?)</p>', required=False)
-    if not operation:
-        operation = description
-    return {
-        "id": path.stem,
-        "slug": slug,
-        "agent": agent.lower(),
-        "category": category.lower(),
-        "title": title,
-        "description": description,
-        "operation": operation,
-        "method": method,
-        "endpoint": endpoint,
-        "mcp_tool": mcp_tool,
-        "prompt": prompt,
-        "tutorial_url": capture(source, r'<link\s+rel="canonical"\s+href="([^"]+)"'),
-        "api_reference_url": api_reference_url,
-        "fields": parse_fields(source),
-        "source_file": filename,
-    }
 
 
-def render_example(item: dict) -> str:
-    field_rows = "\n".join(
-        f"| `{field['name']}` | `{field['type']}` | {field['requirement']} | {field['purpose']} |"
-        for field in item["fields"]
+def curl_body(command: str) -> object | None:
+    match = re.search(r"(?:^|\s)-d\s+'([^']+)'", command, re.S)
+    return json.loads(match.group(1)) if match else None
+
+
+def request_placeholders(value: object, fields_by_name: dict[str, dict], prefix: str = "") -> set[str]:
+    placeholders: set[str] = set()
+    if isinstance(value, dict):
+        for key, child in value.items():
+            name = f"{prefix}.{key}" if prefix else key
+            placeholders.update(request_placeholders(child, fields_by_name, name))
+    elif isinstance(value, list):
+        for child in value:
+            placeholders.update(request_placeholders(child, fields_by_name, prefix))
+    elif isinstance(value, str) and PLACEHOLDER_RE.fullmatch(value):
+        field = fields_by_name.get(prefix, {})
+        if value not in field.get("enum_values", []):
+            placeholders.add(value)
+    return placeholders
+
+
+def endpoint_placeholders(page: dict, body: object | None) -> list[str]:
+    fields = page["request_section"].get("fields", [])
+    fields_by_name = {field["name"]: field for field in fields}
+    values = request_placeholders(body, fields_by_name) if body is not None else set()
+    for field in fields:
+        if field.get("location") == "PATH":
+            values.add(field["name"].upper())
+    return sorted(values)
+
+
+def render_python(page: dict, body: object | None) -> str:
+    summary = page["endpoint_summary"]
+    fields = page["request_section"].get("fields", [])
+    path_fields = [field for field in fields if field.get("location") == "PATH"]
+    query_fields = [field for field in fields if field.get("location") == "QUERY"]
+    fields_by_name = {field["name"]: field for field in fields}
+    body_placeholders = sorted(request_placeholders(body, fields_by_name)) if body is not None else []
+    lines = [
+        '"""Runnable example generated from the official Medux API Reference."""',
+        "",
+        "import json",
+        "import os",
+        "",
+        "import requests",
+        "",
+        f'BASE_URL = os.getenv("MEDUX_API_BASE_URL", "{API_BASE_URL}")',
+        f"PLACEHOLDERS = frozenset({body_placeholders!r})",
+        "",
+        "",
+        "def require_env(name: str) -> str:",
+        "    value = os.getenv(name)",
+        "    if not value:",
+        '        raise RuntimeError(f"Set {name} before running this example")',
+        "    return value",
+        "",
+        "",
+        "def resolve_placeholders(value):",
+        "    if isinstance(value, dict):",
+        "        return {key: resolve_placeholders(item) for key, item in value.items()}",
+        "    if isinstance(value, list):",
+        "        return [resolve_placeholders(item) for item in value]",
+        "    if isinstance(value, str) and value in PLACEHOLDERS:",
+        "        return require_env(value)",
+        "    return value",
+        "",
+        "",
+        f'path = "{summary["path"]}"',
+    ]
+    for field in path_fields:
+        lines.append(f'path = path.replace("{{{field["name"]}}}", require_env("{field["name"].upper()}"))')
+    lines.extend(["url = f\"{BASE_URL}{path}\"", ""])
+    if query_fields:
+        lines.extend(["params = {}"])
+        for field in query_fields:
+            env_name = field["name"].upper()
+            lines.extend(
+                [
+                    f'if os.getenv("{env_name}"):',
+                    f'    params["{field["name"]}"] = os.environ["{env_name}"]',
+                ]
+            )
+        lines.append("")
+    if body is not None:
+        encoded = json.dumps(body, indent=2, ensure_ascii=False)
+        lines.extend(
+            [
+                "payload = resolve_placeholders(json.loads(r'''",
+                encoded,
+                "'''))",
+                "",
+            ]
+        )
+    call = [
+        f'    "{summary["method"]}",',
+        "    url,",
+        '    headers={"Authorization": f"Bearer {require_env(\'MEDUX_API_KEY\')}"},',
+    ]
+    if query_fields:
+        call.append("    params=params,")
+    if body is not None:
+        call.append("    json=payload,")
+    call.extend(["    timeout=120,", ")"])
+    lines.extend(
+        [
+            "response = requests.request(",
+            *call,
+            "response.raise_for_status()",
+            "result = response.json()",
+            'if result.get("code") not in (None, 0):',
+            '    raise RuntimeError(f"Medux API error: {result.get(\'code\')} {result.get(\'message\')}")',
+            "print(json.dumps(result, indent=2))",
+            "",
+        ]
     )
-    if not field_rows:
-        field_rows = "| — | — | — | This operation has no documented request fields. |"
-    agent_name = item["agent"].title()
-    endpoint_value = f"`{item['method']} {item['endpoint']}`" if item["endpoint"] else f"[See API reference]({item['api_reference_url']})"
-    return f"""# {item['title']}
+    return "\n".join(lines)
 
-{item['description']}
 
-## What this example does
+def render_javascript(page: dict, body: object | None) -> str:
+    summary = page["endpoint_summary"]
+    fields = page["request_section"].get("fields", [])
+    path_fields = [field for field in fields if field.get("location") == "PATH"]
+    query_fields = [field for field in fields if field.get("location") == "QUERY"]
+    fields_by_name = {field["name"]: field for field in fields}
+    body_placeholders = sorted(request_placeholders(body, fields_by_name)) if body is not None else []
+    lines = [
+        "/** Runnable example generated from the official Medux API Reference. */",
+        "",
+        f'const baseUrl = process.env.MEDUX_API_BASE_URL ?? "{API_BASE_URL}";',
+        f"const placeholders = new Set({json.dumps(body_placeholders)});",
+        "",
+        "function requireEnv(name) {",
+        "  const value = process.env[name];",
+        '  if (!value) throw new Error(`Set ${name} before running this example`);',
+        "  return value;",
+        "}",
+        "",
+        "function resolvePlaceholders(value) {",
+        "  if (Array.isArray(value)) return value.map(resolvePlaceholders);",
+        "  if (value && typeof value === \"object\") {",
+        "    return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, resolvePlaceholders(item)]));",
+        "  }",
+        '  if (typeof value === "string" && placeholders.has(value)) return requireEnv(value);',
+        "  return value;",
+        "}",
+        "",
+        f'let path = "{summary["path"]}";',
+    ]
+    for field in path_fields:
+        lines.append(f'path = path.replace("{{{field["name"]}}}", encodeURIComponent(requireEnv("{field["name"].upper()}")));')
+    lines.extend(["const url = new URL(path, baseUrl);", ""])
+    for field in query_fields:
+        env_name = field["name"].upper()
+        lines.append(f'if (process.env.{env_name}) url.searchParams.set("{field["name"]}", process.env.{env_name});')
+    if query_fields:
+        lines.append("")
+    if body is not None:
+        encoded = json.dumps(body, indent=2, ensure_ascii=False)
+        lines.extend([f"const payload = resolvePlaceholders({encoded});", ""])
+    lines.extend(
+        [
+            "const response = await fetch(url, {",
+            f'  method: "{summary["method"]}",',
+            "  headers: {",
+            '    Authorization: `Bearer ${requireEnv("MEDUX_API_KEY")}`,',
+        ]
+    )
+    if body is not None:
+        lines.append('    "Content-Type": "application/json",')
+    lines.extend(["  },"])
+    if body is not None:
+        lines.append("  body: JSON.stringify(payload),")
+    lines.extend(
+        [
+            "});",
+            "",
+            "const result = await response.json();",
+            "if (!response.ok) {",
+            "  throw new Error(`${response.status} ${JSON.stringify(result)}`);",
+            "}",
+            "if (result.code !== undefined && result.code !== 0) {",
+            "  throw new Error(`Medux API error: ${result.code} ${result.message ?? \"\"}`);",
+            "}",
+            "console.log(JSON.stringify(result, null, 2));",
+            "",
+        ]
+    )
+    return "\n".join(lines)
 
-{item['operation']}
 
-| Interface | Value |
-| --- | --- |
-| Agent | {agent_name} |
-| MCP tool | `{item['mcp_tool']}` |
-| API endpoint | {endpoint_value} |
+def render_samples(samples: list[dict]) -> str:
+    if not samples:
+        return "No official media sample is currently documented for this endpoint."
+    blocks = []
+    for sample in samples:
+        input_fields = ", ".join(f"`{field['key']}={field['value']}`" for field in sample.get("sample_input", {}).get("fields", [])) or "—"
+        output_fields = ", ".join(f"`{field['key']}={field['value']}`" for field in sample.get("sample_output", {}).get("fields", [])) or "—"
+        preview = sample.get("sample_output", {}).get("preview_url")
+        if preview in UNAVAILABLE_PREVIEWS:
+            preview_line = "- Preview: currently unavailable; the URL published by the official reference returned HTTP 404 during validation. The original URL remains in `reference.json`."
+        elif preview:
+            preview_line = f"- Preview: [Open documented sample]({preview})"
+        else:
+            preview_line = "- Preview: —"
+        blocks.extend(
+            [
+                f"### {sample.get('title', sample.get('sample_id', 'Official sample'))}",
+                "",
+                f"- Sample ID: `{sample.get('sample_id', '—')}`",
+                f"- Input: {input_fields}",
+                f"- Output: {output_fields}",
+                f"- Model: `{sample.get('model_id', '—')}`",
+                f"- Minimum plan: `{sample.get('minimum_plan', '—')}`",
+                preview_line,
+            ]
+        )
+    return "\n".join(blocks)
 
-## Before you run it
 
-1. Connect Medux MCP to {agent_name}.
-2. Authenticate with your Medux credential.
-3. Prepare any source files or IDs referenced by the request fields below.
-4. Review the proposed tool arguments before approving the call.
+def render_mcp(page: dict) -> str:
+    tool = page.get("mcp_tool")
+    if not tool:
+        return "This endpoint does not currently document a hosted MCP tool."
+    prompt = ""
+    samples = tool.get("prompt_samples") or []
+    if samples:
+        prompt = f"""
 
-## Prompt
+Example prompt:
 
 ```text
-{item['prompt']}
-```
+{samples[0].get('natural_language_prompt', '')}
+```"""
+    return f"""The same capability is optionally available through Medux MCP.
 
-The same prompt is available in [`prompt.txt`](./prompt.txt) for easy copying.
-
-## Request fields
-
-| Field | Type | Requirement | Purpose |
-| --- | --- | --- | --- |
-{field_rows}
-
-## Run the workflow
-
-1. Paste the prompt into {agent_name}.
-2. Confirm that {agent_name} selects `{item['mcp_tool']}`.
-3. Replace placeholders with your real file, asset, task, model, or text values.
-4. Review and approve the MCP tool call.
-5. If the response contains an asynchronous task, monitor it until completion and save the returned result IDs or URLs.
-
-## Resources
-
-- [Complete tutorial]({item['tutorial_url']})
-- [API reference]({item['api_reference_url']})
-- [All Medux tutorials](https://medux.io/tutorials/)
-- [Medux MCP overview](https://medux.io/overview/mcp)
-
-> The API reference is the source of truth for current fields, limits, and response semantics.
+- MCP endpoint: `{tool.get('remote_mcp_endpoint', '—')}`
+- Tool: `{tool.get('mcp_tool_id', '—')}`
+- Result type: `{samples[0].get('expected_result_type', '—') if samples else '—'}`{prompt}
 """
 
 
-def render_root(items: list[dict]) -> str:
+def render_readme(page: dict, body: object | None, curl_command: str) -> str:
+    meta = page["meta"]
+    summary = page["endpoint_summary"]
+    request_fields = page["request_section"].get("fields", [])
+    response_fields = page["response_section"].get("fields", [])
+    auth_items = "\n".join(f"- {item}" for item in page.get("auth_requirements", {}).get("items", [])) or "- No authentication requirement documented."
+    preconditions = "\n".join(f"- {item}" for item in page.get("preconditions", {}).get("items", [])) or "- No additional preconditions documented."
+    placeholders = endpoint_placeholders(page, body)
+    env_lines = ["- `MEDUX_API_KEY` — required for every request."]
+    env_lines.extend(f"- `{name}` — replace the corresponding placeholder in the official example." for name in placeholders)
+    path_fields = [field for field in request_fields if field.get("location") == "PATH"]
+    query_fields = [field for field in request_fields if field.get("location") == "QUERY"]
+    env_lines.extend(f"- `{field['name'].upper()}` — path parameter `{field['name']}`." for field in path_fields if field["name"].upper() not in placeholders)
+    env_lines.extend(f"- `{field['name'].upper()}` — optional query parameter `{field['name']}`." for field in query_fields)
+    related = []
+    for link in page.get("related_links", []):
+        module = link.get("module")
+        slug = link.get("endpoint_slug")
+        if module and slug:
+            related.append(f"- [{link['title']}](../../{module}/{slug}/) — {link.get('description', '')}")
+    related_text = "\n".join(related) or "- No related endpoints documented."
+    module = meta["module"]
+    status_target = {
+        "generate": "../../generate/get-creation-task/",
+        "process": "../../process/get-process-task/",
+        "edit": "../../process/get-process-task/",
+        "media": "../../process/get-process-task/",
+        "document": "../../process/get-process-task/",
+        "infra": "../../infra/get-task/",
+    }.get(module)
+    if module == "clone":
+        status_target = "../../clone/get-voice-task/" if "voice" in meta["endpoint_slug"] else "../../clone/get-avatar-task/"
+    if any(field.get("name") == "data.task" for field in response_fields):
+        status_link = f"the [relevant task-status endpoint]({status_target})" if status_target else "the relevant task-status endpoint"
+        task_note = f"This response can include `data.task`. Persist the returned task ID and use {status_link} until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed."
+    else:
+        task_note = "Check both the HTTP status and the application-level `code` and `message` fields before consuming `data`."
+    message_field = next((field for field in response_fields if field.get("name") == "message"), {})
+    errors = [value for value in message_field.get("enum_values", []) if value != "ok"]
+    error_note = ", ".join(f"`{value}`" for value in errors) or "the non-success values documented above"
+    return f"""# {meta['title']}
+
+{page.get('hero', {}).get('summary') or meta.get('summary') or summary.get('summary')}
+
+## Endpoint
+
+```http
+{summary['method']} {summary['path']}
+```
+
+Base URL: `{API_BASE_URL}`
+
+{summary.get('summary', '')}
+
+## Authentication
+
+{auth_items}
+
+Export your credential before running an example:
+
+```bash
+export MEDUX_API_KEY="your_api_key"
+```
+
+Never commit a real key.
+
+## Preconditions
+
+{preconditions}
+
+## Request
+
+| Field | Type | Requirement | Location | Description / options |
+| --- | --- | --- | --- | --- |
+{field_rows(request_fields)}
+
+## Environment variables used by the Python and JavaScript examples
+
+{chr(10).join(dict.fromkeys(env_lines))}
+
+Query parameters are only sent by the Python and JavaScript examples when their corresponding environment variables are set.
+
+## curl
+
+```bash
+{curl_command}
+```
+
+The same command is available in [`curl.sh`](./curl.sh).
+
+The curl form mirrors the official reference. Replace uppercase placeholders such as `FILE_ID`, `TASK_ID`, or `MODEL_ID` inline before running it; the Python and JavaScript examples resolve their documented placeholders from environment variables.
+
+## Python
+
+Install the dependency and run:
+
+```bash
+python3 -m pip install -r ../../../requirements.txt
+python3 example.py
+```
+
+See [`example.py`](./example.py).
+
+## JavaScript
+
+Node.js 18 or newer is required:
+
+```bash
+node example.mjs
+```
+
+See [`example.mjs`](./example.mjs).
+
+## Response
+
+| Field | Type | Requirement | Location | Description / options |
+| --- | --- | --- | --- | --- |
+{field_rows(response_fields)}
+
+### Response handling
+
+{task_note}
+
+Application response codes and meanings are reproduced in the response-field table above from the official reference. Handle the documented non-success messages explicitly: {error_note}.
+
+## Official sample
+
+{render_samples(page.get('examples', {}).get('samples', []))}
+
+## MCP alternative
+
+{render_mcp(page)}
+
+## Related APIs
+
+{related_text}
+
+## Source of truth
+
+- [Official API Reference]({page['source_url']})
+- [Medux API quick start](https://medux.io/overview/api)
+- [Medux tutorials](https://medux.io/tutorials/)
+
+This repository snapshot is generated from the official API Reference. Re-check the linked reference before production deployment because contracts and limits may change.
+"""
+
+
+def render_root(snapshot: dict) -> str:
     groups: dict[str, list[dict]] = defaultdict(list)
-    for item in items:
-        groups[item["category"]].append(item)
+    for page in snapshot["endpoints"]:
+        groups[page["meta"]["module"]].append(page)
     sections = []
-    for category in sorted(groups):
-        rows = [f"### {category.title()}", "", "| Example | Claude | Codex |", "| --- | --- | --- |"]
-        by_slug: dict[str, dict[str, dict]] = defaultdict(dict)
-        for item in groups[category]:
-            by_slug[item["slug"]][item["agent"]] = item
-        for slug, variants in sorted(by_slug.items()):
-            label = next(iter(variants.values()))["title"]
-            label = re.sub(r" with (?:Claude|Codex) MCP and Medux$", "", label)
-            claude = f"[Example](./examples/claude/{slug}/)" if "claude" in variants else "—"
-            codex = f"[Example](./examples/codex/{slug}/)" if "codex" in variants else "—"
-            rows.append(f"| {label} | {claude} | {codex} |")
-        sections.append("\n".join(rows))
-    sections_text = "\n\n".join(sections)
+    titles = {group["slug"]: group["title"] for group in snapshot.get("groups", [])}
+    for module, pages in groups.items():
+        lines = [f"### {titles.get(module, module.title())}", "", "| API | Method | Endpoint |", "| --- | --- | --- |"]
+        for page in pages:
+            meta = page["meta"]
+            summary = page["endpoint_summary"]
+            lines.append(f"| [{meta['title']}](./examples/{module}/{meta['endpoint_slug']}/) | `{summary['method']}` | `{summary['path']}` |")
+        sections.append("\n".join(lines))
     return f"""# Medux API Examples
 
-Practical examples for running Medux media and document operations through MCP with Claude and Codex.
+Complete API-first examples generated from the [official Medux API Reference](https://medux.io/api-reference/).
 
-## Start here
+The REST API does not differ between Claude, Codex, or other clients. Each of the **{snapshot['endpoint_count']} APIs** has one canonical example containing its contract, curl command, runnable Python and JavaScript clients, response handling, official sample data, and optional MCP mapping.
 
-- [Medux API overview](https://medux.io/overview/api)
-- [Connect Medux MCP](https://medux.io/overview/mcp)
-- [Browse the complete tutorials](https://medux.io/tutorials/)
-- [API reference](https://medux.io/api-reference)
+## Quick start
 
-## How to use an example
+```bash
+git clone https://github.com/MeduxAI/medux-api-examples.git
+cd medux-api-examples
+export MEDUX_API_KEY="your_api_key"
+python3 -m pip install -r requirements.txt
+```
 
-1. Open an example for your agent.
-2. Copy its `prompt.txt` into Claude or Codex.
-3. Replace placeholders with your own IDs, files, prompts, and settings.
-4. Review the selected Medux MCP tool and its arguments.
-5. Approve the call and monitor asynchronous tasks to completion.
+Choose an API below. For Python and JavaScript, set the placeholder environment variables documented in its README. For curl, replace the uppercase placeholders inline before running `curl.sh`.
 
-## Examples
+## API catalog
 
-This repository currently contains **{len(items)} agent examples** generated from the published Medux tutorials.
-
-{sections_text}
+{chr(10).join(chr(10) + section for section in sections)}
 
 ## Repository layout
 
 ```text
-examples/
-├── claude/<operation>/
-│   ├── README.md
-│   ├── prompt.txt
-│   └── example.json
-└── codex/<operation>/
-    ├── README.md
-    ├── prompt.txt
-    └── example.json
+examples/<module>/<endpoint>/
+├── README.md       # Complete endpoint guide
+├── curl.sh         # Copy-ready official curl request
+├── example.py      # Python client
+├── example.mjs     # Node.js client
+├── request.json    # Official request body example
+└── reference.json  # Structured endpoint reference
 ```
 
-## Source and maintenance
+## Refreshing from the official reference
 
-The example catalog is generated from the canonical tutorial HTML. Run `python3 scripts/generate_examples.py --source /path/to/tutorials` after tutorial changes, then run `python3 scripts/validate_examples.py`.
+```bash
+python3 scripts/fetch_api_reference.py
+python3 scripts/generate_examples.py
+python3 scripts/validate_examples.py
+```
+
+The committed `api-reference.json` is a reviewable snapshot of the public reference used to generate the repository.
 
 ## Security
 
-Never commit Medux credentials, API keys, private asset IDs, or private media URLs. Review every agent-proposed tool call before approving it.
+Never commit API keys, private asset IDs, private media URLs, or user data. Store credentials in environment variables and review requests before sending them.
 
 ## Contributing
 
@@ -254,34 +541,53 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--source", type=Path, default=Path("../tutorials"))
+    parser.add_argument("--source", type=Path, default=Path(__file__).resolve().parents[1] / "api-reference.json")
     parser.add_argument("--repo", type=Path, default=Path(__file__).resolve().parents[1])
     args = parser.parse_args()
-
-    source = args.source.resolve()
     repo = args.repo.resolve()
-    paths = sorted(path for path in source.glob("*.html") if path.name != "index.html")
-    items = [parse_tutorial(path) for path in paths]
+    snapshot = json.loads(args.source.resolve().read_text(encoding="utf-8"))
+    unavailable_file = repo / "unavailable-sample-previews.json"
+    if unavailable_file.exists():
+        unavailable = json.loads(unavailable_file.read_text(encoding="utf-8"))
+        UNAVAILABLE_PREVIEWS.update(unavailable.get("urls", []))
 
     examples_root = repo / "examples"
     if examples_root.exists():
-        for generated in examples_root.glob("*/*/*"):
-            if generated.is_file():
-                generated.unlink()
-        for directory in sorted(examples_root.glob("*/*"), reverse=True):
-            if directory.is_dir() and not any(directory.iterdir()):
-                directory.rmdir()
+        shutil.rmtree(examples_root)
 
-    for item in items:
-        target = examples_root / item["agent"] / item["slug"]
+    index = []
+    for page in snapshot["endpoints"]:
+        meta = page["meta"]
+        target = examples_root / meta["module"] / meta["endpoint_slug"]
         target.mkdir(parents=True, exist_ok=True)
-        (target / "README.md").write_text(render_example(item), encoding="utf-8")
-        (target / "prompt.txt").write_text(item["prompt"] + "\n", encoding="utf-8")
-        (target / "example.json").write_text(json.dumps(item, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        official_curl = page["examples"]["curl_command"]
+        curl_command = executable_curl(official_curl)
+        body = curl_body(official_curl)
+        (target / "README.md").write_text(render_readme(page, body, curl_command), encoding="utf-8")
+        curl_path = target / "curl.sh"
+        curl_path.write_text(
+            "#!/usr/bin/env bash\nset -euo pipefail\n: \"${MEDUX_API_KEY:?Set MEDUX_API_KEY}\"\n\n" + curl_command + "\n",
+            encoding="utf-8",
+        )
+        curl_path.chmod(0o755)
+        (target / "example.py").write_text(render_python(page, body), encoding="utf-8")
+        (target / "example.mjs").write_text(render_javascript(page, body), encoding="utf-8")
+        (target / "request.json").write_text(json.dumps(body or {}, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        (target / "reference.json").write_text(json.dumps(page, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        index.append(
+            {
+                "module": meta["module"],
+                "slug": meta["endpoint_slug"],
+                "title": meta["title"],
+                "method": page["endpoint_summary"]["method"],
+                "path": page["endpoint_summary"]["path"],
+                "source_url": page["source_url"],
+            }
+        )
 
-    (repo / "examples.json").write_text(json.dumps(items, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-    (repo / "README.md").write_text(render_root(items), encoding="utf-8")
-    print(f"Generated {len(items)} examples from {source}")
+    (repo / "examples.json").write_text(json.dumps(index, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    (repo / "README.md").write_text(render_root(snapshot), encoding="utf-8")
+    print(f"Generated {len(index)} API examples")
 
 
 if __name__ == "__main__":

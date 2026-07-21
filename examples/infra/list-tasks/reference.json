@@ -1,0 +1,169 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "List Tasks",
+    "summary": "List task records for the current account across clone, generate, and process flows.",
+    "module": "infra",
+    "endpoint_slug": "list-tasks",
+    "tags": [
+      "Infra",
+      "Task"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Create Asset",
+      "slug": "create-asset",
+      "module": "infra",
+      "endpoint_slug": "create-asset"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Get Task",
+      "slug": "get-task",
+      "module": "infra",
+      "endpoint_slug": "get-task"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Assets",
+      "slug": "list-assets",
+      "module": "infra",
+      "endpoint_slug": "list-assets"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Results",
+      "slug": "list-results",
+      "module": "infra",
+      "endpoint_slug": "list-results"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Tasks",
+      "slug": "list-tasks",
+      "module": "infra",
+      "endpoint_slug": "list-tasks"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Sync Task",
+      "slug": "sync-task",
+      "module": "infra",
+      "endpoint_slug": "sync-task"
+    }
+  ],
+  "hero": {
+    "title": "List Tasks",
+    "summary": "List task records for the current account across clone, generate, and process flows."
+  },
+  "endpoint_summary": {
+    "method": "GET",
+    "path": "/api/app/v1/tasks",
+    "summary": "List media tasks created by the authenticated user."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Try it returns the current account's task history.",
+      "Use this for history views or background polling dashboards."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "cursor",
+        "type": "string",
+        "location": "QUERY"
+      },
+      {
+        "name": "limit",
+        "type": "int32",
+        "location": "QUERY"
+      },
+      {
+        "name": "status",
+        "type": "string",
+        "description": "Allowed values:\n- `TASK_STATUS_UNDEFINED` - Not specified.\n- `QUEUED` - Task is waiting to run.\n- `PROCESSING` - Task is running.\n- `SUCCEEDED` - Task finished successfully.\n- `FAILED` - Task failed.\n- `EXPIRED` - Task output is no longer available.",
+        "location": "QUERY",
+        "enum_values": [
+          "TASK_STATUS_UNDEFINED",
+          "QUEUED",
+          "PROCESSING",
+          "SUCCEEDED",
+          "FAILED",
+          "EXPIRED"
+        ]
+      },
+      {
+        "name": "media_type",
+        "type": "string",
+        "location": "QUERY"
+      },
+      {
+        "name": "capability_id",
+        "type": "string",
+        "location": "QUERY"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `13` | Authentication is required |\n| `99` | Server error |",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "13",
+          "99"
+        ]
+      },
+      {
+        "name": "data.items",
+        "type": "array<object>",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.next_cursor",
+        "type": "string",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "unauthenticated",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X GET https://api.medux.io/api/app/v1/tasks?cursor=CURSOR&limit=LIMIT&status=QUEUED&media_type=MEDIA_TYPE&capability_id=CAPABILITY_ID \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY'",
+    "curl_command": "curl -X GET https://api.medux.io/api/app/v1/tasks?cursor=CURSOR&limit=LIMIT&status=QUEUED&media_type=MEDIA_TYPE&capability_id=CAPABILITY_ID \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY'"
+  },
+  "source_url": "https://medux.io/api-reference/infra/list-tasks"
+}

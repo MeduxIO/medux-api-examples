@@ -1,0 +1,143 @@
+# Create Image to Video
+
+Generate a video from a source image and text prompt.
+
+## Endpoint
+
+```http
+POST /api/app/v1/generate/video/image_to_video
+```
+
+Base URL: `https://api.medux.io`
+
+Generate a video from a source image and text prompt.
+
+## Authentication
+
+- Authentication is required via Authorization header.
+
+Export your credential before running an example:
+
+```bash
+export MEDUX_API_KEY="your_api_key"
+```
+
+Never commit a real key.
+
+## Preconditions
+
+- Upload the source image and create a file reference before calling this endpoint.
+- Requires an uploaded image file_id and a non-empty prompt.
+- Also accepts optional duration_seconds, clarity, aspect_ratio, and model_id.
+
+## Request
+
+| Field | Type | Requirement | Location | Description / options |
+| --- | --- | --- | --- | --- |
+| `Authorization` | `string` | Required | `HEADER` | Bearer token or API key. |
+| `aspect_ratio` | `string` | Optional | `BODY` | Requested output aspect ratio, for example 16:9 or 9:16. |
+| `clarity` | `string` | Optional | `BODY` | Requested output clarity, for example 720P or 1080P. |
+| `duration_seconds` | `int32` | Optional | `BODY` | Requested output duration in seconds. |
+| `file_id` | `string` | Optional | `BODY` | Identifier of a file created through the Medux upload flow. |
+| `model_id` | `string` | Optional | `BODY` | Stable public Medux model identifier. |
+| `prompt` | `string` | Optional | `BODY` | Natural-language instruction describing the requested output. |
+| `title` | `string` | Optional | `BODY` | Optional user-facing title for the task or generated asset. |
+
+## Environment variables used by the Python and JavaScript examples
+
+- `MEDUX_API_KEY` — required for every request.
+- `ASPECT_RATIO` — replace the corresponding placeholder in the official example.
+- `CLARITY` — replace the corresponding placeholder in the official example.
+- `FILE_ID` — replace the corresponding placeholder in the official example.
+- `MODEL_ID` — replace the corresponding placeholder in the official example.
+- `PROMPT` — replace the corresponding placeholder in the official example.
+
+Query parameters are only sent by the Python and JavaScript examples when their corresponding environment variables are set.
+
+## curl
+
+```bash
+curl -X POST https://api.medux.io/api/app/v1/generate/video/image_to_video \
+  -H "Authorization: Bearer $MEDUX_API_KEY" \
+  -H 'Content-Type: application/json' \
+  -d '{"aspect_ratio":"ASPECT_RATIO","clarity":"CLARITY","duration_seconds":1,"file_id":"FILE_ID","model_id":"MODEL_ID","prompt":"PROMPT","title":"Demo title"}'
+```
+
+The same command is available in [`curl.sh`](./curl.sh).
+
+The curl form mirrors the official reference. Replace uppercase placeholders such as `FILE_ID`, `TASK_ID`, or `MODEL_ID` inline before running it; the Python and JavaScript examples resolve their documented placeholders from environment variables.
+
+## Python
+
+Install the dependency and run:
+
+```bash
+python3 -m pip install -r ../../../requirements.txt
+python3 example.py
+```
+
+See [`example.py`](./example.py).
+
+## JavaScript
+
+Node.js 18 or newer is required:
+
+```bash
+node example.mjs
+```
+
+See [`example.mjs`](./example.mjs).
+
+## Response
+
+| Field | Type | Requirement | Location | Description / options |
+| --- | --- | --- | --- | --- |
+| `code` | `int32` | Optional | `RESPONSE` | response code enums:<br>.. 0: ok<br>.. 12: invalid input<br>.. 1410: invalid model<br>.. 1409: paid plan required<br>.. 1401: insufficient credits<br>.... 1401 ~ 1499 是 media<br>.. 1402: asset category mismatch<br>.. 1404: provider error<br>.. 1405: provider timeout<br>.. 13: unauthenticated<br>.. 16: rate limit<br>.. 99: server error<br>Options: `0`, `12`, `1410`, `1409`, `1401`, `1402`, `1404`, `1405`, `13`, `16`, `99` |
+| `data.asset` | `object` | Optional | `RESPONSE` | Asset created or returned by the operation when available. |
+| `data.paid_plan_required` | `object` | Optional | `RESPONSE` | Paid-plan requirement details when the selected capability is unavailable on the current plan. |
+| `data.task` | `object` | Optional | `RESPONSE` | Task record created or returned by an asynchronous operation. |
+| `message` | `string` | Optional | `RESPONSE` | Human-readable application status or error message.<br>Options: `ok`, `invalid input`, `invalid model`, `paid plan required`, `insufficient credits`, `asset category mismatch`, `provider error`, `provider timeout`, `unauthenticated`, `rate limit`, `server error` |
+
+### Response handling
+
+This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../generate/get-creation-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
+
+Application response codes and meanings are reproduced in the response-field table above from the official reference. Handle the documented non-success messages explicitly: `invalid input`, `invalid model`, `paid plan required`, `insufficient credits`, `asset category mismatch`, `provider error`, `provider timeout`, `unauthenticated`, `rate limit`, `server error`.
+
+## Official sample
+
+### Official image-to-video generation
+
+- Sample ID: `sample_generate_video_image_to_video_001`
+- Input: `file_id={file_id}`, `prompt=Add a gentle dolly-in camera move while preserving the subject.`
+- Output: `output_url=Official example video output`
+- Model: `wan-2-6-image-to-video`
+- Minimum plan: `starter`
+- Preview: [Open documented sample](https://medux-cdn-dev.hifly.cc/demo/G7qPpzNfYQ.mp4)
+
+## MCP alternative
+
+The same capability is optionally available through Medux MCP.
+
+- MCP endpoint: `https://mcp.medux.io/api/mcp/v1`
+- Tool: `medux_video_generate_image_to_video`
+- Result type: `VIDEO`
+
+Example prompt:
+
+```text
+Generate a 5 second 720P 16:9 video from uploaded image {file_id} and this motion prompt using model_id wan-2-6-image-to-video. This model requires Starter or higher.
+```
+
+
+## Related APIs
+
+- No related endpoints documented.
+
+## Source of truth
+
+- [Official API Reference](https://medux.io/api-reference/generate/create-image-to-video)
+- [Medux API quick start](https://medux.io/overview/api)
+- [Medux tutorials](https://medux.io/tutorials/)
+
+This repository snapshot is generated from the official API Reference. Re-check the linked reference before production deployment because contracts and limits may change.
