@@ -4,6 +4,8 @@ Complete API-first examples generated from the [official Medux API Reference](ht
 
 The REST API does not differ between Claude, Codex, or other clients. Each of the **74 APIs** has one canonical example containing its contract, curl command, runnable Python and JavaScript clients, response handling, official sample data, and optional MCP mapping.
 
+The same capabilities are also exposed as MCP tools at `https://medux.io/mcp` (OAuth or API key). See the [MCP tool reference](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/tools.md) and [Connect Medux MCP](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/connection.md).
+
 ## Prerequisites
 
 - A Medux API key — see [docs/authentication.md](./docs/authentication.md).

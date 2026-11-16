@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- **API key** — create one from the [Medux MCP / API overview](https://medux.io/overview/mcp).
+- **API key** — create one from the [Medux MCP / API overview](https://medux.io/overview/mcp). The REST API always authenticates with this key as a Bearer token; OAuth sign-in is only for the MCP server (`https://medux.io/mcp`).
 - **Python** 3.9 or newer (for `example.py`), with `pip`.
 - **Node.js** 18 or newer (for `example.mjs`; uses built-in `fetch`).
 - **curl** and **bash** (for `curl.sh`).
