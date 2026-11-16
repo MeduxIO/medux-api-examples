@@ -1,83 +1,18 @@
 {
   "meta": {
     "page_type": "API_REFERENCE",
-    "title": "Create Text to Video",
-    "summary": "Generate a video directly from a text prompt.",
+    "title": "Text to Video",
+    "summary": "Create a video from a text prompt with model-specific output settings.",
     "module": "generate",
     "endpoint_slug": "create-text-to-video",
     "tags": [
       "Generate",
-      "Video"
+      "video"
     ]
   },
-  "endpoint_items": [
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Audio",
-      "slug": "create-audio",
-      "module": "generate",
-      "endpoint_slug": "create-audio"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Audio Driven Video",
-      "slug": "create-audio-driven-video",
-      "module": "generate",
-      "endpoint_slug": "create-audio-driven-video"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Image to Video",
-      "slug": "create-image-to-video",
-      "module": "generate",
-      "endpoint_slug": "create-image-to-video"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Text Driven Video",
-      "slug": "create-text-driven-video",
-      "module": "generate",
-      "endpoint_slug": "create-text-driven-video"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Text to Video",
-      "slug": "create-text-to-video",
-      "module": "generate",
-      "endpoint_slug": "create-text-to-video"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Video by Project",
-      "slug": "create-video-by-project",
-      "module": "generate",
-      "endpoint_slug": "create-video-by-project"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Get Creation Task",
-      "slug": "get-creation-task",
-      "module": "generate",
-      "endpoint_slug": "get-creation-task"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Text to Image",
-      "slug": "text-to-image",
-      "module": "generate",
-      "endpoint_slug": "text-to-image"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Image Audio Driven Video",
-      "slug": "image-audio-driven-video",
-      "module": "generate",
-      "endpoint_slug": "image-audio-driven-video"
-    }
-  ],
   "hero": {
-    "title": "Create Text to Video",
-    "summary": "Generate a video directly from a text prompt."
+    "title": "Text to Video",
+    "summary": "Create a video from a text prompt with model-specific output settings."
   },
   "endpoint_summary": {
     "method": "POST",
@@ -93,9 +28,10 @@
   "preconditions": {
     "title": "Preconditions",
     "items": [
-      "Requires a prompt and an account plan that can use the selected model.",
-      "Requires a non-empty prompt.",
-      "Also accepts optional duration_seconds, clarity, aspect_ratio, and model_id."
+      "Choose an available model and enter a prompt.",
+      "Provide a non-empty prompt. Reference files are not accepted.",
+      "Read generation_options from the model catalog; only listed parameter values are accepted.",
+      "Use clarity for output resolution. Estimate credits with the same parameters before submission."
     ]
   },
   "request_section": {
@@ -135,6 +71,7 @@
       {
         "name": "prompt",
         "type": "string",
+        "required": true,
         "location": "BODY"
       },
       {
@@ -202,77 +139,21 @@
   "examples": {
     "title": "Examples",
     "request_example": "curl -X POST https://api.medux.io/api/app/v1/generate/video/text_to_video \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"aspect_ratio\":\"ASPECT_RATIO\",\"clarity\":\"CLARITY\",\"duration_seconds\":1,\"model_id\":\"MODEL_ID\",\"prompt\":\"PROMPT\",\"title\":\"Demo title\"}'",
-    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/generate/video/text_to_video \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"aspect_ratio\":\"ASPECT_RATIO\",\"clarity\":\"CLARITY\",\"duration_seconds\":1,\"model_id\":\"MODEL_ID\",\"prompt\":\"PROMPT\",\"title\":\"Demo title\"}'",
-    "samples": [
-      {
-        "capability_id": "generate.video.text_to_video",
-        "sample_id": "sample_generate_video_text_to_video_001",
-        "title": "Official text-to-video generation",
-        "sample_input": {
-          "title": "Example input",
-          "summary": "Generate a short video directly from a text prompt.",
-          "fields": [
-            {
-              "key": "prompt",
-              "value": "A cinematic product shot with slow camera motion and soft studio lighting."
-            }
-          ]
-        },
-        "sample_output": {
-          "title": "Official example output",
-          "summary": "Official example output for preview only. It is not a user Media Result.",
-          "preview_url": "https://medux-cdn-dev.hifly.cc/demo/G7qPpzNfYQ.mp4",
-          "fields": [
-            {
-              "key": "output_url",
-              "value": "Official example video output"
-            }
-          ]
-        },
-        "output_type": "VIDEO",
-        "model_id": "wan-2-6-text-to-video",
-        "parameters": [
-          {
-            "key": "duration_seconds",
-            "value": "5"
-          },
-          {
-            "key": "clarity",
-            "value": "720P"
-          },
-          {
-            "key": "aspect_ratio",
-            "value": "16:9"
-          },
-          {
-            "key": "model_id",
-            "value": "wan-2-6-text-to-video"
-          }
-        ],
-        "display_locations": [
-          "PLAYGROUND_SAMPLE",
-          "API_REFERENCE_SAMPLE",
-          "CAPABILITY_DETAIL_SAMPLE"
-        ],
-        "created_at": 1779148800,
-        "review_status": "APPROVED",
-        "minimum_plan": "starter"
-      }
-    ]
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/generate/video/text_to_video \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"aspect_ratio\":\"ASPECT_RATIO\",\"clarity\":\"CLARITY\",\"duration_seconds\":1,\"model_id\":\"MODEL_ID\",\"prompt\":\"PROMPT\",\"title\":\"Demo title\"}'"
   },
   "mcp_tool": {
-    "title": "Video / Text to Video",
-    "summary": "Generate a video from a text prompt. Default model wan-2-6-text-to-video requires Starter or higher and bills per generated video second.",
+    "title": "Text to Video",
+    "summary": "Generate a video from a non-empty prompt without reference files. Inspect the model catalog and estimate credits before submitting.",
     "capability_id": "generate.video.text_to_video",
     "mcp_tool_id": "medux_video_generate_text_to_video",
     "remote_mcp_endpoint": "https://medux.io/mcp",
-    "invocation_example": "Generate a video directly from a text prompt.",
+    "invocation_example": "Generate a video from a non-empty prompt without reference files.",
     "prompt_samples": [
       {
         "capability_id": "generate.video.text_to_video",
         "mcp_tool_id": "medux_video_generate_text_to_video",
         "prompt_sample_id": "prompt_generate_video_text_to_video_001",
-        "natural_language_prompt": "Generate a 5 second 720P 16:9 video from this prompt using model_id wan-2-6-text-to-video. This model requires Starter or higher.",
+        "natural_language_prompt": "Generate a 5 second 720P 16:9 video from this prompt using model_id seedance-2-0-mini. This model requires Starter or higher.",
         "expected_tool_call": "medux_video_generate_text_to_video",
         "key_arguments": [
           {
@@ -281,7 +162,7 @@
           },
           {
             "key": "model_id",
-            "value": "wan-2-6-text-to-video"
+            "value": "seedance-2-0-mini"
           },
           {
             "key": "duration_seconds",

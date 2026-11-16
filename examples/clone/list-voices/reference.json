@@ -2,7 +2,7 @@
   "meta": {
     "page_type": "API_REFERENCE",
     "title": "List Voices",
-    "summary": "List reusable voice assets for the current account.",
+    "summary": "List reusable AI voice assets with optional filters. Returns voice IDs and lifecycle states for text-to-speech, narration, and talking-avatar voice selection.",
     "module": "clone",
     "endpoint_slug": "list-voices",
     "tags": [
@@ -10,72 +10,14 @@
       "Asset"
     ]
   },
-  "endpoint_items": [
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Avatar by Image",
-      "slug": "create-avatar-by-image",
-      "module": "clone",
-      "endpoint_slug": "create-avatar-by-image"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Avatar by Video",
-      "slug": "create-avatar-by-video",
-      "module": "clone",
-      "endpoint_slug": "create-avatar-by-video"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Voice",
-      "slug": "create-voice",
-      "module": "clone",
-      "endpoint_slug": "create-voice"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Edit Voice Parameters",
-      "slug": "edit-voice-parameters",
-      "module": "clone",
-      "endpoint_slug": "edit-voice-parameters"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Get Avatar Task",
-      "slug": "get-avatar-task",
-      "module": "clone",
-      "endpoint_slug": "get-avatar-task"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Get Voice Task",
-      "slug": "get-voice-task",
-      "module": "clone",
-      "endpoint_slug": "get-voice-task"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Avatars",
-      "slug": "list-avatars",
-      "module": "clone",
-      "endpoint_slug": "list-avatars"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Voices",
-      "slug": "list-voices",
-      "module": "clone",
-      "endpoint_slug": "list-voices"
-    }
-  ],
   "hero": {
     "title": "List Voices",
-    "summary": "List reusable voice assets for the current account."
+    "summary": "List reusable AI voice assets with optional filters. Returns voice IDs and lifecycle states for text-to-speech, narration, and talking-avatar voice selection."
   },
   "endpoint_summary": {
     "method": "GET",
     "path": "/api/app/v1/clone/voices",
-    "summary": "List reusable voice assets owned by the authenticated user."
+    "summary": "List current user's reusable voice assets."
   },
   "auth_requirements": {
     "title": "Auth Requirements",
@@ -118,7 +60,7 @@
       {
         "name": "code",
         "type": "int32",
-        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `13` | Authentication is required |\n| `99` | Server error |",
+        "description": "response code enums:\\\n.. 0: ok\\\n.. 12: invalid input\\\n.. 13: unauthenticated\\\n.. 99: server error",
         "location": "RESPONSE",
         "enum_values": [
           "0",

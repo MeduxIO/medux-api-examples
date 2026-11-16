@@ -1,6 +1,6 @@
 # List Results
 
-List retained media results for the current account.
+List retained generated and processed media results with optional filters. Returns result records and media URLs for account galleries, downloads, and workflow archives.
 
 ## Endpoint
 
@@ -10,7 +10,7 @@ GET /api/app/v1/results
 
 Base URL: `https://api.medux.io`
 
-List saved result records for the authenticated user.
+List retained result records for the current user.
 
 ## Authentication
 
@@ -38,7 +38,7 @@ Never commit a real key.
 | `limit` | `int32` | Optional | `QUERY` | Maximum number of records to return in this page. |
 | `media_type` | `string` | Optional | `QUERY` | Media-type filter for the returned records. |
 | `capability_id` | `string` | Optional | `QUERY` | Filter records by Medux capability identifier. |
-| `status` | `string` | Optional | `QUERY` | Allowed values:<br>- `RESULT_STATUS_UNDEFINED` - Not specified.<br>- `READY` - Result is ready.<br>- `RESULT_PROCESSING` - Result is still processing.<br>- `RESULT_FAILED` - Result generation failed.<br>- `RESULT_EXPIRED` - Result is expired.<br>Options: `RESULT_STATUS_UNDEFINED`, `READY`, `RESULT_PROCESSING`, `RESULT_FAILED`, `RESULT_EXPIRED` |
+| `status` | `string` | Optional | `QUERY` | Filter records by lifecycle status.<br>Options: `RESULT_STATUS_UNDEFINED`, `READY`, `RESULT_PROCESSING`, `RESULT_FAILED`, `RESULT_EXPIRED` |
 
 ## Environment variables used by the Python and JavaScript examples
 

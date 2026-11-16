@@ -2,7 +2,7 @@
   "meta": {
     "page_type": "API_REFERENCE",
     "title": "List Assets",
-    "summary": "List recorded assets for the current account.",
+    "summary": "List account media assets with optional category and status filters. Returns asset IDs and lifecycle states for clone, generation, and processing workflow pickers.",
     "module": "infra",
     "endpoint_slug": "list-assets",
     "tags": [
@@ -10,58 +10,14 @@
       "Asset"
     ]
   },
-  "endpoint_items": [
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Asset",
-      "slug": "create-asset",
-      "module": "infra",
-      "endpoint_slug": "create-asset"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Get Task",
-      "slug": "get-task",
-      "module": "infra",
-      "endpoint_slug": "get-task"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Assets",
-      "slug": "list-assets",
-      "module": "infra",
-      "endpoint_slug": "list-assets"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Results",
-      "slug": "list-results",
-      "module": "infra",
-      "endpoint_slug": "list-results"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Tasks",
-      "slug": "list-tasks",
-      "module": "infra",
-      "endpoint_slug": "list-tasks"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Sync Task",
-      "slug": "sync-task",
-      "module": "infra",
-      "endpoint_slug": "sync-task"
-    }
-  ],
   "hero": {
     "title": "List Assets",
-    "summary": "List recorded assets for the current account."
+    "summary": "List account media assets with optional category and status filters. Returns asset IDs and lifecycle states for clone, generation, and processing workflow pickers."
   },
   "endpoint_summary": {
     "method": "GET",
     "path": "/api/app/v1/assets",
-    "summary": "List assets owned by the authenticated user."
+    "summary": "List assets for the current user."
   },
   "auth_requirements": {
     "title": "Auth Requirements",
@@ -99,7 +55,7 @@
       {
         "name": "category",
         "type": "string",
-        "description": "Allowed values:\n- `CATEGORY_UNDEFINED` - Not specified.\n- `MEDIA` - Uploaded source media.\n- `AVATAR` - Reusable avatar asset.\n- `VOICE` - Reusable voice asset.",
+        "description": ". assethpb.Category:\\\n... enums:\\\n..... CATEGORY_UNDEFINED\\\n..... MEDIA\\\n..... AVATAR\\\n..... VOICE",
         "location": "QUERY",
         "enum_values": [
           "CATEGORY_UNDEFINED",
@@ -131,7 +87,7 @@
       {
         "name": "code",
         "type": "int32",
-        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `99` | Server error |",
+        "description": "response code enums:\\\n.. 0: ok\\\n.. 12: invalid input\\\n.. 13: unauthenticated\\\n.. 99: server error",
         "location": "RESPONSE",
         "enum_values": [
           "0",

@@ -1,6 +1,6 @@
 # Create Upload URL
 
-Create a direct upload URL before recording the uploaded file as an asset.
+Prepare direct media uploads from file metadata. Returns a pre-signed upload URL and file reference for avatar cloning, generation, and media-processing workflows.
 
 ## Endpoint
 
@@ -10,7 +10,7 @@ POST /api/app/v1/upload_urls
 
 Base URL: `https://api.medux.io`
 
-Create a pre-signed upload URL and file reference for a direct client upload.
+Create a direct upload URL and target object for a file.
 
 ## Authentication
 
@@ -34,8 +34,8 @@ Never commit a real key.
 | Field | Type | Requirement | Location | Description / options |
 | --- | --- | --- | --- | --- |
 | `Authorization` | `string` | Required | `HEADER` | Bearer token or API key. |
-| `extension` | `string` | Optional | `BODY` | File extension without a leading dot, such as mp4. |
-| `media_type` | `string` | Optional | `BODY` | Media type used to validate extension and build the object path.<br><br>Allowed values:<br>- `MEDIA_TYPE_UNDEFINED` - Not specified.<br>- `VIDEO` - Video file, such as mp4.<br>- `AUDIO` - Audio file, such as mp3.<br>- `IMAGE` - Image file, such as png.<br>- `DOCUMENT` - Document file, such as md or docx.<br>Options: `MEDIA_TYPE_UNDEFINED`, `VIDEO`, `AUDIO`, `IMAGE`, `DOCUMENT` |
+| `extension` | `string` | Optional | `BODY` | File extension without dot, for example mp4. |
+| `media_type` | `string` | Optional | `BODY` | Media-type filter for the returned records.<br>Options: `MEDIA_TYPE_UNDEFINED`, `VIDEO`, `AUDIO`, `IMAGE`, `DOCUMENT` |
 
 ## Environment variables used by the Python and JavaScript examples
 
@@ -82,9 +82,9 @@ See [`example.mjs`](./example.mjs).
 | Field | Type | Requirement | Location | Description / options |
 | --- | --- | --- | --- | --- |
 | `code` | `int32` | Optional | `RESPONSE` | Application response code. Full catalog: [error-codes.md](../../../docs/error-codes.md).<br>- `0` — OK<br>- `12` — Invalid input<br>- `13` — Authentication is required<br>- `16` — Rate limit exceeded<br>- `99` — Server error |
-| `data.content_type` | `string` | Optional | `RESPONSE` | Content-Type expected by the direct upload request. |
-| `data.file` | `object` | Optional | `RESPONSE` | File reference to pass into later media APIs. |
-| `data.upload_url` | `string` | Optional | `RESPONSE` | Pre-signed URL the client should upload the file to. |
+| `data.content_type` | `string` | Optional | `RESPONSE` | Expected content type for the upload request. |
+| `data.file` | `object` | Optional | `RESPONSE` | File reference that should be reused in later media APIs. |
+| `data.upload_url` | `string` | Optional | `RESPONSE` | Pre-signed upload URL that the client uploads to directly. |
 | `message` | `string` | Optional | `RESPONSE` | Human-readable application status or error message.<br>Options: `ok`, `invalid input`, `unauthenticated`, `rate limit`, `server error` |
 
 ### Response handling

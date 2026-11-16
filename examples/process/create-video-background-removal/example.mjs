@@ -1,7 +1,7 @@
 /** Runnable example generated from the official Medux API Reference. */
 
 const baseUrl = process.env.MEDUX_API_BASE_URL ?? "https://api.medux.io";
-const placeholders = new Set(["FILE_ID"]);
+const placeholders = new Set(["FILE_ID", "MODEL_ID"]);
 
 function requireEnv(name) {
   const value = process.env[name];
@@ -23,6 +23,7 @@ const url = new URL(path, baseUrl);
 
 const payload = resolvePlaceholders({
   "file_id": "FILE_ID",
+  "model_id": "MODEL_ID",
   "region": {
     "height": 1,
     "width": 1,

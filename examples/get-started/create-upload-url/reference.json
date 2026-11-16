@@ -2,7 +2,7 @@
   "meta": {
     "page_type": "API_REFERENCE",
     "title": "Create Upload URL",
-    "summary": "Create a direct upload URL before recording the uploaded file as an asset.",
+    "summary": "Prepare direct media uploads from file metadata. Returns a pre-signed upload URL and file reference for avatar cloning, generation, and media-processing workflows.",
     "module": "get-started",
     "endpoint_slug": "create-upload-url",
     "tags": [
@@ -10,23 +10,14 @@
       "Infra"
     ]
   },
-  "endpoint_items": [
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Upload URL",
-      "slug": "create-upload-url",
-      "module": "get-started",
-      "endpoint_slug": "create-upload-url"
-    }
-  ],
   "hero": {
     "title": "Create Upload URL",
-    "summary": "Create a direct upload URL before recording the uploaded file as an asset."
+    "summary": "Prepare direct media uploads from file metadata. Returns a pre-signed upload URL and file reference for avatar cloning, generation, and media-processing workflows."
   },
   "endpoint_summary": {
     "method": "POST",
     "path": "/api/app/v1/upload_urls",
-    "summary": "Create a pre-signed upload URL and file reference for a direct client upload."
+    "summary": "Create a direct upload URL and target object for a file."
   },
   "auth_requirements": {
     "title": "Auth Requirements",
@@ -54,13 +45,13 @@
       {
         "name": "extension",
         "type": "string",
-        "description": "File extension without a leading dot, such as mp4.",
+        "description": "File extension without dot, for example mp4.",
         "location": "BODY"
       },
       {
         "name": "media_type",
         "type": "string",
-        "description": "Media type used to validate extension and build the object path.\n\nAllowed values:\n- `MEDIA_TYPE_UNDEFINED` - Not specified.\n- `VIDEO` - Video file, such as mp4.\n- `AUDIO` - Audio file, such as mp3.\n- `IMAGE` - Image file, such as png.\n- `DOCUMENT` - Document file, such as md or docx.",
+        "description": "Media type used to validate extension and build the object path.\\\n\\\n. utilityhpb.MediaType:\\\n... enums:\\\n..... MEDIA_TYPE_UNDEFINED\\\n..... VIDEO: Video file, such as mp4.\\\n..... AUDIO: Audio file, such as mp3.\\\n..... IMAGE: Image file, such as png.\\\n..... DOCUMENT: Document file, such as md or docx.",
         "location": "BODY",
         "enum_values": [
           "MEDIA_TYPE_UNDEFINED",
@@ -78,7 +69,7 @@
       {
         "name": "code",
         "type": "int32",
-        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `13` | Authentication is required |\n| `16` | Rate limit exceeded |\n| `99` | Server error |",
+        "description": "response code enums:\\\n.. 0: ok\\\n.. 12: invalid input\\\n.. 13: unauthenticated\\\n.. 16: rate limit\\\n.. 99: server error",
         "location": "RESPONSE",
         "enum_values": [
           "0",
@@ -91,19 +82,19 @@
       {
         "name": "data.content_type",
         "type": "string",
-        "description": "Content-Type expected by the direct upload request.",
+        "description": "Expected content type for the upload request.",
         "location": "RESPONSE"
       },
       {
         "name": "data.file",
         "type": "object",
-        "description": "File reference to pass into later media APIs.",
+        "description": "File reference that should be reused in later media APIs.",
         "location": "RESPONSE"
       },
       {
         "name": "data.upload_url",
         "type": "string",
-        "description": "Pre-signed URL the client should upload the file to.",
+        "description": "Pre-signed upload URL that the client uploads to directly.",
         "location": "RESPONSE"
       },
       {

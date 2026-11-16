@@ -5,4 +5,4 @@ set -euo pipefail
 curl -X POST https://api.medux.io/api/app/v1/process/video/subtitle_removal \
   -H "Authorization: Bearer $MEDUX_API_KEY" \
   -H 'Content-Type: application/json' \
-  -d '{"file_id":"FILE_ID","region":{"height":1,"width":1,"x":1,"y":1},"title":"Demo title"}'
+  -d '{"file_id":"FILE_ID","model_id":"MODEL_ID","region":{"height":1,"width":1,"x":1,"y":1},"title":"Demo title"}'

@@ -1,6 +1,6 @@
 # List Assets
 
-List recorded assets for the current account.
+List account media assets with optional category and status filters. Returns asset IDs and lifecycle states for clone, generation, and processing workflow pickers.
 
 ## Endpoint
 
@@ -10,7 +10,7 @@ GET /api/app/v1/assets
 
 Base URL: `https://api.medux.io`
 
-List assets owned by the authenticated user.
+List assets for the current user.
 
 ## Authentication
 
@@ -36,7 +36,7 @@ Never commit a real key.
 | `Authorization` | `string` | Required | `HEADER` | Bearer token or API key. |
 | `cursor` | `string` | Optional | `QUERY` | Opaque pagination cursor returned by the previous page. |
 | `limit` | `int32` | Optional | `QUERY` | Maximum number of records to return in this page. |
-| `category` | `string` | Optional | `QUERY` | Allowed values:<br>- `CATEGORY_UNDEFINED` - Not specified.<br>- `MEDIA` - Uploaded source media.<br>- `AVATAR` - Reusable avatar asset.<br>- `VOICE` - Reusable voice asset.<br>Options: `CATEGORY_UNDEFINED`, `MEDIA`, `AVATAR`, `VOICE` |
+| `category` | `string` | Optional | `QUERY` | No additional description is documented.<br>Options: `CATEGORY_UNDEFINED`, `MEDIA`, `AVATAR`, `VOICE` |
 | `status` | `string` | Optional | `QUERY` | Filter records by lifecycle status.<br>Options: `STATUS_UNDEFINED`, `PROCESSING`, `ACTIVE`, `LOCKED`, `EXPIRING_SOON`, `EXPIRED`, `DELETED` |
 
 ## Environment variables used by the Python and JavaScript examples

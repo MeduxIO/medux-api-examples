@@ -1,8 +1,8 @@
 {
   "meta": {
     "page_type": "API_REFERENCE",
-    "title": "Create Video Subtitle Removal",
-    "summary": "Submit a subtitle removal processing task for a video asset.",
+    "title": "Subtitle Removal",
+    "summary": "Remove embedded subtitles from an uploaded video. Returns an asynchronous processing task and cleaned video URL for repurposing, localization, and editing workflows.",
     "module": "process",
     "endpoint_slug": "create-video-subtitle-removal",
     "tags": [
@@ -10,58 +10,14 @@
       "Video"
     ]
   },
-  "endpoint_items": [
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Image Background Removal",
-      "slug": "create-image-background-removal",
-      "module": "process",
-      "endpoint_slug": "create-image-background-removal"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Video Background Removal",
-      "slug": "create-video-background-removal",
-      "module": "process",
-      "endpoint_slug": "create-video-background-removal"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Video Subtitle Removal",
-      "slug": "create-video-subtitle-removal",
-      "module": "process",
-      "endpoint_slug": "create-video-subtitle-removal"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Video Watermark Removal",
-      "slug": "create-video-watermark-removal",
-      "module": "process",
-      "endpoint_slug": "create-video-watermark-removal"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Get Process Task",
-      "slug": "get-process-task",
-      "module": "process",
-      "endpoint_slug": "get-process-task"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Video Logo Removal",
-      "slug": "video-logo-removal",
-      "module": "process",
-      "endpoint_slug": "video-logo-removal"
-    }
-  ],
   "hero": {
-    "title": "Create Video Subtitle Removal",
-    "summary": "Submit a subtitle removal processing task for a video asset."
+    "title": "Subtitle Removal",
+    "summary": "Remove embedded subtitles from an uploaded video. Returns an asynchronous processing task and cleaned video URL for repurposing, localization, and editing workflows."
   },
   "endpoint_summary": {
     "method": "POST",
     "path": "/api/app/v1/process/video/subtitle_removal",
-    "summary": "Create a video processing task that removes subtitles from an uploaded video."
+    "summary": "Remove subtitles from a video file."
   },
   "auth_requirements": {
     "title": "Auth Requirements",
@@ -90,6 +46,12 @@
         "name": "file_id",
         "type": "string",
         "required": true,
+        "location": "BODY"
+      },
+      {
+        "name": "model_id",
+        "type": "string",
+        "description": "Stable public Medux model identifier.",
         "location": "BODY"
       },
       {
@@ -127,7 +89,7 @@
       {
         "name": "code",
         "type": "int32",
-        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `1401` | Insufficient credits |\n| `1404` | Provider returned an error |\n| `1405` | Provider request timed out |\n| `13` | Authentication is required |\n| `16` | Rate limit exceeded |\n| `99` | Server error |",
+        "description": "response code enums:\\\n.. 0: ok\\\n.. 12: invalid input\\\n.. 1410: invalid model\\\n.. 1409: paid plan required\\\n.. 1401: insufficient credits\\\n.... 1401 ~ 1499 是 media\\\n.. 1404: provider error\\\n.. 1405: provider timeout\\\n.. 13: unauthenticated\\\n.. 16: rate limit\\\n.. 99: server error",
         "location": "RESPONSE",
         "enum_values": [
           "0",
@@ -178,8 +140,8 @@
   },
   "examples": {
     "title": "Examples",
-    "request_example": "curl -X POST https://api.medux.io/api/app/v1/process/video/subtitle_removal \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"file_id\":\"FILE_ID\",\"region\":{\"height\":1,\"width\":1,\"x\":1,\"y\":1},\"title\":\"Demo title\"}'",
-    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/process/video/subtitle_removal \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"file_id\":\"FILE_ID\",\"region\":{\"height\":1,\"width\":1,\"x\":1,\"y\":1},\"title\":\"Demo title\"}'",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/process/video/subtitle_removal \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"file_id\":\"FILE_ID\",\"model_id\":\"MODEL_ID\",\"region\":{\"height\":1,\"width\":1,\"x\":1,\"y\":1},\"title\":\"Demo title\"}'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/process/video/subtitle_removal \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"file_id\":\"FILE_ID\",\"model_id\":\"MODEL_ID\",\"region\":{\"height\":1,\"width\":1,\"x\":1,\"y\":1},\"title\":\"Demo title\"}'",
     "samples": [
       {
         "capability_id": "process.video.subtitle_removal",
@@ -216,6 +178,10 @@
           {
             "key": "region",
             "value": "optional"
+          },
+          {
+            "key": "model_id",
+            "value": "video-subtitle-removal-standard"
           },
           {
             "key": "model_id",

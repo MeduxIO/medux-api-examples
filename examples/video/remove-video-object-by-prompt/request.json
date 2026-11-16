@@ -1,0 +1,5 @@
+{
+  "input_file_id": "FILE_ID",
+  "model_id": "remove-video-object-by-prompt-default",
+  "prompt_text": "Hello from Medux"
+}

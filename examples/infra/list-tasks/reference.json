@@ -2,7 +2,7 @@
   "meta": {
     "page_type": "API_REFERENCE",
     "title": "List Tasks",
-    "summary": "List task records for the current account across clone, generate, and process flows.",
+    "summary": "List account media tasks with optional status and pagination filters. Returns clone, generation, and processing task records for dashboards, history, and workflow monitoring.",
     "module": "infra",
     "endpoint_slug": "list-tasks",
     "tags": [
@@ -10,58 +10,14 @@
       "Task"
     ]
   },
-  "endpoint_items": [
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Asset",
-      "slug": "create-asset",
-      "module": "infra",
-      "endpoint_slug": "create-asset"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Get Task",
-      "slug": "get-task",
-      "module": "infra",
-      "endpoint_slug": "get-task"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Assets",
-      "slug": "list-assets",
-      "module": "infra",
-      "endpoint_slug": "list-assets"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Results",
-      "slug": "list-results",
-      "module": "infra",
-      "endpoint_slug": "list-results"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Tasks",
-      "slug": "list-tasks",
-      "module": "infra",
-      "endpoint_slug": "list-tasks"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Sync Task",
-      "slug": "sync-task",
-      "module": "infra",
-      "endpoint_slug": "sync-task"
-    }
-  ],
   "hero": {
     "title": "List Tasks",
-    "summary": "List task records for the current account across clone, generate, and process flows."
+    "summary": "List account media tasks with optional status and pagination filters. Returns clone, generation, and processing task records for dashboards, history, and workflow monitoring."
   },
   "endpoint_summary": {
     "method": "GET",
     "path": "/api/app/v1/tasks",
-    "summary": "List media tasks created by the authenticated user."
+    "summary": "List task records for the current user."
   },
   "auth_requirements": {
     "title": "Auth Requirements",
@@ -99,7 +55,7 @@
       {
         "name": "status",
         "type": "string",
-        "description": "Allowed values:\n- `TASK_STATUS_UNDEFINED` - Not specified.\n- `QUEUED` - Task is waiting to run.\n- `PROCESSING` - Task is running.\n- `SUCCEEDED` - Task finished successfully.\n- `FAILED` - Task failed.\n- `EXPIRED` - Task output is no longer available.",
+        "description": ". accounthpb.TaskStatus:\\\n... enums:\\\n..... TASK_STATUS_UNDEFINED\\\n..... QUEUED\\\n..... PROCESSING\\\n..... SUCCEEDED\\\n..... FAILED\\\n..... EXPIRED",
         "location": "QUERY",
         "enum_values": [
           "TASK_STATUS_UNDEFINED",
@@ -128,7 +84,7 @@
       {
         "name": "code",
         "type": "int32",
-        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `13` | Authentication is required |\n| `99` | Server error |",
+        "description": "response code enums:\\\n.. 0: ok\\\n.. 12: invalid input\\\n.. 13: unauthenticated\\\n.. 99: server error",
         "location": "RESPONSE",
         "enum_values": [
           "0",

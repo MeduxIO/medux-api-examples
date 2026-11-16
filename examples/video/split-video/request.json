@@ -1,0 +1,10 @@
+{
+  "input_file_id": "FILE_ID",
+  "model_id": "split-video-default",
+  "segments": [
+    {
+      "end_time": "00:00:05",
+      "start_time": "00:00:00"
+    }
+  ]
+}

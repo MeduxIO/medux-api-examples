@@ -1,0 +1,178 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Text to Image",
+    "summary": "Generate images from a prompt and optional image references.",
+    "module": "generate",
+    "endpoint_slug": "create-text-to-image",
+    "tags": [
+      "Generate",
+      "image"
+    ]
+  },
+  "hero": {
+    "title": "Text to Image",
+    "summary": "Generate images from a prompt and optional image references."
+  },
+  "endpoint_summary": {
+    "method": "POST",
+    "path": "/api/app/v1/generate/image/text_to_image",
+    "summary": "Generate media with the capability-specific input contract."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Choose an available model and enter a prompt.",
+      "Provide a non-empty prompt and up to eight image_file_ids. Choose a supported quantity; Seedream 5.0 Pro returns one image.",
+      "Read generation_options from the model catalog; only listed parameter values are accepted.",
+      "Use clarity for output resolution. Estimate credits with the same parameters before submission."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "aspect_ratio",
+        "type": "string",
+        "location": "BODY"
+      },
+      {
+        "name": "clarity",
+        "type": "string",
+        "location": "BODY"
+      },
+      {
+        "name": "image_file_ids",
+        "type": "array<string>",
+        "location": "BODY"
+      },
+      {
+        "name": "model_id",
+        "type": "string",
+        "location": "BODY"
+      },
+      {
+        "name": "prompt",
+        "type": "string",
+        "required": true,
+        "location": "BODY"
+      },
+      {
+        "name": "quantity",
+        "type": "int32",
+        "location": "BODY"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "location": "BODY"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "response code enums:\\\n.. 0: ok\\\n.. 12: invalid input\\\n.. 1410: invalid model\\\n.. 1409: paid plan required\\\n.. 1401: insufficient credits\\\n.... 1401 ~ 1499 是 media\\\n.. 13: unauthenticated\\\n.. 1404: provider error\\\n.. 99: server error",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "1410",
+          "1409",
+          "1401",
+          "13",
+          "1404",
+          "99"
+        ]
+      },
+      {
+        "name": "data.asset",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.paid_plan_required",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "invalid model",
+          "paid plan required",
+          "insufficient credits",
+          "unauthenticated",
+          "provider error",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/generate/image/text_to_image \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"aspect_ratio\":\"ASPECT_RATIO\",\"clarity\":\"CLARITY\",\"image_file_ids\":[\"FILE_ID\"],\"model_id\":\"MODEL_ID\",\"prompt\":\"PROMPT\",\"quantity\":1,\"title\":\"Demo title\"}'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/generate/image/text_to_image \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"aspect_ratio\":\"ASPECT_RATIO\",\"clarity\":\"CLARITY\",\"image_file_ids\":[\"FILE_ID\"],\"model_id\":\"MODEL_ID\",\"prompt\":\"PROMPT\",\"quantity\":1,\"title\":\"Demo title\"}'"
+  },
+  "mcp_tool": {
+    "title": "Text to Image",
+    "summary": "Generate images from a non-empty prompt and optional image references. Inspect the model catalog and estimate credits before submitting.",
+    "capability_id": "generate.image.text_to_image",
+    "mcp_tool_id": "medux_image_generate_text_to_image",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
+    "invocation_example": "Generate images from a non-empty prompt and optional image references.",
+    "prompt_samples": [
+      {
+        "capability_id": "generate.image.text_to_image",
+        "mcp_tool_id": "medux_image_generate_text_to_image",
+        "prompt_sample_id": "prompt_generate.image.text_to_image_001",
+        "natural_language_prompt": "Generate one product image from my prompt using Seedream 4.0.",
+        "expected_tool_call": "medux_image_generate_text_to_image",
+        "key_arguments": [
+          {
+            "key": "model_id",
+            "value": "seedream-4-0"
+          },
+          {
+            "key": "quantity",
+            "value": "1"
+          },
+          {
+            "key": "prompt",
+            "value": "{prompt}"
+          }
+        ],
+        "expected_result_type": "IMAGE",
+        "display_location": "MCP_INVOCATION_SAMPLE",
+        "minimum_plan": "free",
+        "error_case": "Check the selected model's input limits and account availability before submitting.",
+        "review_status": "APPROVED"
+      }
+    ]
+  },
+  "source_url": "https://medux.io/api-reference/generate/create-text-to-image"
+}

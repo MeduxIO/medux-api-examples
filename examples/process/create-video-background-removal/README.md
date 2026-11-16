@@ -1,6 +1,6 @@
-# Create Video Background Removal
+# Background Removal
 
-Submit a background removal processing task for a video asset.
+Remove an uploaded video background with AI. Returns an asynchronous processing task and isolated-subject video for compositing, virtual backgrounds, and social content.
 
 ## Endpoint
 
@@ -10,7 +10,7 @@ POST /api/app/v1/process/video/background_removal
 
 Base URL: `https://api.medux.io`
 
-Create a video processing task that removes the background from an uploaded video.
+Remove background from a video file.
 
 ## Authentication
 
@@ -35,6 +35,7 @@ Never commit a real key.
 | --- | --- | --- | --- | --- |
 | `Authorization` | `string` | Required | `HEADER` | Bearer token or API key. |
 | `file_id` | `string` | Required | `BODY` | Identifier of a file created through the Medux upload flow. |
+| `model_id` | `string` | Optional | `BODY` | Stable public Medux model identifier. |
 | `region.height` | `int32` | Optional | `BODY` | Height of the target processing region. |
 | `region.width` | `int32` | Optional | `BODY` | Width of the target processing region. |
 | `region.x` | `int32` | Optional | `BODY` | X coordinate of the region's top-left corner in pixels. |
@@ -45,6 +46,7 @@ Never commit a real key.
 
 - `MEDUX_API_KEY` — required for every request.
 - `FILE_ID` — replace the corresponding placeholder in the official example.
+- `MODEL_ID` — replace the corresponding placeholder in the official example.
 
 Query parameters are only sent by the Python and JavaScript examples when their corresponding environment variables are set.
 
@@ -54,7 +56,7 @@ Query parameters are only sent by the Python and JavaScript examples when their 
 curl -X POST https://api.medux.io/api/app/v1/process/video/background_removal \
   -H "Authorization: Bearer $MEDUX_API_KEY" \
   -H 'Content-Type: application/json' \
-  -d '{"file_id":"FILE_ID","region":{"height":1,"width":1,"x":1,"y":1},"title":"Demo title"}'
+  -d '{"file_id":"FILE_ID","model_id":"MODEL_ID","region":{"height":1,"width":1,"x":1,"y":1},"title":"Demo title"}'
 ```
 
 The same command is available in [`curl.sh`](./curl.sh).
@@ -94,7 +96,7 @@ See [`example.mjs`](./example.mjs).
 
 ### Response handling
 
-This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../process/get-process-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
+This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../infra/get-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
 
 The response-field table above lists the `code` values this endpoint can return, each with its meaning. Handle the documented non-success messages explicitly: `invalid input`, `insufficient credits`, `provider error`, `provider timeout`, `unauthenticated`, `rate limit`, `server error`. See [error-codes.md](../../../docs/error-codes.md) for the full catalog and retry guidance.
 

@@ -1,7 +1,0 @@
-{
-  "input_file_id": "FILE_ID",
-  "mask_regions": {
-    "example_key": "EXAMPLE_VALUE"
-  },
-  "model_id": "remove-video-object-default"
-}

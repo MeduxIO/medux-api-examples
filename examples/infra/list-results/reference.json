@@ -2,7 +2,7 @@
   "meta": {
     "page_type": "API_REFERENCE",
     "title": "List Results",
-    "summary": "List retained media results for the current account.",
+    "summary": "List retained generated and processed media results with optional filters. Returns result records and media URLs for account galleries, downloads, and workflow archives.",
     "module": "infra",
     "endpoint_slug": "list-results",
     "tags": [
@@ -10,58 +10,14 @@
       "Result"
     ]
   },
-  "endpoint_items": [
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Asset",
-      "slug": "create-asset",
-      "module": "infra",
-      "endpoint_slug": "create-asset"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Get Task",
-      "slug": "get-task",
-      "module": "infra",
-      "endpoint_slug": "get-task"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Assets",
-      "slug": "list-assets",
-      "module": "infra",
-      "endpoint_slug": "list-assets"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Results",
-      "slug": "list-results",
-      "module": "infra",
-      "endpoint_slug": "list-results"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Tasks",
-      "slug": "list-tasks",
-      "module": "infra",
-      "endpoint_slug": "list-tasks"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Sync Task",
-      "slug": "sync-task",
-      "module": "infra",
-      "endpoint_slug": "sync-task"
-    }
-  ],
   "hero": {
     "title": "List Results",
-    "summary": "List retained media results for the current account."
+    "summary": "List retained generated and processed media results with optional filters. Returns result records and media URLs for account galleries, downloads, and workflow archives."
   },
   "endpoint_summary": {
     "method": "GET",
     "path": "/api/app/v1/results",
-    "summary": "List saved result records for the authenticated user."
+    "summary": "List retained result records for the current user."
   },
   "auth_requirements": {
     "title": "Auth Requirements",
@@ -109,7 +65,7 @@
       {
         "name": "status",
         "type": "string",
-        "description": "Allowed values:\n- `RESULT_STATUS_UNDEFINED` - Not specified.\n- `READY` - Result is ready.\n- `RESULT_PROCESSING` - Result is still processing.\n- `RESULT_FAILED` - Result generation failed.\n- `RESULT_EXPIRED` - Result is expired.",
+        "description": ". accounthpb.ResultStatus:\\\n... enums:\\\n..... RESULT_STATUS_UNDEFINED\\\n..... READY\\\n..... RESULT_PROCESSING\\\n..... RESULT_FAILED\\\n..... RESULT_EXPIRED",
         "location": "QUERY",
         "enum_values": [
           "RESULT_STATUS_UNDEFINED",
@@ -127,7 +83,7 @@
       {
         "name": "code",
         "type": "int32",
-        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `13` | Authentication is required |\n| `99` | Server error |",
+        "description": "response code enums:\\\n.. 0: ok\\\n.. 12: invalid input\\\n.. 13: unauthenticated\\\n.. 99: server error",
         "location": "RESPONSE",
         "enum_values": [
           "0",

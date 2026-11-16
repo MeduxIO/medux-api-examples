@@ -67,6 +67,24 @@ def decode_property(data: str, property_name: str):
     return value
 
 
+def decode_groups(data: str):
+    """Return the API Reference sidebar groups from the index page flight data.
+
+    The site used to embed them as ``initialSiteGroups``; it now passes them as the
+    ``groups`` prop of ``ApiReferenceSidebar``. Try both so either layout works.
+    """
+    try:
+        return decode_property(data, "initialSiteGroups")
+    except ValueError:
+        pass
+    sidebar = data.find("ApiReferenceSidebar")
+    position = data.find('"groups":', sidebar) if sidebar >= 0 else -1
+    if position < 0:
+        raise ValueError("Missing API Reference groups in Next.js flight data")
+    value, _ = json.JSONDecoder().raw_decode(data, position + len('"groups":'))
+    return value
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -83,9 +101,11 @@ def main() -> None:
     args.cache_dir.mkdir(parents=True, exist_ok=True)
 
     index_data = flight_data(download(INDEX_URL))
-    groups = decode_property(index_data, "initialSiteGroups")
+    groups = decode_groups(index_data)
+    # (content module, endpoint). Pages live under their content module, which can
+    # differ from the sidebar group they are listed under.
     routes = [
-        (group["slug"], item["endpoint_slug"])
+        (item.get("module", group["slug"]), item["endpoint_slug"])
         for group in groups
         for item in group["items"]
         if item.get("page_type") == "API_REFERENCE"

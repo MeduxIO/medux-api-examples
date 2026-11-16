@@ -1,6 +1,6 @@
 # Get Task
 
-Get a single task record from the current account history.
+Retrieve one account media task by ID. Returns task status, progress, billing, errors, and result references for troubleshooting and workflow monitoring.
 
 ## Endpoint
 
@@ -10,7 +10,7 @@ GET /api/app/v1/tasks/{task_id}
 
 Base URL: `https://api.medux.io`
 
-Return one task record by its ID.
+Get a single task record by ID.
 
 ## Authentication
 

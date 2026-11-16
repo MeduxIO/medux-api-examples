@@ -1,6 +1,6 @@
-# Create Text Driven Video
+# Text Driven Video
 
-Generate a video from text, a reusable avatar, and a reusable voice.
+Combine text, a reusable avatar, and a reusable voice to create a talking-avatar video. Returns an asynchronous generation task and video URL for explainers, training, and personalized messages.
 
 ## Endpoint
 
@@ -10,7 +10,7 @@ POST /api/app/v1/generate/video/text_driven
 
 Base URL: `https://api.medux.io`
 
-Generate an avatar video from text using a reusable avatar and voice.
+Create an avatar video from text and a reusable avatar.
 
 ## Authentication
 
@@ -36,16 +36,16 @@ Never commit a real key.
 | Field | Type | Requirement | Location | Description / options |
 | --- | --- | --- | --- | --- |
 | `Authorization` | `string` | Required | `HEADER` | Bearer token or API key. |
-| `aspect_ratio` | `string` | Optional | `BODY` | Requested output aspect ratio, such as 16:9 or 9:16. |
+| `aspect_ratio` | `string` | Optional | `BODY` | Requested output aspect ratio, for example 16:9 or 9:16. |
 | `avatar_asset_id` | `string` | Required | `BODY` | Reusable avatar asset ID owned by the current user or listed as an official public asset. |
-| `clarity` | `string` | Optional | `BODY` | Requested output resolution label, such as 1080P or 2K. |
-| `duration_seconds` | `int32` | Optional | `BODY` | Requested output duration, in seconds. |
-| `links` | `array<string>` | Optional | `BODY` | Optional reference links submitted from the Playground form. |
-| `model` | `string` | Optional | `BODY` | Generation model label or version selected in the Playground form. |
+| `clarity` | `string` | Optional | `BODY` | Requested output clarity, for example 1080P or 2K. |
+| `duration_seconds` | `int32` | Optional | `BODY` | Requested output duration in seconds. |
+| `links` | `array<string>` | Optional | `BODY` | Optional reference links collected from the Playground form. |
+| `model` | `string` | Optional | `BODY` | Selected generation model label or version from the Playground form. |
 | `model_id` | `string` | Optional | `BODY` | Stable public Medux model identifier. |
 | `text` | `string` | Optional | `BODY` | Text content used to generate speech or media. |
 | `title` | `string` | Optional | `BODY` | Optional user-facing title for the task or generated asset. |
-| `voice_asset_id` | `string` | Required | `BODY` | Reusable voice asset used for text-driven lip sync. |
+| `voice_asset_id` | `string` | Required | `BODY` | Reusable voice asset ID owned by the current user or listed as an official public asset. |
 
 ## Environment variables used by the Python and JavaScript examples
 
@@ -105,7 +105,7 @@ See [`example.mjs`](./example.mjs).
 
 ### Response handling
 
-This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../generate/get-creation-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
+This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../infra/get-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
 
 The response-field table above lists the `code` values this endpoint can return, each with its meaning. Handle the documented non-success messages explicitly: `invalid input`, `invalid model`, `paid plan required`, `insufficient credits`, `asset category mismatch`, `voice asset required`, `asset locked`, `asset expired`, `provider error`, `provider timeout`, `unauthenticated`, `rate limit`, `server error`. See [error-codes.md](../../../docs/error-codes.md) for the full catalog and retry guidance.
 

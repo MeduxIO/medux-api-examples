@@ -1,0 +1,216 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Photo Repair",
+    "summary": "Repair old photos and produce a restored image.",
+    "module": "image",
+    "endpoint_slug": "photo-repair",
+    "tags": [
+      "Image",
+      "Image"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Text to Image",
+      "slug": "create-text-to-image",
+      "module": "generate",
+      "endpoint_slug": "create-text-to-image"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Background Removal",
+      "slug": "create-image-background-removal",
+      "module": "process",
+      "endpoint_slug": "create-image-background-removal"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Text to Image Turbo",
+      "slug": "text-to-image-turbo",
+      "module": "image",
+      "endpoint_slug": "text-to-image-turbo"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Photo Repair",
+      "slug": "photo-repair",
+      "module": "image",
+      "endpoint_slug": "photo-repair"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Image Edit Turbo",
+      "slug": "image-edit-turbo",
+      "module": "image",
+      "endpoint_slug": "image-edit-turbo"
+    }
+  ],
+  "hero": {
+    "title": "Photo Repair",
+    "summary": "Repair old photos and produce a restored image."
+  },
+  "endpoint_summary": {
+    "method": "POST",
+    "path": "/api/app/v1/process/image/photo_repair",
+    "summary": "Repair old photos and produce a restored image."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Upload the source file and create a file reference before calling this endpoint.",
+      "Successful requests return a Medux task record immediately. Use the task query or sync endpoints to track completion.",
+      "All file inputs must be uploaded and persisted as file references before submission."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "source_image_file_id",
+        "type": "string",
+        "required": true,
+        "description": "Source image file_id.",
+        "location": "BODY"
+      },
+      {
+        "name": "model_id",
+        "type": "string",
+        "description": "Photo repair model id. Default: photo-repair-default.",
+        "location": "BODY",
+        "default_value": "photo-repair-default"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "description": "Optional task title.",
+        "location": "BODY"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "response code enums:\\\n.. 0: ok\\\n.. 12: invalid input\\\n.. 1410: invalid model\\\n.. 1409: paid plan required\\\n.. 1401: insufficient credits\\\n.... 1401 ~ 1499 是 media\\\n.. 1404: provider error\\\n.. 1405: provider timeout\\\n.. 13: unauthenticated\\\n.. 16: rate limit\\\n.. 99: server error",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "1410",
+          "1409",
+          "1401",
+          "1404",
+          "1405",
+          "13",
+          "16",
+          "99"
+        ]
+      },
+      {
+        "name": "data.asset",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.paid_plan_required",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "invalid model",
+          "paid plan required",
+          "insufficient credits",
+          "provider error",
+          "provider timeout",
+          "unauthenticated",
+          "rate limit",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/process/image/photo_repair \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"model_id\":\"photo-repair-default\",\"source_image_file_id\":\"FILE_ID\"}'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/process/image/photo_repair \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"model_id\":\"photo-repair-default\",\"source_image_file_id\":\"FILE_ID\"}'",
+    "samples": [
+      {
+        "capability_id": "photo_repair",
+        "sample_id": "sample_photo_repair_001",
+        "title": "Official photo repair sample",
+        "sample_input": {
+          "title": "Example input",
+          "summary": "Example input for this capability.",
+          "fields": [
+            {
+              "key": "source_image_file_id",
+              "value": "{file_id}"
+            }
+          ]
+        },
+        "sample_output": {
+          "title": "Official example output",
+          "summary": "Official example output for preview only. It is not a user Media Result.",
+          "preview_url": "https://cdn.medux.io/medux/samples/photo_repair.png"
+        },
+        "output_type": "IMAGE",
+        "model_id": "photo-repair-default",
+        "display_locations": [
+          "PLAYGROUND_SAMPLE",
+          "API_REFERENCE_SAMPLE",
+          "CAPABILITY_DETAIL_SAMPLE",
+          "MCP_INVOCATION_SAMPLE"
+        ],
+        "created_at": 1782351325,
+        "review_status": "APPROVED",
+        "minimum_plan": "free"
+      }
+    ]
+  },
+  "related_links": [
+    {
+      "title": "Sync Task",
+      "kind": "API_REFERENCE_LINK",
+      "description": "Refresh task state from the upstream provider.",
+      "module": "infra",
+      "endpoint_slug": "sync-task"
+    }
+  ],
+  "mcp_tool": {
+    "title": "Photo Repair",
+    "summary": "Repair old photos and produce a restored image.",
+    "capability_id": "photo_repair",
+    "mcp_tool_id": "medux_photo_repair",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
+    "invocation_example": "Repair old photos and produce a restored image."
+  },
+  "source_url": "https://medux.io/api-reference/image/photo-repair"
+}

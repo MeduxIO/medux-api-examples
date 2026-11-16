@@ -1,6 +1,6 @@
 # Edit Voice Parameters
 
-Adjust voice parameters for an existing reusable voice asset.
+Update an existing reusable AI voice with tuning parameters. Returns the voice configuration for text-to-speech, narration, voiceover, and talking-avatar workflows.
 
 ## Endpoint
 
@@ -10,7 +10,7 @@ POST /api/app/v1/clone/voice/{voice_asset_id}/parameters
 
 Base URL: `https://api.medux.io`
 
-Update tuning parameters for an existing reusable voice asset.
+Update voice parameters for an existing reusable voice asset.
 
 ## Authentication
 
@@ -93,7 +93,7 @@ See [`example.mjs`](./example.mjs).
 
 ### Response handling
 
-This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../clone/get-voice-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
+This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../infra/get-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
 
 The response-field table above lists the `code` values this endpoint can return, each with its meaning. Handle the documented non-success messages explicitly: `invalid input`, `invalid model`, `paid plan required`, `insufficient credits`, `asset locked`, `asset expired`, `provider error`, `provider timeout`, `unauthenticated`, `rate limit`, `server error`. See [error-codes.md](../../../docs/error-codes.md) for the full catalog and retry guidance.
 

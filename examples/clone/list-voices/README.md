@@ -1,6 +1,6 @@
 # List Voices
 
-List reusable voice assets for the current account.
+List reusable AI voice assets with optional filters. Returns voice IDs and lifecycle states for text-to-speech, narration, and talking-avatar voice selection.
 
 ## Endpoint
 
@@ -10,7 +10,7 @@ GET /api/app/v1/clone/voices
 
 Base URL: `https://api.medux.io`
 
-List reusable voice assets owned by the authenticated user.
+List current user's reusable voice assets.
 
 ## Authentication
 

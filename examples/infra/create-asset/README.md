@@ -1,6 +1,6 @@
 # Create Asset
 
-Persist a reusable avatar or voice asset record.
+Register reusable avatar or voice metadata from an uploaded file. Returns the asset record for asset management and subsequent clone or generation workflows.
 
 ## Endpoint
 
@@ -10,7 +10,7 @@ POST /api/app/v1/assets
 
 Base URL: `https://api.medux.io`
 
-Create an asset record from a file that was uploaded through a direct upload URL.
+Record an uploaded file as an asset.
 
 ## Authentication
 
@@ -34,9 +34,9 @@ Never commit a real key.
 | Field | Type | Requirement | Location | Description / options |
 | --- | --- | --- | --- | --- |
 | `Authorization` | `string` | Required | `HEADER` | Bearer token or API key. |
-| `category` | `string` | Optional | `BODY` | Asset category, used for validation and later rendering.<br><br>Allowed values:<br>- `CATEGORY_UNDEFINED` - Not specified.<br>- `MEDIA` - Uploaded source media.<br>- `AVATAR` - Reusable avatar asset.<br>- `VOICE` - Reusable voice asset.<br>Options: `CATEGORY_UNDEFINED`, `MEDIA`, `AVATAR`, `VOICE` |
-| `file_size_bytes` | `int64` | Optional | `BODY` | Original file size, in bytes. |
-| `name` | `string` | Optional | `BODY` | Display name provided by the user. This value may be empty. |
+| `category` | `string` | Optional | `BODY` | No additional description is documented.<br>Options: `CATEGORY_UNDEFINED`, `MEDIA`, `AVATAR`, `VOICE` |
+| `file_size_bytes` | `int64` | Optional | `BODY` | Original file size in bytes. |
+| `name` | `string` | Optional | `BODY` | User-provided display name. It may be empty. |
 | `storage_object.key` | `string` | Optional | `BODY` | Storage object key returned by the upload flow. |
 | `storage_object.url` | `string` | Optional | `BODY` | Storage object URL associated with the uploaded file. |
 

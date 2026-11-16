@@ -1,6 +1,6 @@
-# Create Avatar by Video
+# Clone Avatar by Video
 
-Start an avatar clone task from a source video asset.
+Turn an uploaded source video into a reusable AI avatar. Returns an asynchronous video-to-avatar cloning task and avatar asset for talking videos and personalized content.
 
 ## Endpoint
 
@@ -10,7 +10,7 @@ POST /api/app/v1/clone/avatar/by_video
 
 Base URL: `https://api.medux.io`
 
-Create a reusable avatar asset from an uploaded video file.
+Clone an avatar from an uploaded video file.
 
 ## Authentication
 
@@ -90,7 +90,7 @@ See [`example.mjs`](./example.mjs).
 
 ### Response handling
 
-This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../clone/get-avatar-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
+This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../infra/get-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
 
 The response-field table above lists the `code` values this endpoint can return, each with its meaning. Handle the documented non-success messages explicitly: `invalid input`, `invalid model`, `paid plan required`, `insufficient credits`, `asset limit reached`, `asset category mismatch`, `provider error`, `provider timeout`, `unauthenticated`, `rate limit`, `server error`. See [error-codes.md](../../../docs/error-codes.md) for the full catalog and retry guidance.
 
@@ -122,7 +122,7 @@ Clone a reusable avatar from the uploaded source video {file_id}. Title it Offic
 
 ## Related APIs
 
-- [Get Avatar Task](../../clone/get-avatar-task/) — Poll avatar clone task state.
+- No related endpoints documented.
 
 ## Source of truth
 

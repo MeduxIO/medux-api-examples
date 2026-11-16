@@ -1,6 +1,6 @@
-# Create Voice
+# Clone Voice
 
-Start a voice cloning task from a source media file.
+Turn uploaded source audio into a reusable AI voice. Returns an asynchronous voice-cloning task and voice asset for text-to-speech, voiceovers, and avatar videos.
 
 ## Endpoint
 
@@ -10,7 +10,7 @@ POST /api/app/v1/clone/voice
 
 Base URL: `https://api.medux.io`
 
-Create a reusable voice asset from an uploaded audio file.
+Clone a voice from an uploaded audio file.
 
 ## Authentication
 
@@ -90,7 +90,7 @@ See [`example.mjs`](./example.mjs).
 
 ### Response handling
 
-This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../clone/get-voice-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
+This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../infra/get-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
 
 The response-field table above lists the `code` values this endpoint can return, each with its meaning. Handle the documented non-success messages explicitly: `invalid input`, `invalid model`, `paid plan required`, `insufficient credits`, `asset limit reached`, `asset category mismatch`, `provider error`, `provider timeout`, `unauthenticated`, `rate limit`, `server error`. See [error-codes.md](../../../docs/error-codes.md) for the full catalog and retry guidance.
 

@@ -1,0 +1,9 @@
+{
+  "height": 1024,
+  "image_file_ids": [
+    "FILE_ID"
+  ],
+  "model_id": "qwen-image-edit",
+  "prompt": "PROMPT",
+  "width": 1024
+}

@@ -1,6 +1,6 @@
 # List Avatars
 
-List reusable avatar assets for the current account.
+List reusable AI avatar assets with optional filters. Returns avatar IDs and lifecycle states for asset inventory and talking-avatar video selection.
 
 ## Endpoint
 
@@ -10,7 +10,7 @@ GET /api/app/v1/clone/avatars
 
 Base URL: `https://api.medux.io`
 
-List reusable avatar assets owned by the authenticated user.
+List current user's avatar assets.
 
 ## Authentication
 

@@ -41,16 +41,9 @@ Most `POST` operations that produce media do **not** return the finished result.
 They enqueue a task and return `data.task` with a task ID. HTTP `200` only means
 the task was accepted, not that processing finished.
 
-To get a result you must poll the matching status endpoint until the task
-reaches a terminal state (succeeded or failed):
-
-| Domain | Status endpoint |
-| --- | --- |
-| Clone – avatar | [Get Avatar Task](../examples/clone/get-avatar-task/) |
-| Clone – voice | [Get Voice Task](../examples/clone/get-voice-task/) |
-| Generate | [Get Creation Task](../examples/generate/get-creation-task/) |
-| Process / Edit / Media / Document | [Get Process Task](../examples/process/get-process-task/) |
-| Infra (generic) | [Get Task](../examples/infra/get-task/) |
+To get a result, poll [Get Task](../examples/infra/get-task/) with the `task_id` until the
+task reaches a terminal state (succeeded or failed). One endpoint covers every
+domain: clone, generate, edit, video, voice and document tasks.
 
 Poll with a backoff (for example every few seconds) rather than in a tight loop.
 [Sync Task](../examples/infra/sync-task/) can force a status refresh from the

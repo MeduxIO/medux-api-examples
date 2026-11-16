@@ -1,0 +1,188 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Omni Reference to Video",
+    "summary": "Guide video generation with the reference types supported by your selected model.",
+    "module": "generate",
+    "endpoint_slug": "create-omni-reference-to-video",
+    "tags": [
+      "Generate",
+      "video"
+    ]
+  },
+  "hero": {
+    "title": "Omni Reference to Video",
+    "summary": "Guide video generation with the reference types supported by your selected model."
+  },
+  "endpoint_summary": {
+    "method": "POST",
+    "path": "/api/app/v1/generate/video/omni_reference_to_video",
+    "summary": "Generate media with the capability-specific input contract."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Choose an available model and enter a prompt.",
+      "Provide a non-empty prompt and supported image_file_ids, video_file_ids, or audio_file_ids. MiniMax H3 accepts only images; Wan 3.0 limits combined reference video and audio duration to 15 seconds.",
+      "Read generation_options from the model catalog; only listed parameter values are accepted.",
+      "Use clarity for output resolution. Estimate credits with the same parameters before submission."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "aspect_ratio",
+        "type": "string",
+        "location": "BODY"
+      },
+      {
+        "name": "audio_file_ids",
+        "type": "array<string>",
+        "location": "BODY"
+      },
+      {
+        "name": "clarity",
+        "type": "string",
+        "location": "BODY"
+      },
+      {
+        "name": "duration_seconds",
+        "type": "int32",
+        "location": "BODY"
+      },
+      {
+        "name": "image_file_ids",
+        "type": "array<string>",
+        "location": "BODY"
+      },
+      {
+        "name": "model_id",
+        "type": "string",
+        "location": "BODY"
+      },
+      {
+        "name": "prompt",
+        "type": "string",
+        "required": true,
+        "location": "BODY"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "location": "BODY"
+      },
+      {
+        "name": "video_file_ids",
+        "type": "array<string>",
+        "location": "BODY"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "response code enums:\\\n.. 0: ok\\\n.. 12: invalid input\\\n.. 1410: invalid model\\\n.. 1409: paid plan required\\\n.. 1401: insufficient credits\\\n.... 1401 ~ 1499 是 media\\\n.. 13: unauthenticated\\\n.. 1404: provider error\\\n.. 99: server error",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "1410",
+          "1409",
+          "1401",
+          "13",
+          "1404",
+          "99"
+        ]
+      },
+      {
+        "name": "data.asset",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.paid_plan_required",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "invalid model",
+          "paid plan required",
+          "insufficient credits",
+          "unauthenticated",
+          "provider error",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/generate/video/omni_reference_to_video \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"aspect_ratio\":\"ASPECT_RATIO\",\"audio_file_ids\":[\"AUDIO_FILE_ID\"],\"clarity\":\"CLARITY\",\"duration_seconds\":1,\"image_file_ids\":[\"FILE_ID\"],\"model_id\":\"MODEL_ID\",\"prompt\":\"PROMPT\",\"title\":\"Demo title\",\"video_file_ids\":[\"FILE_ID\"]}'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/generate/video/omni_reference_to_video \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"aspect_ratio\":\"ASPECT_RATIO\",\"audio_file_ids\":[\"AUDIO_FILE_ID\"],\"clarity\":\"CLARITY\",\"duration_seconds\":1,\"image_file_ids\":[\"FILE_ID\"],\"model_id\":\"MODEL_ID\",\"prompt\":\"PROMPT\",\"title\":\"Demo title\",\"video_file_ids\":[\"FILE_ID\"]}'"
+  },
+  "mcp_tool": {
+    "title": "Omni Reference to Video",
+    "summary": "Generate a video using model-supported reference media. Inspect the model catalog and estimate credits before submitting.",
+    "capability_id": "generate.video.omni_reference_to_video",
+    "mcp_tool_id": "medux_video_generate_omni_reference_to_video",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
+    "invocation_example": "Generate a video using model-supported reference media.",
+    "prompt_samples": [
+      {
+        "capability_id": "generate.video.omni_reference_to_video",
+        "mcp_tool_id": "medux_video_generate_omni_reference_to_video",
+        "prompt_sample_id": "prompt_generate.video.omni_reference_to_video_001",
+        "natural_language_prompt": "Create a video guided by my reference image using Seedance 2.0 Mini.",
+        "expected_tool_call": "medux_video_generate_omni_reference_to_video",
+        "key_arguments": [
+          {
+            "key": "model_id",
+            "value": "seedance-2-0-mini"
+          },
+          {
+            "key": "image_file_ids",
+            "value": "[\"{image_file_id}\"]"
+          },
+          {
+            "key": "prompt",
+            "value": "{prompt}"
+          }
+        ],
+        "expected_result_type": "VIDEO",
+        "display_location": "MCP_INVOCATION_SAMPLE",
+        "minimum_plan": "free",
+        "error_case": "Check the selected model's input limits and account availability before submitting.",
+        "review_status": "APPROVED"
+      }
+    ]
+  },
+  "source_url": "https://medux.io/api-reference/generate/create-omni-reference-to-video"
+}

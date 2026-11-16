@@ -1,6 +1,6 @@
 # List Tasks
 
-List task records for the current account across clone, generate, and process flows.
+List account media tasks with optional status and pagination filters. Returns clone, generation, and processing task records for dashboards, history, and workflow monitoring.
 
 ## Endpoint
 
@@ -10,7 +10,7 @@ GET /api/app/v1/tasks
 
 Base URL: `https://api.medux.io`
 
-List media tasks created by the authenticated user.
+List task records for the current user.
 
 ## Authentication
 
@@ -36,7 +36,7 @@ Never commit a real key.
 | `Authorization` | `string` | Required | `HEADER` | Bearer token or API key. |
 | `cursor` | `string` | Optional | `QUERY` | Opaque pagination cursor returned by the previous page. |
 | `limit` | `int32` | Optional | `QUERY` | Maximum number of records to return in this page. |
-| `status` | `string` | Optional | `QUERY` | Allowed values:<br>- `TASK_STATUS_UNDEFINED` - Not specified.<br>- `QUEUED` - Task is waiting to run.<br>- `PROCESSING` - Task is running.<br>- `SUCCEEDED` - Task finished successfully.<br>- `FAILED` - Task failed.<br>- `EXPIRED` - Task output is no longer available.<br>Options: `TASK_STATUS_UNDEFINED`, `QUEUED`, `PROCESSING`, `SUCCEEDED`, `FAILED`, `EXPIRED` |
+| `status` | `string` | Optional | `QUERY` | Filter records by lifecycle status.<br>Options: `TASK_STATUS_UNDEFINED`, `QUEUED`, `PROCESSING`, `SUCCEEDED`, `FAILED`, `EXPIRED` |
 | `media_type` | `string` | Optional | `QUERY` | Media-type filter for the returned records. |
 | `capability_id` | `string` | Optional | `QUERY` | Filter records by Medux capability identifier. |
 

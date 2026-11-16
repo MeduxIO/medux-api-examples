@@ -1,0 +1,9 @@
+{
+  "height": 832,
+  "model_id": "text-image-to-video-default",
+  "num_frames": 124,
+  "prompt_text": "Hello from Medux",
+  "resolution": "480p",
+  "seed": -1,
+  "width": 480
+}

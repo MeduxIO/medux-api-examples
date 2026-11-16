@@ -72,6 +72,9 @@ FIELD_DESCRIPTIONS = {
 }
 
 
+KNOWN_ENDPOINTS: set[tuple[str, str]] = set()
+
+
 def md(value: object) -> str:
     if value is None or value == "":
         return "—"
@@ -390,20 +393,12 @@ def render_readme(page: dict, body: object | None, curl_command: str) -> str:
     for link in page.get("related_links", []):
         module = link.get("module")
         slug = link.get("endpoint_slug")
-        if module and slug:
+        if module and slug and (module, slug) in KNOWN_ENDPOINTS:
             related.append(f"- [{link['title']}](../../{module}/{slug}/) — {link.get('description', '')}")
     related_text = "\n".join(related) or "- No related endpoints documented."
     module = meta["module"]
-    status_target = {
-        "generate": "../../generate/get-creation-task/",
-        "process": "../../process/get-process-task/",
-        "edit": "../../process/get-process-task/",
-        "media": "../../process/get-process-task/",
-        "document": "../../process/get-process-task/",
-        "infra": "../../infra/get-task/",
-    }.get(module)
-    if module == "clone":
-        status_target = "../../clone/get-voice-task/" if "voice" in meta["endpoint_slug"] else "../../clone/get-avatar-task/"
+    # Every asynchronous endpoint is polled through the single Get Task endpoint.
+    status_target = "../../infra/get-task/"
     if any(field.get("name") == "data.task" for field in response_fields):
         status_link = f"the [relevant task-status endpoint]({status_target})" if status_target else "the relevant task-status endpoint"
         task_note = f"This response can include `data.task`. Persist the returned task ID and use {status_link} until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed."
@@ -613,6 +608,9 @@ def main() -> None:
     if unavailable_file.exists():
         unavailable = json.loads(unavailable_file.read_text(encoding="utf-8"))
         UNAVAILABLE_PREVIEWS.update(unavailable.get("urls", []))
+
+    # Related links that point at pages the site no longer publishes are dropped.
+    KNOWN_ENDPOINTS.update((e["meta"]["module"], e["meta"]["endpoint_slug"]) for e in snapshot["endpoints"])
 
     examples_root = repo / "examples"
     if examples_root.exists():

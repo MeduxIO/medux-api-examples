@@ -1,6 +1,6 @@
-# Create Text to Video
+# Text to Video
 
-Generate a video directly from a text prompt.
+Create a video from a text prompt with model-specific output settings.
 
 ## Endpoint
 
@@ -26,9 +26,10 @@ Never commit a real key.
 
 ## Preconditions
 
-- Requires a prompt and an account plan that can use the selected model.
-- Requires a non-empty prompt.
-- Also accepts optional duration_seconds, clarity, aspect_ratio, and model_id.
+- Choose an available model and enter a prompt.
+- Provide a non-empty prompt. Reference files are not accepted.
+- Read generation_options from the model catalog; only listed parameter values are accepted.
+- Use clarity for output resolution. Estimate credits with the same parameters before submission.
 
 ## Request
 
@@ -39,7 +40,7 @@ Never commit a real key.
 | `clarity` | `string` | Optional | `BODY` | Requested output clarity, for example 720P or 1080P. |
 | `duration_seconds` | `int32` | Optional | `BODY` | Requested output duration in seconds. |
 | `model_id` | `string` | Optional | `BODY` | Stable public Medux model identifier. |
-| `prompt` | `string` | Optional | `BODY` | Natural-language instruction describing the requested output. |
+| `prompt` | `string` | Required | `BODY` | Natural-language instruction describing the requested output. |
 | `title` | `string` | Optional | `BODY` | Optional user-facing title for the task or generated asset. |
 
 ## Environment variables used by the Python and JavaScript examples
@@ -98,20 +99,13 @@ See [`example.mjs`](./example.mjs).
 
 ### Response handling
 
-This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../generate/get-creation-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
+This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../infra/get-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
 
 The response-field table above lists the `code` values this endpoint can return, each with its meaning. Handle the documented non-success messages explicitly: `invalid input`, `invalid model`, `paid plan required`, `insufficient credits`, `provider error`, `provider timeout`, `unauthenticated`, `rate limit`, `server error`. See [error-codes.md](../../../docs/error-codes.md) for the full catalog and retry guidance.
 
 ## Official sample
 
-### Official text-to-video generation
-
-- Sample ID: `sample_generate_video_text_to_video_001`
-- Input: `prompt=A cinematic product shot with slow camera motion and soft studio lighting.`
-- Output: `output_url=Official example video output`
-- Model: `wan-2-6-text-to-video`
-- Minimum plan: `starter`
-- Preview: [Open documented sample](https://medux-cdn-dev.hifly.cc/demo/G7qPpzNfYQ.mp4)
+No official media sample is currently documented for this endpoint.
 
 ## MCP alternative
 
@@ -124,7 +118,7 @@ The same capability is optionally available through Medux MCP.
 Example prompt:
 
 ```text
-Generate a 5 second 720P 16:9 video from this prompt using model_id wan-2-6-text-to-video. This model requires Starter or higher.
+Generate a 5 second 720P 16:9 video from this prompt using model_id seedance-2-0-mini. This model requires Starter or higher.
 ```
 
 

@@ -2,7 +2,7 @@
   "meta": {
     "page_type": "API_REFERENCE",
     "title": "Get Task",
-    "summary": "Get a single task record from the current account history.",
+    "summary": "Retrieve one account media task by ID. Returns task status, progress, billing, errors, and result references for troubleshooting and workflow monitoring.",
     "module": "infra",
     "endpoint_slug": "get-task",
     "tags": [
@@ -10,58 +10,14 @@
       "Task"
     ]
   },
-  "endpoint_items": [
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Asset",
-      "slug": "create-asset",
-      "module": "infra",
-      "endpoint_slug": "create-asset"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Get Task",
-      "slug": "get-task",
-      "module": "infra",
-      "endpoint_slug": "get-task"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Assets",
-      "slug": "list-assets",
-      "module": "infra",
-      "endpoint_slug": "list-assets"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Results",
-      "slug": "list-results",
-      "module": "infra",
-      "endpoint_slug": "list-results"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Tasks",
-      "slug": "list-tasks",
-      "module": "infra",
-      "endpoint_slug": "list-tasks"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Sync Task",
-      "slug": "sync-task",
-      "module": "infra",
-      "endpoint_slug": "sync-task"
-    }
-  ],
   "hero": {
     "title": "Get Task",
-    "summary": "Get a single task record from the current account history."
+    "summary": "Retrieve one account media task by ID. Returns task status, progress, billing, errors, and result references for troubleshooting and workflow monitoring."
   },
   "endpoint_summary": {
     "method": "GET",
     "path": "/api/app/v1/tasks/{task_id}",
-    "summary": "Return one task record by its ID."
+    "summary": "Get a single task record by ID."
   },
   "auth_requirements": {
     "title": "Auth Requirements",
@@ -100,7 +56,7 @@
       {
         "name": "code",
         "type": "int32",
-        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `13` | Authentication is required |\n| `15` | Resource not found |\n| `99` | Server error |",
+        "description": "response code enums:\\\n.. 0: ok\\\n.. 13: unauthenticated\\\n.. 15: not found\\\n.. 99: server error",
         "location": "RESPONSE",
         "enum_values": [
           "0",

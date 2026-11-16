@@ -1,0 +1,11 @@
+{
+  "aspect_ratio": "ASPECT_RATIO",
+  "clarity": "CLARITY",
+  "image_file_ids": [
+    "FILE_ID"
+  ],
+  "model_id": "MODEL_ID",
+  "prompt": "PROMPT",
+  "quantity": 1,
+  "title": "Demo title"
+}

@@ -1,0 +1,12 @@
+{
+  "input_file_id": "FILE_ID",
+  "model_id": "watermark-removal-default",
+  "regions": [
+    [
+      1150,
+      20,
+      120,
+      120
+    ]
+  ]
+}

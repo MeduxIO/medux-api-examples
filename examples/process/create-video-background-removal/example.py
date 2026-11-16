@@ -6,7 +6,7 @@ import os
 import requests
 
 BASE_URL = os.getenv("MEDUX_API_BASE_URL", "https://api.medux.io")
-PLACEHOLDERS = frozenset(['FILE_ID'])
+PLACEHOLDERS = frozenset(['FILE_ID', 'MODEL_ID'])
 
 
 def require_env(name: str) -> str:
@@ -32,6 +32,7 @@ url = f"{BASE_URL}{path}"
 payload = resolve_placeholders(json.loads(r'''
 {
   "file_id": "FILE_ID",
+  "model_id": "MODEL_ID",
   "region": {
     "height": 1,
     "width": 1,

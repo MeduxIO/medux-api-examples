@@ -1,8 +1,8 @@
 {
   "meta": {
     "page_type": "API_REFERENCE",
-    "title": "Create Avatar by Video",
-    "summary": "Start an avatar clone task from a source video asset.",
+    "title": "Clone Avatar by Video",
+    "summary": "Turn an uploaded source video into a reusable AI avatar. Returns an asynchronous video-to-avatar cloning task and avatar asset for talking videos and personalized content.",
     "module": "clone",
     "endpoint_slug": "create-avatar-by-video",
     "tags": [
@@ -10,72 +10,14 @@
       "Avatar"
     ]
   },
-  "endpoint_items": [
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Avatar by Image",
-      "slug": "create-avatar-by-image",
-      "module": "clone",
-      "endpoint_slug": "create-avatar-by-image"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Avatar by Video",
-      "slug": "create-avatar-by-video",
-      "module": "clone",
-      "endpoint_slug": "create-avatar-by-video"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Voice",
-      "slug": "create-voice",
-      "module": "clone",
-      "endpoint_slug": "create-voice"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Edit Voice Parameters",
-      "slug": "edit-voice-parameters",
-      "module": "clone",
-      "endpoint_slug": "edit-voice-parameters"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Get Avatar Task",
-      "slug": "get-avatar-task",
-      "module": "clone",
-      "endpoint_slug": "get-avatar-task"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Get Voice Task",
-      "slug": "get-voice-task",
-      "module": "clone",
-      "endpoint_slug": "get-voice-task"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Avatars",
-      "slug": "list-avatars",
-      "module": "clone",
-      "endpoint_slug": "list-avatars"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "List Voices",
-      "slug": "list-voices",
-      "module": "clone",
-      "endpoint_slug": "list-voices"
-    }
-  ],
   "hero": {
-    "title": "Create Avatar by Video",
-    "summary": "Start an avatar clone task from a source video asset."
+    "title": "Clone Avatar by Video",
+    "summary": "Turn an uploaded source video into a reusable AI avatar. Returns an asynchronous video-to-avatar cloning task and avatar asset for talking videos and personalized content."
   },
   "endpoint_summary": {
     "method": "POST",
     "path": "/api/app/v1/clone/avatar/by_video",
-    "summary": "Create a reusable avatar asset from an uploaded video file."
+    "summary": "Clone an avatar from an uploaded video file."
   },
   "auth_requirements": {
     "title": "Auth Requirements",
@@ -119,7 +61,7 @@
       {
         "name": "code",
         "type": "int32",
-        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `1401` | Insufficient credits |\n| `1402` | Asset category does not match this operation |\n| `1404` | Provider returned an error |\n| `1405` | Provider request timed out |\n| `13` | Authentication is required |\n| `16` | Rate limit exceeded |\n| `99` | Server error |",
+        "description": "response code enums:\\\n.. 0: ok\\\n.. 12: invalid input\\\n.. 1410: invalid model\\\n.. 1409: paid plan required\\\n.. 1401: insufficient credits\\\n.... 1401 ~ 1499 是 media\\\n.. 1406: asset limit reached\\\n.. 1402: asset category mismatch\\\n.. 1404: provider error\\\n.. 1405: provider timeout\\\n.. 13: unauthenticated\\\n.. 16: rate limit\\\n.. 99: server error",
         "location": "RESPONSE",
         "enum_values": [
           "0",

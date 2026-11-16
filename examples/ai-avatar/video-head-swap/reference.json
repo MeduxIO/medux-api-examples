@@ -1,0 +1,280 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Video Head Swap",
+    "summary": "Animate a swapped face image with a driving video to produce a head swap video.",
+    "module": "ai-avatar",
+    "endpoint_slug": "video-head-swap",
+    "tags": [
+      "Ai Avatar",
+      "Video"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Clone Avatar by Image",
+      "slug": "create-avatar-by-image",
+      "module": "clone",
+      "endpoint_slug": "create-avatar-by-image"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Clone Avatar by Video",
+      "slug": "create-avatar-by-video",
+      "module": "clone",
+      "endpoint_slug": "create-avatar-by-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "List Avatars",
+      "slug": "list-avatars",
+      "module": "clone",
+      "endpoint_slug": "list-avatars"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Audio Driven Video",
+      "slug": "create-audio-driven-video",
+      "module": "generate",
+      "endpoint_slug": "create-audio-driven-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Text Driven Video",
+      "slug": "create-text-driven-video",
+      "module": "generate",
+      "endpoint_slug": "create-text-driven-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Image Face Swap",
+      "slug": "face-swap",
+      "module": "ai-avatar",
+      "endpoint_slug": "face-swap"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Image Head Swap",
+      "slug": "head-swap",
+      "module": "ai-avatar",
+      "endpoint_slug": "head-swap"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Image & Audio Driven Video",
+      "slug": "image-audio-driven-video",
+      "module": "ai-avatar",
+      "endpoint_slug": "image-audio-driven-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Image Outfit Swap",
+      "slug": "outfit-swap",
+      "module": "ai-avatar",
+      "endpoint_slug": "outfit-swap"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Video Character Replacement",
+      "slug": "character-replacement",
+      "module": "ai-avatar",
+      "endpoint_slug": "character-replacement"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Video Head Swap",
+      "slug": "video-head-swap",
+      "module": "ai-avatar",
+      "endpoint_slug": "video-head-swap"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Video Face Swap Plus",
+      "slug": "face-swap-plus",
+      "module": "ai-avatar",
+      "endpoint_slug": "face-swap-plus"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Video Character Replacement Plus",
+      "slug": "character-replacement-plus",
+      "module": "ai-avatar",
+      "endpoint_slug": "character-replacement-plus"
+    }
+  ],
+  "hero": {
+    "title": "Video Head Swap",
+    "summary": "Animate a swapped face image with a driving video to produce a head swap video."
+  },
+  "endpoint_summary": {
+    "method": "POST",
+    "path": "/api/app/v1/process/video/animate_head_swap",
+    "summary": "Animate a swapped face image with a driving video to produce a head swap video."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Upload the source file and create a file reference before calling this endpoint.",
+      "Successful requests return a Medux task record immediately. Use the task query or sync endpoints to track completion.",
+      "All file inputs must be uploaded and persisted as file references before submission."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "face_image_file_id",
+        "type": "string",
+        "required": true,
+        "description": "Face reference image file_id used for the head swap target.",
+        "location": "BODY"
+      },
+      {
+        "name": "input_video_file_id",
+        "type": "string",
+        "required": true,
+        "description": "Driving video file_id.",
+        "location": "BODY"
+      },
+      {
+        "name": "width",
+        "type": "integer",
+        "description": "Target output width. Default: 480.",
+        "location": "BODY",
+        "default_value": "480"
+      },
+      {
+        "name": "height",
+        "type": "integer",
+        "description": "Target output height. Default: 832.",
+        "location": "BODY",
+        "default_value": "832"
+      },
+      {
+        "name": "positive_prompt",
+        "type": "string",
+        "description": "Positive prompt text for the animation workflow. Default: 一个角色在说话.",
+        "location": "BODY",
+        "default_value": "一个角色在说话"
+      },
+      {
+        "name": "negative_prompt",
+        "type": "string",
+        "description": "Negative prompt text.",
+        "location": "BODY"
+      },
+      {
+        "name": "edit_prompt",
+        "type": "string",
+        "description": "Edit instruction for preserving the swapped face identity. Default: 人脸保持不变.",
+        "location": "BODY",
+        "default_value": "人脸保持不变"
+      },
+      {
+        "name": "model_id",
+        "type": "string",
+        "description": "Animate head swap model id. Default: animate-head-swap-default.",
+        "location": "BODY",
+        "default_value": "animate-head-swap-default"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "description": "Optional task title.",
+        "location": "BODY"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "response code enums:\\\n.. 0: ok\\\n.. 12: invalid input\\\n.. 1410: invalid model\\\n.. 1409: paid plan required\\\n.. 1401: insufficient credits\\\n.... 1401 ~ 1499 是 media\\\n.. 1404: provider error\\\n.. 1405: provider timeout\\\n.. 13: unauthenticated\\\n.. 16: rate limit\\\n.. 99: server error",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "1410",
+          "1409",
+          "1401",
+          "1404",
+          "1405",
+          "13",
+          "16",
+          "99"
+        ]
+      },
+      {
+        "name": "data.asset",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.paid_plan_required",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "invalid model",
+          "paid plan required",
+          "insufficient credits",
+          "provider error",
+          "provider timeout",
+          "unauthenticated",
+          "rate limit",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/process/video/animate_head_swap \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"edit_prompt\":\"人脸保持不变\",\"face_image_file_id\":\"FILE_ID\",\"height\":832,\"input_video_file_id\":\"FILE_ID\",\"model_id\":\"animate-head-swap-default\",\"positive_prompt\":\"一个角色在说话\",\"width\":480}'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/process/video/animate_head_swap \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"edit_prompt\":\"人脸保持不变\",\"face_image_file_id\":\"FILE_ID\",\"height\":832,\"input_video_file_id\":\"FILE_ID\",\"model_id\":\"animate-head-swap-default\",\"positive_prompt\":\"一个角色在说话\",\"width\":480}'"
+  },
+  "related_links": [
+    {
+      "title": "Sync Task",
+      "kind": "API_REFERENCE_LINK",
+      "description": "Refresh task state from the upstream provider.",
+      "module": "infra",
+      "endpoint_slug": "sync-task"
+    }
+  ],
+  "mcp_tool": {
+    "title": "Video Head Swap",
+    "summary": "Animate a swapped face image with a driving video to produce a head swap video.",
+    "capability_id": "animate_head_swap",
+    "mcp_tool_id": "medux_animate_head_swap",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
+    "invocation_example": "Animate a swapped face image with a driving video to produce a head swap video."
+  },
+  "source_url": "https://medux.io/api-reference/ai-avatar/video-head-swap"
+}

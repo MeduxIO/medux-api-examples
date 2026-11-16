@@ -1,16 +1,8 @@
 [
   {
-    "module": "get-started",
-    "slug": "create-upload-url",
-    "title": "Create Upload URL",
-    "method": "POST",
-    "path": "/api/app/v1/upload_urls",
-    "source_url": "https://medux.io/api-reference/get-started/create-upload-url"
-  },
-  {
     "module": "clone",
     "slug": "create-avatar-by-image",
-    "title": "Create Avatar by Image",
+    "title": "Clone Avatar by Image",
     "method": "POST",
     "path": "/api/app/v1/clone/avatar/by_image",
     "source_url": "https://medux.io/api-reference/clone/create-avatar-by-image"
@@ -18,15 +10,343 @@
   {
     "module": "clone",
     "slug": "create-avatar-by-video",
-    "title": "Create Avatar by Video",
+    "title": "Clone Avatar by Video",
     "method": "POST",
     "path": "/api/app/v1/clone/avatar/by_video",
     "source_url": "https://medux.io/api-reference/clone/create-avatar-by-video"
   },
   {
     "module": "clone",
+    "slug": "list-avatars",
+    "title": "List Avatars",
+    "method": "GET",
+    "path": "/api/app/v1/clone/avatars",
+    "source_url": "https://medux.io/api-reference/clone/list-avatars"
+  },
+  {
+    "module": "generate",
+    "slug": "create-audio-driven-video",
+    "title": "Audio Driven Video",
+    "method": "POST",
+    "path": "/api/app/v1/generate/video/audio_driven",
+    "source_url": "https://medux.io/api-reference/generate/create-audio-driven-video"
+  },
+  {
+    "module": "generate",
+    "slug": "create-text-driven-video",
+    "title": "Text Driven Video",
+    "method": "POST",
+    "path": "/api/app/v1/generate/video/text_driven",
+    "source_url": "https://medux.io/api-reference/generate/create-text-driven-video"
+  },
+  {
+    "module": "ai-avatar",
+    "slug": "face-swap",
+    "title": "Image Face Swap",
+    "method": "POST",
+    "path": "/api/app/v1/process/image/face_swap",
+    "source_url": "https://medux.io/api-reference/ai-avatar/face-swap"
+  },
+  {
+    "module": "ai-avatar",
+    "slug": "head-swap",
+    "title": "Image Head Swap",
+    "method": "POST",
+    "path": "/api/app/v1/process/image/head_swap",
+    "source_url": "https://medux.io/api-reference/ai-avatar/head-swap"
+  },
+  {
+    "module": "ai-avatar",
+    "slug": "image-audio-driven-video",
+    "title": "Image & Audio Driven Video",
+    "method": "POST",
+    "path": "/api/app/v1/generate/video/image_audio_driven",
+    "source_url": "https://medux.io/api-reference/ai-avatar/image-audio-driven-video"
+  },
+  {
+    "module": "ai-avatar",
+    "slug": "outfit-swap",
+    "title": "Image Outfit Swap",
+    "method": "POST",
+    "path": "/api/app/v1/process/image/outfit_swap",
+    "source_url": "https://medux.io/api-reference/ai-avatar/outfit-swap"
+  },
+  {
+    "module": "ai-avatar",
+    "slug": "character-replacement",
+    "title": "Video Character Replacement",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/character_replacement",
+    "source_url": "https://medux.io/api-reference/ai-avatar/character-replacement"
+  },
+  {
+    "module": "ai-avatar",
+    "slug": "video-head-swap",
+    "title": "Video Head Swap",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/animate_head_swap",
+    "source_url": "https://medux.io/api-reference/ai-avatar/video-head-swap"
+  },
+  {
+    "module": "ai-avatar",
+    "slug": "face-swap-plus",
+    "title": "Video Face Swap Plus",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/face_swap_plus",
+    "source_url": "https://medux.io/api-reference/ai-avatar/face-swap-plus"
+  },
+  {
+    "module": "ai-avatar",
+    "slug": "character-replacement-plus",
+    "title": "Video Character Replacement Plus",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/character_replacement_plus",
+    "source_url": "https://medux.io/api-reference/ai-avatar/character-replacement-plus"
+  },
+  {
+    "module": "generate",
+    "slug": "create-text-to-video",
+    "title": "Text to Video",
+    "method": "POST",
+    "path": "/api/app/v1/generate/video/text_to_video",
+    "source_url": "https://medux.io/api-reference/generate/create-text-to-video"
+  },
+  {
+    "module": "generate",
+    "slug": "create-image-to-video",
+    "title": "Image to Video",
+    "method": "POST",
+    "path": "/api/app/v1/generate/video/image_to_video",
+    "source_url": "https://medux.io/api-reference/generate/create-image-to-video"
+  },
+  {
+    "module": "generate",
+    "slug": "create-first-last-frame-to-video",
+    "title": "First and Last Frame to Video",
+    "method": "POST",
+    "path": "/api/app/v1/generate/video/first_last_frame_to_video",
+    "source_url": "https://medux.io/api-reference/generate/create-first-last-frame-to-video"
+  },
+  {
+    "module": "generate",
+    "slug": "create-omni-reference-to-video",
+    "title": "Omni Reference to Video",
+    "method": "POST",
+    "path": "/api/app/v1/generate/video/omni_reference_to_video",
+    "source_url": "https://medux.io/api-reference/generate/create-omni-reference-to-video"
+  },
+  {
+    "module": "process",
+    "slug": "create-video-subtitle-removal",
+    "title": "Subtitle Removal",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/subtitle_removal",
+    "source_url": "https://medux.io/api-reference/process/create-video-subtitle-removal"
+  },
+  {
+    "module": "process",
+    "slug": "create-video-background-removal",
+    "title": "Background Removal",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/background_removal",
+    "source_url": "https://medux.io/api-reference/process/create-video-background-removal"
+  },
+  {
+    "module": "video",
+    "slug": "mv-director",
+    "title": "MV Director",
+    "method": "POST",
+    "path": "/api/app/v1/generate/video/mv_director",
+    "source_url": "https://medux.io/api-reference/video/mv-director"
+  },
+  {
+    "module": "video",
+    "slug": "text-image-to-video",
+    "title": "Text & Image to Video",
+    "method": "POST",
+    "path": "/api/app/v1/generate/video/text_image_to_video",
+    "source_url": "https://medux.io/api-reference/video/text-image-to-video"
+  },
+  {
+    "module": "video",
+    "slug": "video-upscale",
+    "title": "Video Upscale",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/video_upscale",
+    "source_url": "https://medux.io/api-reference/video/video-upscale"
+  },
+  {
+    "module": "video",
+    "slug": "trim-video",
+    "title": "Trim Video",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/trim_video",
+    "source_url": "https://medux.io/api-reference/video/trim-video"
+  },
+  {
+    "module": "video",
+    "slug": "merge-video",
+    "title": "Merge Video",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/merge_video",
+    "source_url": "https://medux.io/api-reference/video/merge-video"
+  },
+  {
+    "module": "video",
+    "slug": "resize-video",
+    "title": "Resize Video",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/resize_video",
+    "source_url": "https://medux.io/api-reference/video/resize-video"
+  },
+  {
+    "module": "video",
+    "slug": "rotate-video",
+    "title": "Rotate Video",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/rotate_video",
+    "source_url": "https://medux.io/api-reference/video/rotate-video"
+  },
+  {
+    "module": "video",
+    "slug": "flip-video",
+    "title": "Flip Video",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/flip_video",
+    "source_url": "https://medux.io/api-reference/video/flip-video"
+  },
+  {
+    "module": "video",
+    "slug": "change-video-speed",
+    "title": "Change Video Speed",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/change_video_speed",
+    "source_url": "https://medux.io/api-reference/video/change-video-speed"
+  },
+  {
+    "module": "video",
+    "slug": "adjust-video-volume",
+    "title": "Adjust Video Volume",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/adjust_video_volume",
+    "source_url": "https://medux.io/api-reference/video/adjust-video-volume"
+  },
+  {
+    "module": "video",
+    "slug": "add-audio-to-video",
+    "title": "Add Audio to Video",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/add_audio_to_video",
+    "source_url": "https://medux.io/api-reference/video/add-audio-to-video"
+  },
+  {
+    "module": "video",
+    "slug": "add-logo-to-video",
+    "title": "Add Logo to Video",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/add_logo_to_video",
+    "source_url": "https://medux.io/api-reference/video/add-logo-to-video"
+  },
+  {
+    "module": "video",
+    "slug": "video-face-swap",
+    "title": "Video Face Swap",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/face_swap",
+    "source_url": "https://medux.io/api-reference/video/video-face-swap"
+  },
+  {
+    "module": "video",
+    "slug": "watermark-removal",
+    "title": "Watermark Removal",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/watermark_removal",
+    "source_url": "https://medux.io/api-reference/video/watermark-removal"
+  },
+  {
+    "module": "video",
+    "slug": "video-logo-removal",
+    "title": "Logo Removal",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/video_logo_removal",
+    "source_url": "https://medux.io/api-reference/video/video-logo-removal"
+  },
+  {
+    "module": "video",
+    "slug": "watermark-removal-by-prompt",
+    "title": "Watermark Removal By Prompt",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/watermark_removal_by_prompt",
+    "source_url": "https://medux.io/api-reference/video/watermark-removal-by-prompt"
+  },
+  {
+    "module": "video",
+    "slug": "split-video",
+    "title": "Split Video",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/split_video",
+    "source_url": "https://medux.io/api-reference/video/split-video"
+  },
+  {
+    "module": "video",
+    "slug": "remove-video-object",
+    "title": "Video Object Removal",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/object_removal",
+    "source_url": "https://medux.io/api-reference/video/remove-video-object"
+  },
+  {
+    "module": "video",
+    "slug": "remove-video-object-by-prompt",
+    "title": "Object Removal By Prompt",
+    "method": "POST",
+    "path": "/api/app/v1/process/video/object_removal_by_prompt",
+    "source_url": "https://medux.io/api-reference/video/remove-video-object-by-prompt"
+  },
+  {
+    "module": "generate",
+    "slug": "create-text-to-image",
+    "title": "Text to Image",
+    "method": "POST",
+    "path": "/api/app/v1/generate/image/text_to_image",
+    "source_url": "https://medux.io/api-reference/generate/create-text-to-image"
+  },
+  {
+    "module": "process",
+    "slug": "create-image-background-removal",
+    "title": "Background Removal",
+    "method": "POST",
+    "path": "/api/app/v1/process/image/background_removal",
+    "source_url": "https://medux.io/api-reference/process/create-image-background-removal"
+  },
+  {
+    "module": "image",
+    "slug": "text-to-image-turbo",
+    "title": "Text to Image Turbo",
+    "method": "POST",
+    "path": "/api/app/v1/generate/image/text_to_image_turbo",
+    "source_url": "https://medux.io/api-reference/image/text-to-image-turbo"
+  },
+  {
+    "module": "image",
+    "slug": "photo-repair",
+    "title": "Photo Repair",
+    "method": "POST",
+    "path": "/api/app/v1/process/image/photo_repair",
+    "source_url": "https://medux.io/api-reference/image/photo-repair"
+  },
+  {
+    "module": "image",
+    "slug": "image-edit-turbo",
+    "title": "Image Edit Turbo",
+    "method": "POST",
+    "path": "/api/app/v1/generate/image/image_edit_turbo",
+    "source_url": "https://medux.io/api-reference/image/image-edit-turbo"
+  },
+  {
+    "module": "clone",
     "slug": "create-voice",
-    "title": "Create Voice",
+    "title": "Clone Voice",
     "method": "POST",
     "path": "/api/app/v1/clone/voice",
     "source_url": "https://medux.io/api-reference/clone/create-voice"
@@ -41,30 +361,6 @@
   },
   {
     "module": "clone",
-    "slug": "get-avatar-task",
-    "title": "Get Avatar Task",
-    "method": "GET",
-    "path": "/api/app/v1/clone/avatar/tasks/{task_id}",
-    "source_url": "https://medux.io/api-reference/clone/get-avatar-task"
-  },
-  {
-    "module": "clone",
-    "slug": "get-voice-task",
-    "title": "Get Voice Task",
-    "method": "GET",
-    "path": "/api/app/v1/clone/voice/tasks/{task_id}",
-    "source_url": "https://medux.io/api-reference/clone/get-voice-task"
-  },
-  {
-    "module": "clone",
-    "slug": "list-avatars",
-    "title": "List Avatars",
-    "method": "GET",
-    "path": "/api/app/v1/clone/avatars",
-    "source_url": "https://medux.io/api-reference/clone/list-avatars"
-  },
-  {
-    "module": "clone",
     "slug": "list-voices",
     "title": "List Voices",
     "method": "GET",
@@ -74,74 +370,66 @@
   {
     "module": "generate",
     "slug": "create-audio",
-    "title": "Create Audio",
+    "title": "Text to Speech",
     "method": "POST",
     "path": "/api/app/v1/generate/audio",
     "source_url": "https://medux.io/api-reference/generate/create-audio"
   },
   {
-    "module": "generate",
-    "slug": "create-audio-driven-video",
-    "title": "Create Audio Driven Video",
+    "module": "voice-audio",
+    "slug": "trim-audio",
+    "title": "Trim Audio",
     "method": "POST",
-    "path": "/api/app/v1/generate/video/audio_driven",
-    "source_url": "https://medux.io/api-reference/generate/create-audio-driven-video"
+    "path": "/api/app/v1/process/audio/trim_audio",
+    "source_url": "https://medux.io/api-reference/voice-audio/trim-audio"
   },
   {
-    "module": "generate",
-    "slug": "create-image-to-video",
-    "title": "Create Image to Video",
+    "module": "voice-audio",
+    "slug": "merge-audio",
+    "title": "Merge Audio",
     "method": "POST",
-    "path": "/api/app/v1/generate/video/image_to_video",
-    "source_url": "https://medux.io/api-reference/generate/create-image-to-video"
+    "path": "/api/app/v1/process/audio/merge_audio",
+    "source_url": "https://medux.io/api-reference/voice-audio/merge-audio"
   },
   {
-    "module": "generate",
-    "slug": "create-text-driven-video",
-    "title": "Create Text Driven Video",
+    "module": "voice-audio",
+    "slug": "reverse-audio",
+    "title": "Reverse Audio",
     "method": "POST",
-    "path": "/api/app/v1/generate/video/text_driven",
-    "source_url": "https://medux.io/api-reference/generate/create-text-driven-video"
+    "path": "/api/app/v1/process/audio/reverse_audio",
+    "source_url": "https://medux.io/api-reference/voice-audio/reverse-audio"
   },
   {
-    "module": "generate",
-    "slug": "create-text-to-video",
-    "title": "Create Text to Video",
+    "module": "voice-audio",
+    "slug": "change-audio-speed",
+    "title": "Change Audio Speed",
     "method": "POST",
-    "path": "/api/app/v1/generate/video/text_to_video",
-    "source_url": "https://medux.io/api-reference/generate/create-text-to-video"
+    "path": "/api/app/v1/process/audio/change_audio_speed",
+    "source_url": "https://medux.io/api-reference/voice-audio/change-audio-speed"
   },
   {
-    "module": "generate",
-    "slug": "create-video-by-project",
-    "title": "Create Video by Project",
+    "module": "voice-audio",
+    "slug": "adjust-audio-volume",
+    "title": "Adjust Audio Volume",
     "method": "POST",
-    "path": "/api/app/v1/generate/video/by_project",
-    "source_url": "https://medux.io/api-reference/generate/create-video-by-project"
+    "path": "/api/app/v1/process/audio/adjust_audio_volume",
+    "source_url": "https://medux.io/api-reference/voice-audio/adjust-audio-volume"
   },
   {
-    "module": "generate",
-    "slug": "get-creation-task",
-    "title": "Get Creation Task",
-    "method": "GET",
-    "path": "/api/app/v1/generate/tasks/{task_id}",
-    "source_url": "https://medux.io/api-reference/generate/get-creation-task"
+    "module": "voice-audio",
+    "slug": "shift-audio-pitch",
+    "title": "Shift Audio Pitch",
+    "method": "POST",
+    "path": "/api/app/v1/process/audio/shift_audio_pitch",
+    "source_url": "https://medux.io/api-reference/voice-audio/shift-audio-pitch"
   },
   {
-    "module": "generate",
-    "slug": "text-to-image",
-    "title": "Create Text to Image",
+    "module": "get-started",
+    "slug": "create-upload-url",
+    "title": "Create Upload URL",
     "method": "POST",
-    "path": "/api/app/v1/generate/image/text_to_image",
-    "source_url": "https://medux.io/api-reference/generate/text-to-image"
-  },
-  {
-    "module": "generate",
-    "slug": "image-audio-driven-video",
-    "title": "Create Image Audio Driven Video",
-    "method": "POST",
-    "path": "/api/app/v1/generate/video/image_audio_driven",
-    "source_url": "https://medux.io/api-reference/generate/image-audio-driven-video"
+    "path": "/api/app/v1/upload_urls",
+    "source_url": "https://medux.io/api-reference/get-started/create-upload-url"
   },
   {
     "module": "infra",
@@ -150,14 +438,6 @@
     "method": "POST",
     "path": "/api/app/v1/assets",
     "source_url": "https://medux.io/api-reference/infra/create-asset"
-  },
-  {
-    "module": "infra",
-    "slug": "get-task",
-    "title": "Get Task",
-    "method": "GET",
-    "path": "/api/app/v1/tasks/{task_id}",
-    "source_url": "https://medux.io/api-reference/infra/get-task"
   },
   {
     "module": "infra",
@@ -177,6 +457,14 @@
   },
   {
     "module": "infra",
+    "slug": "get-task",
+    "title": "Get Task",
+    "method": "GET",
+    "path": "/api/app/v1/tasks/{task_id}",
+    "source_url": "https://medux.io/api-reference/infra/get-task"
+  },
+  {
+    "module": "infra",
     "slug": "list-tasks",
     "title": "List Tasks",
     "method": "GET",
@@ -190,246 +478,6 @@
     "method": "POST",
     "path": "/api/app/v1/tasks/{task_id}/sync",
     "source_url": "https://medux.io/api-reference/infra/sync-task"
-  },
-  {
-    "module": "process",
-    "slug": "create-image-background-removal",
-    "title": "Create Image Background Removal",
-    "method": "POST",
-    "path": "/api/app/v1/process/image/background_removal",
-    "source_url": "https://medux.io/api-reference/process/create-image-background-removal"
-  },
-  {
-    "module": "process",
-    "slug": "create-video-background-removal",
-    "title": "Create Video Background Removal",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/background_removal",
-    "source_url": "https://medux.io/api-reference/process/create-video-background-removal"
-  },
-  {
-    "module": "process",
-    "slug": "create-video-subtitle-removal",
-    "title": "Create Video Subtitle Removal",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/subtitle_removal",
-    "source_url": "https://medux.io/api-reference/process/create-video-subtitle-removal"
-  },
-  {
-    "module": "process",
-    "slug": "create-video-watermark-removal",
-    "title": "Create Video Watermark Removal",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/watermark_removal",
-    "source_url": "https://medux.io/api-reference/process/create-video-watermark-removal"
-  },
-  {
-    "module": "process",
-    "slug": "get-process-task",
-    "title": "Get Process Task",
-    "method": "GET",
-    "path": "/api/app/v1/process/tasks/{task_id}",
-    "source_url": "https://medux.io/api-reference/process/get-process-task"
-  },
-  {
-    "module": "process",
-    "slug": "video-logo-removal",
-    "title": "Create Video Logo Removal",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/video_logo_removal",
-    "source_url": "https://medux.io/api-reference/process/video-logo-removal"
-  },
-  {
-    "module": "edit",
-    "slug": "face-swap",
-    "title": "Image Face Swap",
-    "method": "POST",
-    "path": "/api/app/v1/process/image/face_swap",
-    "source_url": "https://medux.io/api-reference/edit/face-swap"
-  },
-  {
-    "module": "edit",
-    "slug": "head-swap",
-    "title": "Image Head Swap",
-    "method": "POST",
-    "path": "/api/app/v1/process/image/head_swap",
-    "source_url": "https://medux.io/api-reference/edit/head-swap"
-  },
-  {
-    "module": "edit",
-    "slug": "outfit-swap",
-    "title": "Image Outfit Swap",
-    "method": "POST",
-    "path": "/api/app/v1/process/image/outfit_swap",
-    "source_url": "https://medux.io/api-reference/edit/outfit-swap"
-  },
-  {
-    "module": "edit",
-    "slug": "character-replacement",
-    "title": "Video Character Replacement",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/character_replacement",
-    "source_url": "https://medux.io/api-reference/edit/character-replacement"
-  },
-  {
-    "module": "edit",
-    "slug": "remove-video-object",
-    "title": "Remove Video Object",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/remove_video_object",
-    "source_url": "https://medux.io/api-reference/edit/remove-video-object"
-  },
-  {
-    "module": "edit",
-    "slug": "photo-repair",
-    "title": "Photo Repair",
-    "method": "POST",
-    "path": "/api/app/v1/process/image/photo_repair",
-    "source_url": "https://medux.io/api-reference/edit/photo-repair"
-  },
-  {
-    "module": "edit",
-    "slug": "video-upscale",
-    "title": "Video Upscale",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/video_upscale",
-    "source_url": "https://medux.io/api-reference/edit/video-upscale"
-  },
-  {
-    "module": "edit",
-    "slug": "video-head-swap",
-    "title": "Video Head Swap",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/animate_head_swap",
-    "source_url": "https://medux.io/api-reference/edit/video-head-swap"
-  },
-  {
-    "module": "media",
-    "slug": "trim-video",
-    "title": "Trim Video",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/trim_video",
-    "source_url": "https://medux.io/api-reference/media/trim-video"
-  },
-  {
-    "module": "media",
-    "slug": "split-video",
-    "title": "Split Video",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/split_video",
-    "source_url": "https://medux.io/api-reference/media/split-video"
-  },
-  {
-    "module": "media",
-    "slug": "merge-video",
-    "title": "Merge Video",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/merge_video",
-    "source_url": "https://medux.io/api-reference/media/merge-video"
-  },
-  {
-    "module": "media",
-    "slug": "resize-video",
-    "title": "Resize Video",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/resize_video",
-    "source_url": "https://medux.io/api-reference/media/resize-video"
-  },
-  {
-    "module": "media",
-    "slug": "rotate-video",
-    "title": "Rotate Video",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/rotate_video",
-    "source_url": "https://medux.io/api-reference/media/rotate-video"
-  },
-  {
-    "module": "media",
-    "slug": "flip-video",
-    "title": "Flip Video",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/flip_video",
-    "source_url": "https://medux.io/api-reference/media/flip-video"
-  },
-  {
-    "module": "media",
-    "slug": "change-video-speed",
-    "title": "Change Video Speed",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/change_video_speed",
-    "source_url": "https://medux.io/api-reference/media/change-video-speed"
-  },
-  {
-    "module": "media",
-    "slug": "adjust-video-volume",
-    "title": "Adjust Video Volume",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/adjust_video_volume",
-    "source_url": "https://medux.io/api-reference/media/adjust-video-volume"
-  },
-  {
-    "module": "media",
-    "slug": "add-audio-to-video",
-    "title": "Add Audio to Video",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/add_audio_to_video",
-    "source_url": "https://medux.io/api-reference/media/add-audio-to-video"
-  },
-  {
-    "module": "media",
-    "slug": "add-logo-to-video",
-    "title": "Add Logo to Video",
-    "method": "POST",
-    "path": "/api/app/v1/process/video/add_logo_to_video",
-    "source_url": "https://medux.io/api-reference/media/add-logo-to-video"
-  },
-  {
-    "module": "media",
-    "slug": "trim-audio",
-    "title": "Trim Audio",
-    "method": "POST",
-    "path": "/api/app/v1/process/audio/trim_audio",
-    "source_url": "https://medux.io/api-reference/media/trim-audio"
-  },
-  {
-    "module": "media",
-    "slug": "merge-audio",
-    "title": "Merge Audio",
-    "method": "POST",
-    "path": "/api/app/v1/process/audio/merge_audio",
-    "source_url": "https://medux.io/api-reference/media/merge-audio"
-  },
-  {
-    "module": "media",
-    "slug": "reverse-audio",
-    "title": "Reverse Audio",
-    "method": "POST",
-    "path": "/api/app/v1/process/audio/reverse_audio",
-    "source_url": "https://medux.io/api-reference/media/reverse-audio"
-  },
-  {
-    "module": "media",
-    "slug": "change-audio-speed",
-    "title": "Change Audio Speed",
-    "method": "POST",
-    "path": "/api/app/v1/process/audio/change_audio_speed",
-    "source_url": "https://medux.io/api-reference/media/change-audio-speed"
-  },
-  {
-    "module": "media",
-    "slug": "adjust-audio-volume",
-    "title": "Adjust Audio Volume",
-    "method": "POST",
-    "path": "/api/app/v1/process/audio/adjust_audio_volume",
-    "source_url": "https://medux.io/api-reference/media/adjust-audio-volume"
-  },
-  {
-    "module": "media",
-    "slug": "shift-audio-pitch",
-    "title": "Shift Audio Pitch",
-    "method": "POST",
-    "path": "/api/app/v1/process/audio/shift_audio_pitch",
-    "source_url": "https://medux.io/api-reference/media/shift-audio-pitch"
   },
   {
     "module": "document",

@@ -1,0 +1,354 @@
+{
+  "meta": {
+    "page_type": "API_REFERENCE",
+    "title": "Logo Removal",
+    "summary": "Remove a logo from a video using one or more logo references and motion mode.",
+    "module": "video",
+    "endpoint_slug": "video-logo-removal",
+    "tags": [
+      "Video",
+      "Video"
+    ]
+  },
+  "endpoint_items": [
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Text to Video",
+      "slug": "create-text-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-text-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Image to Video",
+      "slug": "create-image-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-image-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "First and Last Frame to Video",
+      "slug": "create-first-last-frame-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-first-last-frame-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Omni Reference to Video",
+      "slug": "create-omni-reference-to-video",
+      "module": "generate",
+      "endpoint_slug": "create-omni-reference-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Subtitle Removal",
+      "slug": "create-video-subtitle-removal",
+      "module": "process",
+      "endpoint_slug": "create-video-subtitle-removal"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Background Removal",
+      "slug": "create-video-background-removal",
+      "module": "process",
+      "endpoint_slug": "create-video-background-removal"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "MV Director",
+      "slug": "mv-director",
+      "module": "video",
+      "endpoint_slug": "mv-director"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Text & Image to Video",
+      "slug": "text-image-to-video",
+      "module": "video",
+      "endpoint_slug": "text-image-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Video Upscale",
+      "slug": "video-upscale",
+      "module": "video",
+      "endpoint_slug": "video-upscale"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Trim Video",
+      "slug": "trim-video",
+      "module": "video",
+      "endpoint_slug": "trim-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Merge Video",
+      "slug": "merge-video",
+      "module": "video",
+      "endpoint_slug": "merge-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Resize Video",
+      "slug": "resize-video",
+      "module": "video",
+      "endpoint_slug": "resize-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Rotate Video",
+      "slug": "rotate-video",
+      "module": "video",
+      "endpoint_slug": "rotate-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Flip Video",
+      "slug": "flip-video",
+      "module": "video",
+      "endpoint_slug": "flip-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Change Video Speed",
+      "slug": "change-video-speed",
+      "module": "video",
+      "endpoint_slug": "change-video-speed"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Adjust Video Volume",
+      "slug": "adjust-video-volume",
+      "module": "video",
+      "endpoint_slug": "adjust-video-volume"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Add Audio to Video",
+      "slug": "add-audio-to-video",
+      "module": "video",
+      "endpoint_slug": "add-audio-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Add Logo to Video",
+      "slug": "add-logo-to-video",
+      "module": "video",
+      "endpoint_slug": "add-logo-to-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Video Face Swap",
+      "slug": "video-face-swap",
+      "module": "video",
+      "endpoint_slug": "video-face-swap"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Watermark Removal",
+      "slug": "watermark-removal",
+      "module": "video",
+      "endpoint_slug": "watermark-removal"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Logo Removal",
+      "slug": "video-logo-removal",
+      "module": "video",
+      "endpoint_slug": "video-logo-removal"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Watermark Removal By Prompt",
+      "slug": "watermark-removal-by-prompt",
+      "module": "video",
+      "endpoint_slug": "watermark-removal-by-prompt"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Split Video",
+      "slug": "split-video",
+      "module": "video",
+      "endpoint_slug": "split-video"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Video Object Removal",
+      "slug": "remove-video-object",
+      "module": "video",
+      "endpoint_slug": "remove-video-object"
+    },
+    {
+      "page_type": "API_REFERENCE",
+      "title": "Object Removal By Prompt",
+      "slug": "remove-video-object-by-prompt",
+      "module": "video",
+      "endpoint_slug": "remove-video-object-by-prompt"
+    }
+  ],
+  "hero": {
+    "title": "Logo Removal",
+    "summary": "Remove a logo from a video using one or more logo references and motion mode."
+  },
+  "endpoint_summary": {
+    "method": "POST",
+    "path": "/api/app/v1/process/video/video_logo_removal",
+    "summary": "Remove a logo from a video using one or more logo references and motion mode."
+  },
+  "auth_requirements": {
+    "title": "Auth Requirements",
+    "items": [
+      "Authentication is required via Authorization header."
+    ]
+  },
+  "preconditions": {
+    "title": "Preconditions",
+    "items": [
+      "Upload the source file and create a file reference before calling this endpoint.",
+      "Successful requests return a Medux task record immediately. Use the task query or sync endpoints to track completion.",
+      "All file inputs must be uploaded and persisted as file references before submission."
+    ]
+  },
+  "request_section": {
+    "title": "Request",
+    "fields": [
+      {
+        "name": "Authorization",
+        "type": "string",
+        "required": true,
+        "description": "Bearer token or API key.",
+        "location": "HEADER"
+      },
+      {
+        "name": "input_video_file_id",
+        "type": "string",
+        "required": true,
+        "description": "Input video file_id.",
+        "location": "BODY"
+      },
+      {
+        "name": "logo_file_id",
+        "type": "array<string>",
+        "description": "One logo image file_id or a list of logo image file_ids used to build the logo mask session.",
+        "location": "BODY"
+      },
+      {
+        "name": "video_size",
+        "type": "object",
+        "description": "Optional original video size hint as [width, height].",
+        "location": "BODY"
+      },
+      {
+        "name": "logo_type",
+        "type": "string",
+        "description": "Logo motion mode for mask generation. Default: default.",
+        "location": "BODY",
+        "enum_values": [
+          "default",
+          "tiktok",
+          "heygen",
+          "veo",
+          "keling",
+          "instagram",
+          "luma",
+          "pika",
+          "snapchat",
+          "pixverse"
+        ],
+        "default_value": "default"
+      },
+      {
+        "name": "model_id",
+        "type": "string",
+        "description": "Video logo removal model id. Default: video-logo-removal-default.",
+        "location": "BODY",
+        "default_value": "video-logo-removal-default"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "description": "Optional task title.",
+        "location": "BODY"
+      }
+    ]
+  },
+  "response_section": {
+    "title": "Response",
+    "fields": [
+      {
+        "name": "code",
+        "type": "int32",
+        "description": "response code enums:\\\n.. 0: ok\\\n.. 12: invalid input\\\n.. 1410: invalid model\\\n.. 1409: paid plan required\\\n.. 1401: insufficient credits\\\n.... 1401 ~ 1499 是 media\\\n.. 1404: provider error\\\n.. 1405: provider timeout\\\n.. 13: unauthenticated\\\n.. 16: rate limit\\\n.. 99: server error",
+        "location": "RESPONSE",
+        "enum_values": [
+          "0",
+          "12",
+          "1410",
+          "1409",
+          "1401",
+          "1404",
+          "1405",
+          "13",
+          "16",
+          "99"
+        ]
+      },
+      {
+        "name": "data.asset",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.paid_plan_required",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "data.task",
+        "type": "object",
+        "location": "RESPONSE"
+      },
+      {
+        "name": "message",
+        "type": "string",
+        "location": "RESPONSE",
+        "enum_values": [
+          "ok",
+          "invalid input",
+          "invalid model",
+          "paid plan required",
+          "insufficient credits",
+          "provider error",
+          "provider timeout",
+          "unauthenticated",
+          "rate limit",
+          "server error"
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "title": "Examples",
+    "request_example": "curl -X POST https://api.medux.io/api/app/v1/process/video/video_logo_removal \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"input_video_file_id\":\"FILE_ID\",\"logo_type\":\"default\",\"model_id\":\"video-logo-removal-default\"}'",
+    "curl_command": "curl -X POST https://api.medux.io/api/app/v1/process/video/video_logo_removal \\\n  -H 'Authorization: Bearer $MEDUX_API_KEY' \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"input_video_file_id\":\"FILE_ID\",\"logo_type\":\"default\",\"model_id\":\"video-logo-removal-default\"}'"
+  },
+  "related_links": [
+    {
+      "title": "Sync Task",
+      "kind": "API_REFERENCE_LINK",
+      "description": "Refresh task state from the upstream provider.",
+      "module": "infra",
+      "endpoint_slug": "sync-task"
+    }
+  ],
+  "mcp_tool": {
+    "title": "Logo Removal",
+    "summary": "Remove a logo from a video using one or more logo references and motion mode.",
+    "capability_id": "video_logo_removal",
+    "mcp_tool_id": "medux_video_logo_removal",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
+    "invocation_example": "Remove a logo from a video using one or more logo references and motion mode."
+  },
+  "source_url": "https://medux.io/api-reference/video/video-logo-removal"
+}

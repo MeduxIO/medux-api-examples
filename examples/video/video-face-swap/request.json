@@ -1,0 +1,5 @@
+{
+  "input_video_file_id": "FILE_ID",
+  "model_id": "video-face-swap-default",
+  "source_image_file_id": "FILE_ID"
+}

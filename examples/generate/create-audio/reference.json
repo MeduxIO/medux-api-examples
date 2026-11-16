@@ -1,8 +1,8 @@
 {
   "meta": {
     "page_type": "API_REFERENCE",
-    "title": "Create Audio",
-    "summary": "Generate speech audio from text with a reusable voice asset.",
+    "title": "Text to Speech",
+    "summary": "Convert text with a reusable voice into AI speech audio. Returns an asynchronous text-to-speech task and audio URL for voiceovers, narration, accessibility, and talking-avatar workflows.",
     "module": "generate",
     "endpoint_slug": "create-audio",
     "tags": [
@@ -10,79 +10,14 @@
       "Speech"
     ]
   },
-  "endpoint_items": [
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Audio",
-      "slug": "create-audio",
-      "module": "generate",
-      "endpoint_slug": "create-audio"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Audio Driven Video",
-      "slug": "create-audio-driven-video",
-      "module": "generate",
-      "endpoint_slug": "create-audio-driven-video"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Image to Video",
-      "slug": "create-image-to-video",
-      "module": "generate",
-      "endpoint_slug": "create-image-to-video"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Text Driven Video",
-      "slug": "create-text-driven-video",
-      "module": "generate",
-      "endpoint_slug": "create-text-driven-video"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Text to Video",
-      "slug": "create-text-to-video",
-      "module": "generate",
-      "endpoint_slug": "create-text-to-video"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Video by Project",
-      "slug": "create-video-by-project",
-      "module": "generate",
-      "endpoint_slug": "create-video-by-project"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Get Creation Task",
-      "slug": "get-creation-task",
-      "module": "generate",
-      "endpoint_slug": "get-creation-task"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Text to Image",
-      "slug": "text-to-image",
-      "module": "generate",
-      "endpoint_slug": "text-to-image"
-    },
-    {
-      "page_type": "API_REFERENCE",
-      "title": "Create Image Audio Driven Video",
-      "slug": "image-audio-driven-video",
-      "module": "generate",
-      "endpoint_slug": "image-audio-driven-video"
-    }
-  ],
   "hero": {
-    "title": "Create Audio",
-    "summary": "Generate speech audio from text with a reusable voice asset."
+    "title": "Text to Speech",
+    "summary": "Convert text with a reusable voice into AI speech audio. Returns an asynchronous text-to-speech task and audio URL for voiceovers, narration, accessibility, and talking-avatar workflows."
   },
   "endpoint_summary": {
     "method": "POST",
     "path": "/api/app/v1/generate/audio",
-    "summary": "Generate speech audio from text using a reusable voice asset."
+    "summary": "Create speech audio from text and a reusable voice asset."
   },
   "auth_requirements": {
     "title": "Auth Requirements",
@@ -111,13 +46,13 @@
       {
         "name": "links",
         "type": "array<string>",
-        "description": "Optional reference links submitted from the Playground form.",
+        "description": "Optional reference links collected from the Playground form.",
         "location": "BODY"
       },
       {
         "name": "model",
         "type": "string",
-        "description": "Generation model label or version selected in the Playground form.",
+        "description": "Selected generation model label or version from the Playground form.",
         "location": "BODY"
       },
       {
@@ -140,7 +75,7 @@
         "name": "voice_asset_id",
         "type": "string",
         "required": true,
-        "description": "Reusable voice asset used for text-to-speech generation.",
+        "description": "Reusable voice asset ID owned by the current user or listed as an official public asset.",
         "location": "BODY"
       }
     ]
@@ -151,7 +86,7 @@
       {
         "name": "code",
         "type": "int32",
-        "description": "Application response code.\n\n| Code | Meaning |\n| ---- | ------- |\n| `0` | OK |\n| `12` | Invalid input |\n| `1401` | Insufficient credits |\n| `1402` | Asset category does not match this operation |\n| `1403` | Voice asset is required |\n| `1404` | Provider returned an error |\n| `1405` | Provider request timed out |\n| `13` | Authentication is required |\n| `16` | Rate limit exceeded |\n| `99` | Server error |",
+        "description": "response code enums:\\\n.. 0: ok\\\n.. 12: invalid input\\\n.. 1410: invalid model\\\n.. 1409: paid plan required\\\n.. 1401: insufficient credits\\\n.... 1401 ~ 1499 是 media\\\n.. 1402: asset category mismatch\\\n.. 1403: voice asset required\\\n.. 1407: asset locked\\\n.. 1408: asset expired\\\n.. 1404: provider error\\\n.. 1405: provider timeout\\\n.. 13: unauthenticated\\\n.. 16: rate limit\\\n.. 99: server error",
         "location": "RESPONSE",
         "enum_values": [
           "0",

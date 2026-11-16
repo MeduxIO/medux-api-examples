@@ -1,6 +1,6 @@
 # Sync Task
 
-Pull the latest provider-side task state into the local task record.
+Synchronize a Medux task with its upstream provider. Returns the latest status, progress, billing, errors, and result references for on-demand task refreshes.
 
 ## Endpoint
 
@@ -10,7 +10,7 @@ POST /api/app/v1/tasks/{task_id}/sync
 
 Base URL: `https://api.medux.io`
 
-Sync the task with the upstream provider and return the latest local state.
+Pull the latest provider-side state and return the synced local task.
 
 ## Authentication
 

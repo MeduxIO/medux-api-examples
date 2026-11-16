@@ -1,6 +1,6 @@
-# Create Audio
+# Text to Speech
 
-Generate speech audio from text with a reusable voice asset.
+Convert text with a reusable voice into AI speech audio. Returns an asynchronous text-to-speech task and audio URL for voiceovers, narration, accessibility, and talking-avatar workflows.
 
 ## Endpoint
 
@@ -10,7 +10,7 @@ POST /api/app/v1/generate/audio
 
 Base URL: `https://api.medux.io`
 
-Generate speech audio from text using a reusable voice asset.
+Create speech audio from text and a reusable voice asset.
 
 ## Authentication
 
@@ -35,12 +35,12 @@ Never commit a real key.
 | Field | Type | Requirement | Location | Description / options |
 | --- | --- | --- | --- | --- |
 | `Authorization` | `string` | Required | `HEADER` | Bearer token or API key. |
-| `links` | `array<string>` | Optional | `BODY` | Optional reference links submitted from the Playground form. |
-| `model` | `string` | Optional | `BODY` | Generation model label or version selected in the Playground form. |
+| `links` | `array<string>` | Optional | `BODY` | Optional reference links collected from the Playground form. |
+| `model` | `string` | Optional | `BODY` | Selected generation model label or version from the Playground form. |
 | `model_id` | `string` | Optional | `BODY` | Stable public Medux model identifier. |
 | `text` | `string` | Optional | `BODY` | Text content used to generate speech or media. |
 | `title` | `string` | Optional | `BODY` | Optional user-facing title for the task or generated asset. |
-| `voice_asset_id` | `string` | Required | `BODY` | Reusable voice asset used for text-to-speech generation. |
+| `voice_asset_id` | `string` | Required | `BODY` | Reusable voice asset ID owned by the current user or listed as an official public asset. |
 
 ## Environment variables used by the Python and JavaScript examples
 
@@ -97,7 +97,7 @@ See [`example.mjs`](./example.mjs).
 
 ### Response handling
 
-This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../generate/get-creation-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
+This response can include `data.task`. Persist the returned task ID and use the [relevant task-status endpoint](../../infra/get-task/) until the task reaches a terminal state. Do not treat HTTP 200 alone as proof that asynchronous media processing has completed.
 
 The response-field table above lists the `code` values this endpoint can return, each with its meaning. Handle the documented non-success messages explicitly: `invalid input`, `invalid model`, `paid plan required`, `insufficient credits`, `asset category mismatch`, `voice asset required`, `asset locked`, `asset expired`, `provider error`, `provider timeout`, `unauthenticated`, `rate limit`, `server error`. See [error-codes.md](../../../docs/error-codes.md) for the full catalog and retry guidance.
 
