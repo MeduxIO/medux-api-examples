@@ -77,6 +77,17 @@ def main() -> None:
         if node.returncode:
             failures.append(f"{target.relative_to(REPO)}/example.mjs: {node.stderr.strip()}")
 
+    legacy = json.loads((REPO / "legacy-paths.json").read_text(encoding="utf-8")) if (REPO / "legacy-paths.json").exists() else {}
+    for old, new in legacy.items():
+        stub = REPO / "examples" / old
+        if not (stub / "README.md").exists():
+            failures.append(f"legacy redirect missing: examples/{old}/README.md")
+        if not (REPO / "examples" / new).is_dir():
+            failures.append(f"legacy redirect target missing: examples/{new}")
+        if (stub.parent / stub.name).exists() and stub in expected_dirs:
+            failures.append(f"legacy path collides with a current example: examples/{old}")
+        expected_dirs.add(stub)
+
     actual_dirs = {path for path in (REPO / "examples").glob("*/*") if path.is_dir()}
     for extra in actual_dirs - expected_dirs:
         failures.append(f"unexpected example directory: {extra.relative_to(REPO)}")

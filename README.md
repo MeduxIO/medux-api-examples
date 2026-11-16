@@ -167,6 +167,46 @@ examples/<module>/<endpoint>/
 └── reference.json  # Structured endpoint reference
 ```
 
+## Moved examples
+
+Some examples moved when the official API Reference was reorganized. Each old path
+still contains a short README that points to the current page.
+
+| Old path | Current page |
+| --- | --- |
+| `examples/clone/get-avatar-task/` | [`examples/infra/get-task/`](./examples/infra/get-task/) |
+| `examples/clone/get-voice-task/` | [`examples/infra/get-task/`](./examples/infra/get-task/) |
+| `examples/edit/character-replacement/` | [`examples/ai-avatar/character-replacement/`](./examples/ai-avatar/character-replacement/) |
+| `examples/edit/face-swap/` | [`examples/ai-avatar/face-swap/`](./examples/ai-avatar/face-swap/) |
+| `examples/edit/head-swap/` | [`examples/ai-avatar/head-swap/`](./examples/ai-avatar/head-swap/) |
+| `examples/edit/outfit-swap/` | [`examples/ai-avatar/outfit-swap/`](./examples/ai-avatar/outfit-swap/) |
+| `examples/edit/photo-repair/` | [`examples/image/photo-repair/`](./examples/image/photo-repair/) |
+| `examples/edit/remove-video-object/` | [`examples/video/remove-video-object/`](./examples/video/remove-video-object/) |
+| `examples/edit/video-head-swap/` | [`examples/ai-avatar/video-head-swap/`](./examples/ai-avatar/video-head-swap/) |
+| `examples/edit/video-upscale/` | [`examples/video/video-upscale/`](./examples/video/video-upscale/) |
+| `examples/generate/create-video-by-project/` | [`examples/generate/`](./examples/generate/) |
+| `examples/generate/get-creation-task/` | [`examples/infra/get-task/`](./examples/infra/get-task/) |
+| `examples/generate/image-audio-driven-video/` | [`examples/ai-avatar/image-audio-driven-video/`](./examples/ai-avatar/image-audio-driven-video/) |
+| `examples/generate/text-to-image/` | [`examples/generate/create-text-to-image/`](./examples/generate/create-text-to-image/) |
+| `examples/media/add-audio-to-video/` | [`examples/video/add-audio-to-video/`](./examples/video/add-audio-to-video/) |
+| `examples/media/add-logo-to-video/` | [`examples/video/add-logo-to-video/`](./examples/video/add-logo-to-video/) |
+| `examples/media/adjust-audio-volume/` | [`examples/voice-audio/adjust-audio-volume/`](./examples/voice-audio/adjust-audio-volume/) |
+| `examples/media/adjust-video-volume/` | [`examples/video/adjust-video-volume/`](./examples/video/adjust-video-volume/) |
+| `examples/media/change-audio-speed/` | [`examples/voice-audio/change-audio-speed/`](./examples/voice-audio/change-audio-speed/) |
+| `examples/media/change-video-speed/` | [`examples/video/change-video-speed/`](./examples/video/change-video-speed/) |
+| `examples/media/flip-video/` | [`examples/video/flip-video/`](./examples/video/flip-video/) |
+| `examples/media/merge-audio/` | [`examples/voice-audio/merge-audio/`](./examples/voice-audio/merge-audio/) |
+| `examples/media/merge-video/` | [`examples/video/merge-video/`](./examples/video/merge-video/) |
+| `examples/media/resize-video/` | [`examples/video/resize-video/`](./examples/video/resize-video/) |
+| `examples/media/reverse-audio/` | [`examples/voice-audio/reverse-audio/`](./examples/voice-audio/reverse-audio/) |
+| `examples/media/rotate-video/` | [`examples/video/rotate-video/`](./examples/video/rotate-video/) |
+| `examples/media/shift-audio-pitch/` | [`examples/voice-audio/shift-audio-pitch/`](./examples/voice-audio/shift-audio-pitch/) |
+| `examples/media/split-video/` | [`examples/video/split-video/`](./examples/video/split-video/) |
+| `examples/media/trim-audio/` | [`examples/voice-audio/trim-audio/`](./examples/voice-audio/trim-audio/) |
+| `examples/media/trim-video/` | [`examples/video/trim-video/`](./examples/video/trim-video/) |
+| `examples/process/create-video-watermark-removal/` | [`examples/video/watermark-removal/`](./examples/video/watermark-removal/) |
+| `examples/process/get-process-task/` | [`examples/infra/get-task/`](./examples/infra/get-task/) |
+| `examples/process/video-logo-removal/` | [`examples/video/video-logo-removal/`](./examples/video/video-logo-removal/) |
 ## Refreshing from the official reference
 
 ```bash

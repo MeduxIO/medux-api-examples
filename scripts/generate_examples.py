@@ -73,6 +73,9 @@ FIELD_DESCRIPTIONS = {
 
 
 KNOWN_ENDPOINTS: set[tuple[str, str]] = set()
+# Old example path -> current path, from legacy-paths.json. Old paths keep a short
+# redirect README so existing links and search results do not dead-end.
+LEGACY_PATHS: dict[str, str] = {}
 
 
 def md(value: object) -> str:
@@ -527,6 +530,9 @@ def render_root(snapshot: dict) -> str:
             summary = page["endpoint_summary"]
             lines.append(f"| [{meta['title']}](./examples/{module}/{meta['endpoint_slug']}/) | `{summary['method']}` | `{summary['path']}` |")
         sections.append("\n".join(lines))
+    legacy_table = "\n".join(
+        f"| `examples/{old}/` | [`examples/{new}/`](./examples/{new}/) |" for old, new in sorted(LEGACY_PATHS.items())
+    )
     return f"""# Medux API Examples
 
 Complete API-first examples generated from the [official Medux API Reference](https://medux.io/api-reference/).
@@ -573,6 +579,14 @@ examples/<module>/<endpoint>/
 └── reference.json  # Structured endpoint reference
 ```
 
+## Moved examples
+
+Some examples moved when the official API Reference was reorganized. Each old path
+still contains a short README that points to the current page.
+
+| Old path | Current page |
+| --- | --- |
+{legacy_table}
 ## Refreshing from the official reference
 
 ```bash
@@ -611,6 +625,10 @@ def main() -> None:
         unavailable = json.loads(unavailable_file.read_text(encoding="utf-8"))
         UNAVAILABLE_PREVIEWS.update(unavailable.get("urls", []))
 
+    legacy_file = repo / "legacy-paths.json"
+    if legacy_file.exists():
+        LEGACY_PATHS.update(json.loads(legacy_file.read_text(encoding="utf-8")))
+
     # Related links that point at pages the site no longer publishes are dropped.
     KNOWN_ENDPOINTS.update((e["meta"]["module"], e["meta"]["endpoint_slug"]) for e in snapshot["endpoints"])
 
@@ -648,6 +666,17 @@ def main() -> None:
             }
         )
 
+    for old, new in LEGACY_PATHS.items():
+        stub = examples_root / old
+        stub.mkdir(parents=True, exist_ok=True)
+        relative = "../" * (old.count("/") + 1) + new + "/"
+        (stub / "README.md").write_text(
+            f"# Moved: `examples/{old}`\n\n"
+            "This example moved, or its page was replaced, when the official Medux API Reference was reorganized.\n\n"
+            f"Current page: [`examples/{new}/`]({relative})\n\n"
+            "See [Moved examples](../../../README.md#moved-examples) in the repository README for the full list.\n",
+            encoding="utf-8",
+        )
     (repo / "examples.json").write_text(json.dumps(index, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     (repo / "README.md").write_text(render_root(snapshot), encoding="utf-8")
     print(f"Generated {len(index)} API examples")
