@@ -76,6 +76,7 @@ KNOWN_ENDPOINTS: set[tuple[str, str]] = set()
 # Old example path -> current path, from legacy-paths.json. Old paths keep a short
 # redirect README so existing links and search results do not dead-end.
 LEGACY_PATHS: dict[str, str] = {}
+LEGACY_NOTES: dict[str, str] = {}
 
 
 def md(value: object) -> str:
@@ -625,6 +626,9 @@ def main() -> None:
         unavailable = json.loads(unavailable_file.read_text(encoding="utf-8"))
         UNAVAILABLE_PREVIEWS.update(unavailable.get("urls", []))
 
+    notes_file = repo / "legacy-notes.json"
+    if notes_file.exists():
+        LEGACY_NOTES.update(json.loads(notes_file.read_text(encoding="utf-8")))
     legacy_file = repo / "legacy-paths.json"
     if legacy_file.exists():
         LEGACY_PATHS.update(json.loads(legacy_file.read_text(encoding="utf-8")))
@@ -674,7 +678,8 @@ def main() -> None:
             f"# Moved: `examples/{old}`\n\n"
             "This example moved, or its page was replaced, when the official Medux API Reference was reorganized.\n\n"
             f"Current page: [`examples/{new}/`]({relative})\n\n"
-            "See [Moved examples](../../../README.md#moved-examples) in the repository README for the full list.\n",
+            + (f"> **Note:** {LEGACY_NOTES[old]}\n\n" if old in LEGACY_NOTES else "")
+            + "See [Moved examples](../../../README.md#moved-examples) in the repository README for the full list.\n",
             encoding="utf-8",
         )
     (repo / "examples.json").write_text(json.dumps(index, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")

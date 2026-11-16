@@ -1,0 +1,3 @@
+{
+  "edit/remove-video-object": "The REST endpoint path also changed: `POST /api/app/v1/process/video/remove_video_object` is now `POST /api/app/v1/process/video/object_removal`. Update any client that still calls the old path."
+}
