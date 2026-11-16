@@ -272,7 +272,7 @@
     "summary": "Convert an Excel (.xlsx) file to PDF.",
     "capability_id": "excel_to_pdf",
     "mcp_tool_id": "medux_excel_to_pdf",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Convert an Excel (.xlsx) file to PDF."
   },
   "source_url": "https://medux.io/api-reference/document/excel-to-pdf"

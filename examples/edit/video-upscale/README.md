@@ -105,7 +105,7 @@ No official media sample is currently documented for this endpoint.
 
 The same capability is optionally available through Medux MCP.
 
-- MCP endpoint: `https://mcp.medux.io/api/mcp/v1`
+- MCP endpoint: `https://medux.io/mcp`
 - Tool: `medux_video_upscale`
 - Result type: `—`
 

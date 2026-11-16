@@ -286,7 +286,7 @@
     "summary": "Reverse an audio file.",
     "capability_id": "reverse_audio",
     "mcp_tool_id": "medux_reverse_audio",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Reverse an audio file."
   },
   "source_url": "https://medux.io/api-reference/media/reverse-audio"

@@ -297,7 +297,7 @@
     "summary": "Replace or add an audio track to a video.",
     "capability_id": "add_audio_to_video",
     "mcp_tool_id": "medux_add_audio_to_video",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Replace or add an audio track to a video."
   },
   "source_url": "https://medux.io/api-reference/media/add-audio-to-video"

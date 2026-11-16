@@ -331,7 +331,7 @@
     "summary": "Overlay a logo image onto a video.",
     "capability_id": "add_logo_to_video",
     "mcp_tool_id": "medux_add_logo_to_video",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Overlay a logo image onto a video."
   },
   "source_url": "https://medux.io/api-reference/media/add-logo-to-video"

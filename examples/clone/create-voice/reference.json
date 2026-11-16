@@ -234,7 +234,7 @@
     "summary": "Clone a reusable voice from an uploaded audio file.",
     "capability_id": "clone.voice",
     "mcp_tool_id": "medux_clone_voice",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Clone a reusable voice from an uploaded audio asset and return the queued task id.",
     "prompt_samples": [
       {

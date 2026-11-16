@@ -297,7 +297,7 @@
     "summary": "Split a video into multiple segments by time range.",
     "capability_id": "split_video",
     "mcp_tool_id": "medux_split_video",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Split a video into multiple segments by time range."
   },
   "source_url": "https://medux.io/api-reference/media/split-video"

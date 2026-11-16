@@ -297,7 +297,7 @@
     "summary": "Speed up or slow down a video.",
     "capability_id": "change_video_speed",
     "mcp_tool_id": "medux_change_video_speed",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Speed up or slow down a video."
   },
   "source_url": "https://medux.io/api-reference/media/change-video-speed"

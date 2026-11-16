@@ -232,7 +232,7 @@
     "summary": "Generate a talking video from a reference image, driving audio, and prompt text.",
     "capability_id": "image_audio_driven_video",
     "mcp_tool_id": "medux_image_audio_driven_video",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Generate a talking video from a reference image, driving audio, and prompt text."
   },
   "source_url": "https://medux.io/api-reference/generate/image-audio-driven-video"

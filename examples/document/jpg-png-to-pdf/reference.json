@@ -272,7 +272,7 @@
     "summary": "Convert JPG or PNG images into a PDF.",
     "capability_id": "jpg_png_to_pdf",
     "mcp_tool_id": "medux_jpg_png_to_pdf",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Convert JPG or PNG images into a PDF."
   },
   "source_url": "https://medux.io/api-reference/document/jpg-png-to-pdf"

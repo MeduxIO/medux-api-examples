@@ -238,7 +238,7 @@
     "summary": "Animate a swapped face image with a driving video to produce a head swap video.",
     "capability_id": "animate_head_swap",
     "mcp_tool_id": "medux_animate_head_swap",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Animate a swapped face image with a driving video to produce a head swap video."
   },
   "source_url": "https://medux.io/api-reference/edit/video-head-swap"

@@ -276,7 +276,7 @@
     "summary": "Generate a video from a source image and text prompt. Default model wan-2-6-image-to-video requires Starter or higher and bills per generated video second.",
     "capability_id": "generate.video.image_to_video",
     "mcp_tool_id": "medux_video_generate_image_to_video",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Generate a video from an uploaded image and text prompt.",
     "prompt_samples": [
       {

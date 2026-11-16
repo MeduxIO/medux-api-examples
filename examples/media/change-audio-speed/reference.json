@@ -297,7 +297,7 @@
     "summary": "Speed up or slow down an audio file.",
     "capability_id": "change_audio_speed",
     "mcp_tool_id": "medux_change_audio_speed",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Speed up or slow down an audio file."
   },
   "source_url": "https://medux.io/api-reference/media/change-audio-speed"

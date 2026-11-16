@@ -238,7 +238,7 @@
     "summary": "Remove the background from an uploaded image file.",
     "capability_id": "process.image.background_removal",
     "mcp_tool_id": "medux_image_remove_background",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Remove the background from an uploaded image asset and return the processing task id.",
     "prompt_samples": [
       {

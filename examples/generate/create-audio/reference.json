@@ -270,7 +270,7 @@
     "summary": "Create speech audio from text and an optional reusable voice asset.",
     "capability_id": "generate.audio",
     "mcp_tool_id": "medux_speech_create_audio",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Generate speech audio from text with an optional reusable voice asset.",
     "prompt_samples": [
       {

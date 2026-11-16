@@ -243,7 +243,7 @@
     "summary": "Clone a reusable avatar from a portrait image file.",
     "capability_id": "clone.avatar.by_image",
     "mcp_tool_id": "medux_avatar_clone_by_image",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Clone a reusable avatar from a portrait image asset and return the queued task id.",
     "prompt_samples": [
       {

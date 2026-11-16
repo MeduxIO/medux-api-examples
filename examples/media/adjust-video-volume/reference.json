@@ -297,7 +297,7 @@
     "summary": "Adjust the audio volume of a video.",
     "capability_id": "adjust_video_volume",
     "mcp_tool_id": "medux_adjust_video_volume",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Adjust the audio volume of a video."
   },
   "source_url": "https://medux.io/api-reference/media/adjust-video-volume"

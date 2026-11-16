@@ -308,7 +308,7 @@
     "summary": "Resize a video to a target resolution.",
     "capability_id": "resize_video",
     "mcp_tool_id": "medux_resize_video",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Resize a video to a target resolution."
   },
   "source_url": "https://medux.io/api-reference/media/resize-video"

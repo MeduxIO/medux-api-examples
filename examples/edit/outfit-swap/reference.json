@@ -241,7 +241,7 @@
     "summary": "Transfer the outfit from the reference image onto the target subject.",
     "capability_id": "image_outfit_swap",
     "mcp_tool_id": "medux_image_outfit_swap",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Transfer the outfit from the reference image onto the target subject."
   },
   "source_url": "https://medux.io/api-reference/edit/outfit-swap"

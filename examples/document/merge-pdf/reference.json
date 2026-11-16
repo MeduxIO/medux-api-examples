@@ -272,7 +272,7 @@
     "summary": "Merge multiple PDF files into a single PDF output.",
     "capability_id": "merge_pdf",
     "mcp_tool_id": "medux_merge_pdf",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Merge multiple PDF files into a single PDF output."
   },
   "source_url": "https://medux.io/api-reference/document/merge-pdf"

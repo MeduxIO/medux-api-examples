@@ -204,7 +204,7 @@
     "summary": "Upscale a video to a higher resolution.",
     "capability_id": "video_upscale",
     "mcp_tool_id": "medux_video_upscale",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Upscale a video to a higher resolution."
   },
   "source_url": "https://medux.io/api-reference/edit/video-upscale"

@@ -272,7 +272,7 @@
     "summary": "Generate an image from a text prompt.",
     "capability_id": "text_to_image",
     "mcp_tool_id": "medux_text_to_image",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Generate an image from a text prompt."
   },
   "source_url": "https://medux.io/api-reference/generate/text-to-image"

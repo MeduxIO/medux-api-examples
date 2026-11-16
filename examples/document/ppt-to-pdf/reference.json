@@ -272,7 +272,7 @@
     "summary": "Convert a PowerPoint (.pptx) file to PDF.",
     "capability_id": "ppt_to_pdf",
     "mcp_tool_id": "medux_ppt_to_pdf",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Convert a PowerPoint (.pptx) file to PDF."
   },
   "source_url": "https://medux.io/api-reference/document/ppt-to-pdf"

@@ -366,7 +366,7 @@ Example prompt:
 ```"""
     return f"""The same capability is optionally available through Medux MCP.
 
-- MCP endpoint: `{tool.get('remote_mcp_endpoint', '—')}`
+- MCP endpoint: `https://medux.io/mcp`
 - Tool: `{tool.get('mcp_tool_id', '—')}`
 - Result type: `{samples[0].get('expected_result_type', '—') if samples else '—'}`{prompt}
 """
@@ -551,7 +551,7 @@ per-endpoint pages assume.
 ## Quick start
 
 ```bash
-git clone https://github.com/MeduxAI/medux-api-examples.git
+git clone https://github.com/MeduxIO/medux-api-examples.git
 cd medux-api-examples
 cp .env.example .env            # then edit .env with your key
 export MEDUX_API_KEY="your_api_key"

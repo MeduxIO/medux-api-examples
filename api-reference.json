@@ -911,7 +911,7 @@
         "summary": "Clone a reusable avatar from a portrait image file.",
         "capability_id": "clone.avatar.by_image",
         "mcp_tool_id": "medux_avatar_clone_by_image",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Clone a reusable avatar from a portrait image asset and return the queued task id.",
         "prompt_samples": [
           {
@@ -1184,7 +1184,7 @@
         "summary": "Clone a reusable avatar from a source video file.",
         "capability_id": "clone.avatar.by_video",
         "mcp_tool_id": "medux_avatar_clone_by_video",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Clone a reusable avatar from a source video asset and return the queued task id.",
         "prompt_samples": [
           {
@@ -1448,7 +1448,7 @@
         "summary": "Clone a reusable voice from an uploaded audio file.",
         "capability_id": "clone.voice",
         "mcp_tool_id": "medux_clone_voice",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Clone a reusable voice from an uploaded audio asset and return the queued task id.",
         "prompt_samples": [
           {
@@ -2562,7 +2562,7 @@
         "summary": "Create speech audio from text and an optional reusable voice asset.",
         "capability_id": "generate.audio",
         "mcp_tool_id": "medux_speech_create_audio",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Generate speech audio from text with an optional reusable voice asset.",
         "prompt_samples": [
           {
@@ -2891,7 +2891,7 @@
         "summary": "Create an avatar video from a source audio file and reusable avatar.",
         "capability_id": "generate.video.audio_driven",
         "mcp_tool_id": "medux_video_create_audio_driven",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Generate a talking video from an avatar asset and an uploaded audio asset.",
         "prompt_samples": [
           {
@@ -3201,7 +3201,7 @@
         "summary": "Generate a video from a source image and text prompt. Default model wan-2-6-image-to-video requires Starter or higher and bills per generated video second.",
         "capability_id": "generate.video.image_to_video",
         "mcp_tool_id": "medux_video_generate_image_to_video",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Generate a video from an uploaded image and text prompt.",
         "prompt_samples": [
           {
@@ -3548,7 +3548,7 @@
         "summary": "Create an avatar video from text and a reusable avatar.",
         "capability_id": "generate.video.text_driven",
         "mcp_tool_id": "medux_video_create_text_driven",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Generate a talking video from an avatar asset and text input.",
         "prompt_samples": [
           {
@@ -3851,7 +3851,7 @@
         "summary": "Generate a video from a text prompt. Default model wan-2-6-text-to-video requires Starter or higher and bills per generated video second.",
         "capability_id": "generate.video.text_to_video",
         "mcp_tool_id": "medux_video_generate_text_to_video",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Generate a video directly from a text prompt.",
         "prompt_samples": [
           {
@@ -4500,7 +4500,7 @@
         "summary": "Generate an image from a text prompt.",
         "capability_id": "text_to_image",
         "mcp_tool_id": "medux_text_to_image",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Generate an image from a text prompt."
       },
       "source_url": "https://medux.io/api-reference/generate/text-to-image"
@@ -4739,7 +4739,7 @@
         "summary": "Generate a talking video from a reference image, driving audio, and prompt text.",
         "capability_id": "image_audio_driven_video",
         "mcp_tool_id": "medux_image_audio_driven_video",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Generate a talking video from a reference image, driving audio, and prompt text."
       },
       "source_url": "https://medux.io/api-reference/generate/image-audio-driven-video"
@@ -5943,7 +5943,7 @@
         "summary": "Remove the background from an uploaded image file.",
         "capability_id": "process.image.background_removal",
         "mcp_tool_id": "medux_image_remove_background",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Remove the background from an uploaded image asset and return the processing task id.",
         "prompt_samples": [
           {
@@ -6203,7 +6203,7 @@
         "summary": "Remove the background from an uploaded video file.",
         "capability_id": "process.video.background_removal",
         "mcp_tool_id": "medux_video_remove_background",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Remove the background from an uploaded video asset and return the processing task id.",
         "prompt_samples": [
           {
@@ -6467,7 +6467,7 @@
         "summary": "Remove burned-in subtitles from an uploaded video file.",
         "capability_id": "process.video.subtitle_removal",
         "mcp_tool_id": "medux_video_remove_subtitle",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Remove burned-in subtitles from an uploaded video asset and return the processing task id.",
         "prompt_samples": [
           {
@@ -6735,7 +6735,7 @@
         "summary": "Remove watermarks from an uploaded video file.",
         "capability_id": "process.video.watermark_removal",
         "mcp_tool_id": "medux_video_remove_watermark",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Remove watermarks from an uploaded video asset and return the processing task id.",
         "prompt_samples": [
           {
@@ -7117,7 +7117,7 @@
         "summary": "Remove a logo from a video using an optional logo reference and motion mode.",
         "capability_id": "video_logo_removal",
         "mcp_tool_id": "medux_video_logo_removal",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Remove a logo from a video using an optional logo reference and motion mode."
       },
       "source_url": "https://medux.io/api-reference/process/video-logo-removal"
@@ -7365,7 +7365,7 @@
         "summary": "Swap a face from one image onto another while keeping the target pose and lighting.",
         "capability_id": "image_face_swap",
         "mcp_tool_id": "medux_image_face_swap",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Swap a face from one image onto another while keeping the target pose and lighting."
       },
       "source_url": "https://medux.io/api-reference/edit/face-swap"
@@ -7613,7 +7613,7 @@
         "summary": "Replace the target head with the source head while keeping the target body and scene.",
         "capability_id": "image_head_swap",
         "mcp_tool_id": "medux_image_head_swap",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Replace the target head with the source head while keeping the target body and scene."
       },
       "source_url": "https://medux.io/api-reference/edit/head-swap"
@@ -7861,7 +7861,7 @@
         "summary": "Transfer the outfit from the reference image onto the target subject.",
         "capability_id": "image_outfit_swap",
         "mcp_tool_id": "medux_image_outfit_swap",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Transfer the outfit from the reference image onto the target subject."
       },
       "source_url": "https://medux.io/api-reference/edit/outfit-swap"
@@ -8109,7 +8109,7 @@
         "summary": "Replace the main character in a video with the target reference character.",
         "capability_id": "video_character_replacement",
         "mcp_tool_id": "medux_video_character_replacement",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Replace the main character in a video with the target reference character."
       },
       "source_url": "https://medux.io/api-reference/edit/character-replacement"
@@ -8357,7 +8357,7 @@
         "summary": "Remove an object from a video by mask regions.",
         "capability_id": "remove_video_object",
         "mcp_tool_id": "medux_remove_video_object",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Remove an object from a video by mask regions."
       },
       "source_url": "https://medux.io/api-reference/edit/remove-video-object"
@@ -8594,7 +8594,7 @@
         "summary": "Repair old photos and produce a restored image.",
         "capability_id": "photo_repair",
         "mcp_tool_id": "medux_photo_repair",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Repair old photos and produce a restored image."
       },
       "source_url": "https://medux.io/api-reference/edit/photo-repair"
@@ -8805,7 +8805,7 @@
         "summary": "Upscale a video to a higher resolution.",
         "capability_id": "video_upscale",
         "mcp_tool_id": "medux_video_upscale",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Upscale a video to a higher resolution."
       },
       "source_url": "https://medux.io/api-reference/edit/video-upscale"
@@ -9050,7 +9050,7 @@
         "summary": "Animate a swapped face image with a driving video to produce a head swap video.",
         "capability_id": "animate_head_swap",
         "mcp_tool_id": "medux_animate_head_swap",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Animate a swapped face image with a driving video to produce a head swap video."
       },
       "source_url": "https://medux.io/api-reference/edit/video-head-swap"
@@ -9369,7 +9369,7 @@
         "summary": "Cut a video to a specified time range.",
         "capability_id": "trim_video",
         "mcp_tool_id": "medux_trim_video",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Cut a video to a specified time range."
       },
       "source_url": "https://medux.io/api-reference/media/trim-video"
@@ -9673,7 +9673,7 @@
         "summary": "Split a video into multiple segments by time range.",
         "capability_id": "split_video",
         "mcp_tool_id": "medux_split_video",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Split a video into multiple segments by time range."
       },
       "source_url": "https://medux.io/api-reference/media/split-video"
@@ -9966,7 +9966,7 @@
         "summary": "Concatenate multiple video files into one.",
         "capability_id": "merge_video",
         "mcp_tool_id": "medux_merge_video",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Concatenate multiple video files into one."
       },
       "source_url": "https://medux.io/api-reference/media/merge-video"
@@ -10281,7 +10281,7 @@
         "summary": "Resize a video to a target resolution.",
         "capability_id": "resize_video",
         "mcp_tool_id": "medux_resize_video",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Resize a video to a target resolution."
       },
       "source_url": "https://medux.io/api-reference/media/resize-video"
@@ -10591,7 +10591,7 @@
         "summary": "Rotate a video by 90, 180, or 270 degrees.",
         "capability_id": "rotate_video",
         "mcp_tool_id": "medux_rotate_video",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Rotate a video by 90, 180, or 270 degrees."
       },
       "source_url": "https://medux.io/api-reference/media/rotate-video"
@@ -10900,7 +10900,7 @@
         "summary": "Flip a video horizontally, vertically, or both.",
         "capability_id": "flip_video",
         "mcp_tool_id": "medux_flip_video",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Flip a video horizontally, vertically, or both."
       },
       "source_url": "https://medux.io/api-reference/media/flip-video"
@@ -11204,7 +11204,7 @@
         "summary": "Speed up or slow down a video.",
         "capability_id": "change_video_speed",
         "mcp_tool_id": "medux_change_video_speed",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Speed up or slow down a video."
       },
       "source_url": "https://medux.io/api-reference/media/change-video-speed"
@@ -11508,7 +11508,7 @@
         "summary": "Adjust the audio volume of a video.",
         "capability_id": "adjust_video_volume",
         "mcp_tool_id": "medux_adjust_video_volume",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Adjust the audio volume of a video."
       },
       "source_url": "https://medux.io/api-reference/media/adjust-video-volume"
@@ -11812,7 +11812,7 @@
         "summary": "Replace or add an audio track to a video.",
         "capability_id": "add_audio_to_video",
         "mcp_tool_id": "medux_add_audio_to_video",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Replace or add an audio track to a video."
       },
       "source_url": "https://medux.io/api-reference/media/add-audio-to-video"
@@ -12150,7 +12150,7 @@
         "summary": "Overlay a logo image onto a video.",
         "capability_id": "add_logo_to_video",
         "mcp_tool_id": "medux_add_logo_to_video",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Overlay a logo image onto a video."
       },
       "source_url": "https://medux.io/api-reference/media/add-logo-to-video"
@@ -12469,7 +12469,7 @@
         "summary": "Cut an audio file to a specified time range.",
         "capability_id": "trim_audio",
         "mcp_tool_id": "medux_trim_audio",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Cut an audio file to a specified time range."
       },
       "source_url": "https://medux.io/api-reference/media/trim-audio"
@@ -12762,7 +12762,7 @@
         "summary": "Concatenate multiple audio files into one.",
         "capability_id": "merge_audio",
         "mcp_tool_id": "medux_merge_audio",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Concatenate multiple audio files into one."
       },
       "source_url": "https://medux.io/api-reference/media/merge-audio"
@@ -13055,7 +13055,7 @@
         "summary": "Reverse an audio file.",
         "capability_id": "reverse_audio",
         "mcp_tool_id": "medux_reverse_audio",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Reverse an audio file."
       },
       "source_url": "https://medux.io/api-reference/media/reverse-audio"
@@ -13359,7 +13359,7 @@
         "summary": "Speed up or slow down an audio file.",
         "capability_id": "change_audio_speed",
         "mcp_tool_id": "medux_change_audio_speed",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Speed up or slow down an audio file."
       },
       "source_url": "https://medux.io/api-reference/media/change-audio-speed"
@@ -13663,7 +13663,7 @@
         "summary": "Adjust the volume of an audio file.",
         "capability_id": "adjust_audio_volume",
         "mcp_tool_id": "medux_adjust_audio_volume",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Adjust the volume of an audio file."
       },
       "source_url": "https://medux.io/api-reference/media/adjust-audio-volume"
@@ -13974,7 +13974,7 @@
         "summary": "Shift the pitch of an audio file.",
         "capability_id": "shift_audio_pitch",
         "mcp_tool_id": "medux_shift_audio_pitch",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Shift the pitch of an audio file."
       },
       "source_url": "https://medux.io/api-reference/media/shift-audio-pitch"
@@ -14253,7 +14253,7 @@
         "summary": "Convert a Word document (.docx) to PDF.",
         "capability_id": "word_to_pdf",
         "mcp_tool_id": "medux_word_to_pdf",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Convert a Word document (.docx) to PDF."
       },
       "source_url": "https://medux.io/api-reference/document/word-to-pdf"
@@ -14532,7 +14532,7 @@
         "summary": "Convert an Excel (.xlsx) file to PDF.",
         "capability_id": "excel_to_pdf",
         "mcp_tool_id": "medux_excel_to_pdf",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Convert an Excel (.xlsx) file to PDF."
       },
       "source_url": "https://medux.io/api-reference/document/excel-to-pdf"
@@ -14811,7 +14811,7 @@
         "summary": "Convert a PowerPoint (.pptx) file to PDF.",
         "capability_id": "ppt_to_pdf",
         "mcp_tool_id": "medux_ppt_to_pdf",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Convert a PowerPoint (.pptx) file to PDF."
       },
       "source_url": "https://medux.io/api-reference/document/ppt-to-pdf"
@@ -15090,7 +15090,7 @@
         "summary": "Convert a PDF to a Word document (.docx).",
         "capability_id": "pdf_to_word",
         "mcp_tool_id": "medux_pdf_to_word",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Convert a PDF to a Word document (.docx)."
       },
       "source_url": "https://medux.io/api-reference/document/pdf-to-word"
@@ -15369,7 +15369,7 @@
         "summary": "Convert a PDF to a DOCX file.",
         "capability_id": "pdf_to_docx",
         "mcp_tool_id": "medux_pdf_to_docx",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Convert a PDF to a DOCX file."
       },
       "source_url": "https://medux.io/api-reference/document/pdf-to-docx"
@@ -15674,7 +15674,7 @@
         "summary": "Extract tables from a PDF into an Excel (.xlsx) file.",
         "capability_id": "pdf_to_excel",
         "mcp_tool_id": "medux_pdf_to_excel",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Extract tables from a PDF into an Excel (.xlsx) file."
       },
       "source_url": "https://medux.io/api-reference/document/pdf-to-excel"
@@ -15964,7 +15964,7 @@
         "summary": "Convert a PDF to a PowerPoint (.pptx) file.",
         "capability_id": "pdf_to_ppt",
         "mcp_tool_id": "medux_pdf_to_ppt",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Convert a PDF to a PowerPoint (.pptx) file."
       },
       "source_url": "https://medux.io/api-reference/document/pdf-to-ppt"
@@ -16258,7 +16258,7 @@
         "summary": "Convert PDF pages to images (zip output).",
         "capability_id": "pdf_to_images",
         "mcp_tool_id": "medux_pdf_to_images",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Convert PDF pages to images (zip output)."
       },
       "source_url": "https://medux.io/api-reference/document/pdf-to-images"
@@ -16537,7 +16537,7 @@
         "summary": "Convert PDF pages to JPEG images (zip output).",
         "capability_id": "pdf_to_jpg",
         "mcp_tool_id": "medux_pdf_to_jpg",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Convert PDF pages to JPEG images (zip output)."
       },
       "source_url": "https://medux.io/api-reference/document/pdf-to-jpg"
@@ -16816,7 +16816,7 @@
         "summary": "Convert PDF pages to PNG images (zip output).",
         "capability_id": "pdf_to_png",
         "mcp_tool_id": "medux_pdf_to_png",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Convert PDF pages to PNG images (zip output)."
       },
       "source_url": "https://medux.io/api-reference/document/pdf-to-png"
@@ -17095,7 +17095,7 @@
         "summary": "Combine multiple images into a single PDF.",
         "capability_id": "images_to_pdf",
         "mcp_tool_id": "medux_images_to_pdf",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Combine multiple images into a single PDF."
       },
       "source_url": "https://medux.io/api-reference/document/images-to-pdf"
@@ -17374,7 +17374,7 @@
         "summary": "Convert JPG or PNG images into a PDF.",
         "capability_id": "jpg_png_to_pdf",
         "mcp_tool_id": "medux_jpg_png_to_pdf",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Convert JPG or PNG images into a PDF."
       },
       "source_url": "https://medux.io/api-reference/document/jpg-png-to-pdf"
@@ -17653,7 +17653,7 @@
         "summary": "Merge multiple PDF files into a single PDF output.",
         "capability_id": "merge_pdf",
         "mcp_tool_id": "medux_merge_pdf",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Merge multiple PDF files into a single PDF output."
       },
       "source_url": "https://medux.io/api-reference/document/merge-pdf"
@@ -17943,7 +17943,7 @@
         "summary": "Extract specific pages from a PDF into a new PDF.",
         "capability_id": "split_pdf",
         "mcp_tool_id": "medux_split_pdf",
-        "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+        "remote_mcp_endpoint": "https://medux.io/mcp",
         "invocation_example": "Extract specific pages from a PDF into a new PDF."
       },
       "source_url": "https://medux.io/api-reference/document/split-pdf"

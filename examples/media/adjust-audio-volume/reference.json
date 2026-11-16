@@ -297,7 +297,7 @@
     "summary": "Adjust the volume of an audio file.",
     "capability_id": "adjust_audio_volume",
     "mcp_tool_id": "medux_adjust_audio_volume",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Adjust the volume of an audio file."
   },
   "source_url": "https://medux.io/api-reference/media/adjust-audio-volume"

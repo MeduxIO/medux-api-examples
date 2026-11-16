@@ -212,7 +212,7 @@
     "summary": "Remove a logo from a video using an optional logo reference and motion mode.",
     "capability_id": "video_logo_removal",
     "mcp_tool_id": "medux_video_logo_removal",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Remove a logo from a video using an optional logo reference and motion mode."
   },
   "source_url": "https://medux.io/api-reference/process/video-logo-removal"

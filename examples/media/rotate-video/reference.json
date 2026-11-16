@@ -303,7 +303,7 @@
     "summary": "Rotate a video by 90, 180, or 270 degrees.",
     "capability_id": "rotate_video",
     "mcp_tool_id": "medux_rotate_video",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Rotate a video by 90, 180, or 270 degrees."
   },
   "source_url": "https://medux.io/api-reference/media/rotate-video"

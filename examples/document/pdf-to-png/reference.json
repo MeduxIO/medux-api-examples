@@ -272,7 +272,7 @@
     "summary": "Convert PDF pages to PNG images (zip output).",
     "capability_id": "pdf_to_png",
     "mcp_tool_id": "medux_pdf_to_png",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Convert PDF pages to PNG images (zip output)."
   },
   "source_url": "https://medux.io/api-reference/document/pdf-to-png"

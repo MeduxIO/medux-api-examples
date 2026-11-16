@@ -265,7 +265,7 @@
     "summary": "Generate a video from a text prompt. Default model wan-2-6-text-to-video requires Starter or higher and bills per generated video second.",
     "capability_id": "generate.video.text_to_video",
     "mcp_tool_id": "medux_video_generate_text_to_video",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Generate a video directly from a text prompt.",
     "prompt_samples": [
       {

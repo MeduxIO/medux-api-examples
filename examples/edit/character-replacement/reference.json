@@ -241,7 +241,7 @@
     "summary": "Replace the main character in a video with the target reference character.",
     "capability_id": "video_character_replacement",
     "mcp_tool_id": "medux_video_character_replacement",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Replace the main character in a video with the target reference character."
   },
   "source_url": "https://medux.io/api-reference/edit/character-replacement"

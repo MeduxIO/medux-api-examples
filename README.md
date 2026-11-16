@@ -17,7 +17,7 @@ per-endpoint pages assume.
 ## Quick start
 
 ```bash
-git clone https://github.com/MeduxAI/medux-api-examples.git
+git clone https://github.com/MeduxIO/medux-api-examples.git
 cd medux-api-examples
 cp .env.example .env            # then edit .env with your key
 export MEDUX_API_KEY="your_api_key"

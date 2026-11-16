@@ -286,7 +286,7 @@
     "summary": "Concatenate multiple audio files into one.",
     "capability_id": "merge_audio",
     "mcp_tool_id": "medux_merge_audio",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Concatenate multiple audio files into one."
   },
   "source_url": "https://medux.io/api-reference/media/merge-audio"

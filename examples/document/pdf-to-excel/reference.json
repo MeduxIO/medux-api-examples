@@ -298,7 +298,7 @@
     "summary": "Extract tables from a PDF into an Excel (.xlsx) file.",
     "capability_id": "pdf_to_excel",
     "mcp_tool_id": "medux_pdf_to_excel",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Extract tables from a PDF into an Excel (.xlsx) file."
   },
   "source_url": "https://medux.io/api-reference/document/pdf-to-excel"

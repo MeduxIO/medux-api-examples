@@ -122,7 +122,7 @@ The response-field table above lists the `code` values this endpoint can return,
 
 The same capability is optionally available through Medux MCP.
 
-- MCP endpoint: `https://mcp.medux.io/api/mcp/v1`
+- MCP endpoint: `https://medux.io/mcp`
 - Tool: `medux_video_create_audio_driven`
 - Result type: `VIDEO`
 

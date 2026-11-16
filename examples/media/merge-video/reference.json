@@ -286,7 +286,7 @@
     "summary": "Concatenate multiple video files into one.",
     "capability_id": "merge_video",
     "mcp_tool_id": "medux_merge_video",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Concatenate multiple video files into one."
   },
   "source_url": "https://medux.io/api-reference/media/merge-video"

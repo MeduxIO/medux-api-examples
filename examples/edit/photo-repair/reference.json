@@ -230,7 +230,7 @@
     "summary": "Repair old photos and produce a restored image.",
     "capability_id": "photo_repair",
     "mcp_tool_id": "medux_photo_repair",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Repair old photos and produce a restored image."
   },
   "source_url": "https://medux.io/api-reference/edit/photo-repair"

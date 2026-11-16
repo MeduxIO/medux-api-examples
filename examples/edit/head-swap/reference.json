@@ -241,7 +241,7 @@
     "summary": "Replace the target head with the source head while keeping the target body and scene.",
     "capability_id": "image_head_swap",
     "mcp_tool_id": "medux_image_head_swap",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Replace the target head with the source head while keeping the target body and scene."
   },
   "source_url": "https://medux.io/api-reference/edit/head-swap"

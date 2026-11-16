@@ -304,7 +304,7 @@
     "summary": "Shift the pitch of an audio file.",
     "capability_id": "shift_audio_pitch",
     "mcp_tool_id": "medux_shift_audio_pitch",
-    "remote_mcp_endpoint": "https://mcp.medux.io/api/mcp/v1",
+    "remote_mcp_endpoint": "https://medux.io/mcp",
     "invocation_example": "Shift the pitch of an audio file."
   },
   "source_url": "https://medux.io/api-reference/media/shift-audio-pitch"
