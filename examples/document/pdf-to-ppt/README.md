@@ -121,6 +121,20 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/document/pdf-to-ppt](https://medux.io/playground/document/pdf-to-ppt) |
+
+- MCP tool: `medux_pdf_to_ppt`
+- Claude MCP example: [examples/claude/documents/document-pdf-to-ppt](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/documents/document-pdf-to-ppt)
+- Codex MCP example: [examples/codex/documents/document-pdf-to-ppt](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/documents/document-pdf-to-ppt)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/document/pdf-to-ppt)

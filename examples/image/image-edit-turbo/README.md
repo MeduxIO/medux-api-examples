@@ -118,6 +118,22 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/image/image-edit-turbo](https://medux.io/playground/image/image-edit-turbo) |
+| Workshop | [medux.io/workshop/image-edit](https://medux.io/workshop/image-edit) |
+| Workshop | [medux.io/workshop/qwen-image-edit](https://medux.io/workshop/qwen-image-edit) |
+
+- MCP tool: `medux_image_edit`
+- Claude MCP example: [examples/claude/workshop/image-edit-turbo](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/workshop/image-edit-turbo)
+- Codex MCP example: [examples/codex/workshop/image-edit-turbo](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/workshop/image-edit-turbo)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/image/image-edit-turbo)

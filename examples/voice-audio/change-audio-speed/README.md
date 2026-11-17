@@ -121,6 +121,20 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/audio/change-audio-speed](https://medux.io/playground/audio/change-audio-speed) |
+
+- MCP tool: `medux_change_audio_speed`
+- Claude MCP example: [examples/claude/media/media-change-audio-speed](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/media/media-change-audio-speed)
+- Codex MCP example: [examples/codex/media/media-change-audio-speed](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/media/media-change-audio-speed)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/voice-audio/change-audio-speed)

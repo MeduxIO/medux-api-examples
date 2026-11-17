@@ -122,6 +122,20 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/audio/adjust-audio-volume](https://medux.io/playground/audio/adjust-audio-volume) |
+
+- MCP tool: `medux_adjust_audio_volume`
+- Claude MCP example: [examples/claude/media/media-adjust-audio-volume](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/media/media-adjust-audio-volume)
+- Codex MCP example: [examples/codex/media/media-adjust-audio-volume](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/media/media-adjust-audio-volume)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/voice-audio/adjust-audio-volume)

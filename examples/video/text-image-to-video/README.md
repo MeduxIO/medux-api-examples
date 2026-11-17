@@ -120,6 +120,21 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/text-image-to-video](https://medux.io/playground/video/text-image-to-video) |
+| Workshop | [medux.io/workshop/minimax-h3-unlimited](https://medux.io/workshop/minimax-h3-unlimited) |
+
+- MCP tool: `medux_text_image_to_video`
+- Claude MCP example: [examples/claude/workshop/text-image-to-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/workshop/text-image-to-video)
+- Codex MCP example: [examples/codex/workshop/text-image-to-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/workshop/text-image-to-video)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/video/text-image-to-video)

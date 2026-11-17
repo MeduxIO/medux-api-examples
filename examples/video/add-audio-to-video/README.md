@@ -122,6 +122,20 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/add-audio-to-video](https://medux.io/playground/video/add-audio-to-video) |
+
+- MCP tool: `medux_add_audio_to_video`
+- Claude MCP example: [examples/claude/workflows/add-audio-track-to-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/workflows/add-audio-track-to-video)
+- Codex MCP example: [examples/codex/media/media-add-audio-to-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/media/media-add-audio-to-video)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/video/add-audio-to-video)

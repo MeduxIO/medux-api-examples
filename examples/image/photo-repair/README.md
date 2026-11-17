@@ -120,6 +120,21 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/image/photo-repair](https://medux.io/playground/image/photo-repair) |
+| Workshop | [medux.io/workshop/old-photo-repair](https://medux.io/workshop/old-photo-repair) |
+
+- MCP tool: `medux_photo_repair`
+- Claude MCP example: [examples/claude/edit/old-photo-restoration](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/edit/old-photo-restoration)
+- Codex MCP example: [examples/codex/edit/restore-old-photo](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/edit/restore-old-photo)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/image/photo-repair)

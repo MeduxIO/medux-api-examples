@@ -130,6 +130,21 @@ Remove the background from the uploaded image {file_id}.
 
 - No related endpoints documented.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/image/background-removal](https://medux.io/playground/image/background-removal) |
+| Workshop | [medux.io/workshop/remove/image-background](https://medux.io/workshop/remove/image-background) |
+
+- MCP tool: `medux_image_remove_background`
+- Claude MCP example: [examples/claude/process/remove-image-background](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/process/remove-image-background)
+- Codex MCP example: [examples/codex/process/process-create-image-background-removal](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/process/process-create-image-background-removal)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/process/create-image-background-removal)

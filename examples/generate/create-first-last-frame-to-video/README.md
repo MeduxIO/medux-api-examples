@@ -128,6 +128,21 @@ Generate a video transitioning from my first image to my last image using Seedan
 
 - No related endpoints documented.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/first-last-frame-to-video](https://medux.io/playground/video/first-last-frame-to-video) |
+| Workshop | [medux.io/workshop/first-last-frame-to-video](https://medux.io/workshop/first-last-frame-to-video) |
+
+- MCP tool: `medux_video_generate_first_last_frame_to_video`
+- Claude MCP example: [examples/claude/workshop/create-first-last-frame-to-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/workshop/create-first-last-frame-to-video)
+- Codex MCP example: [examples/codex/workshop/create-first-last-frame-to-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/workshop/create-first-last-frame-to-video)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/generate/create-first-last-frame-to-video)

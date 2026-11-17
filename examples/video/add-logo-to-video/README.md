@@ -125,6 +125,20 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/add-logo-to-video](https://medux.io/playground/video/add-logo-to-video) |
+
+- MCP tool: `medux_add_logo_to_video`
+- Claude MCP example: [examples/claude/media/add-logo-to-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/media/add-logo-to-video)
+- Codex MCP example: [examples/codex/process/add-logo-to-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/process/add-logo-to-video)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/video/add-logo-to-video)

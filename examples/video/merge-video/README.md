@@ -120,6 +120,20 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/merge-video](https://medux.io/playground/video/merge-video) |
+
+- MCP tool: `medux_merge_video`
+- Claude MCP example: [examples/claude/media/video-merge](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/media/video-merge)
+- Codex MCP example: [examples/codex/media/video-editing](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/media/video-editing)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/video/merge-video)

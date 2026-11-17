@@ -131,6 +131,23 @@ Generate speech audio from this text using voice_asset_id {voice_asset_id} and m
 
 - No related endpoints documented.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/speech/text-to-speech-audio](https://medux.io/playground/speech/text-to-speech-audio) |
+| Workshop | [medux.io/workshop/tts](https://medux.io/workshop/tts) |
+| Workshop | [medux.io/workshop/voice](https://medux.io/workshop/voice) |
+| Workshop | [medux.io/workshop/voice/*](https://medux.io/workshop/voice) |
+
+- MCP tool: `medux_speech_create_audio`
+- Claude MCP example: [examples/claude/generate/generate-create-audio](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/generate/generate-create-audio)
+- Codex MCP example: [examples/codex/generate/generate-create-audio](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/generate/generate-create-audio)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/generate/create-audio)

@@ -121,6 +121,21 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/image/face-swap](https://medux.io/playground/image/face-swap) |
+| Workshop | [medux.io/workshop/image-face-swap](https://medux.io/workshop/image-face-swap) |
+
+- MCP tool: `medux_image_face_swap`
+- Claude MCP example: [examples/claude/edit/face-swap](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/edit/face-swap)
+- Codex MCP example: [examples/codex/edit/edit-face-swap](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/edit/edit-face-swap)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/ai-avatar/face-swap)

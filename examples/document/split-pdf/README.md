@@ -122,6 +122,20 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/document/split-pdf](https://medux.io/playground/document/split-pdf) |
+
+- MCP tool: `medux_split_pdf`
+- Claude MCP example: [examples/claude/documents/document-split-pdf](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/documents/document-split-pdf)
+- Codex MCP example: [examples/codex/documents/document-split-pdf](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/documents/document-split-pdf)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/document/split-pdf)

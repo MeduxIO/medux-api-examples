@@ -114,6 +114,20 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/watermark-removal](https://medux.io/playground/video/watermark-removal) |
+
+- MCP tool: `medux_watermark_removal`
+- Claude MCP example: [examples/claude/process/process-create-video-watermark-removal](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/process/process-create-video-watermark-removal)
+- Codex MCP example: [examples/codex/process/process-create-video-watermark-removal](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/process/process-create-video-watermark-removal)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/video/watermark-removal)

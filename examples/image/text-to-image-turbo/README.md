@@ -114,6 +114,25 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/image/text-to-image-turbo](https://medux.io/playground/image/text-to-image-turbo) |
+| Workshop | [medux.io/workshop/krea2-turbo-unlimited](https://medux.io/workshop/krea2-turbo-unlimited) |
+| Workshop | [medux.io/workshop/minimax-h3-image](https://medux.io/workshop/minimax-h3-image) |
+| Workshop | [medux.io/workshop/moss-image](https://medux.io/workshop/moss-image) |
+| Workshop | [medux.io/workshop/qwen-text-to-image](https://medux.io/workshop/qwen-text-to-image) |
+| Workshop | [medux.io/workshop/z-image](https://medux.io/workshop/z-image) |
+
+- MCP tool: `medux_text_to_image`
+- Claude MCP example: [examples/claude/generate/generate-text-to-image](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/generate/generate-text-to-image)
+- Codex MCP example: [examples/codex/generate/generate-text-to-image](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/generate/generate-text-to-image)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/image/text-to-image-turbo)

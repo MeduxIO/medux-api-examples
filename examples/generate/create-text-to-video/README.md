@@ -126,6 +126,21 @@ Generate a 5 second 720P 16:9 video from this prompt using model_id seedance-2-0
 
 - No related endpoints documented.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/text-to-video](https://medux.io/playground/video/text-to-video) |
+| Workshop | [medux.io/workshop/seedance25](https://medux.io/workshop/seedance25) |
+
+- MCP tool: `medux_video_generate_text_to_video`
+- Claude MCP example: [examples/claude/generate/generate-create-text-to-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/generate/generate-create-text-to-video)
+- Codex MCP example: [examples/codex/generate/text-to-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/generate/text-to-video)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/generate/create-text-to-video)

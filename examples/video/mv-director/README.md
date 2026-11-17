@@ -116,6 +116,21 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/mv-director](https://medux.io/playground/video/mv-director) |
+| Workshop | [medux.io/workshop/mv-director](https://medux.io/workshop/mv-director) |
+
+- MCP tool: `medux_mv_director`
+- Claude MCP example: [examples/claude/workshop/mv-director](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/workshop/mv-director)
+- Codex MCP example: [examples/codex/workshop/mv-director](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/workshop/mv-director)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/video/mv-director)

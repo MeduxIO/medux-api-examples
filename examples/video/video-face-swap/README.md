@@ -114,6 +114,21 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/video-face-swap](https://medux.io/playground/video/video-face-swap) |
+| Workshop | [medux.io/workshop/face-swap](https://medux.io/workshop/face-swap) |
+
+- MCP tool: `medux_video_face_swap`
+- Claude MCP example: [examples/claude/workshop/video-face-swap](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/workshop/video-face-swap)
+- Codex MCP example: [examples/codex/workshop/video-face-swap](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/workshop/video-face-swap)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/video/video-face-swap)

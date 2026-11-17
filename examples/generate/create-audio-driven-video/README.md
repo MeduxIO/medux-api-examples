@@ -137,6 +137,21 @@ Create a 7 second 1080P 16:9 talking video using avatar_asset_id {avatar_asset_i
 
 - No related endpoints documented.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/audio-driven-lip-sync](https://medux.io/playground/video/audio-driven-lip-sync) |
+| Workshop | [medux.io/workshop/lipsync](https://medux.io/workshop/lipsync) |
+
+- MCP tool: `medux_video_create_audio_driven`
+- Claude MCP example: [examples/claude/generate/generate-create-audio-driven-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/generate/generate-create-audio-driven-video)
+- Codex MCP example: [examples/codex/generate/lipsync](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/generate/lipsync)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/generate/create-audio-driven-video)

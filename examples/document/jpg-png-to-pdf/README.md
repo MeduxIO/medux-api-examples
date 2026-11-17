@@ -120,6 +120,20 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/document/jpg-png-to-pdf](https://medux.io/playground/document/jpg-png-to-pdf) |
+
+- MCP tool: `medux_jpg_png_to_pdf`
+- Claude MCP example: [examples/claude/documents/document-jpg-png-to-pdf](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/documents/document-jpg-png-to-pdf)
+- Codex MCP example: [examples/codex/documents/document-jpg-png-to-pdf](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/documents/document-jpg-png-to-pdf)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/document/jpg-png-to-pdf)

@@ -122,6 +122,20 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/resize-video](https://medux.io/playground/video/resize-video) |
+
+- MCP tool: `medux_resize_video`
+- Claude MCP example: [examples/claude/media/media-resize-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/media/media-resize-video)
+- Codex MCP example: [examples/codex/media/media-resize-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/media/media-resize-video)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/video/resize-video)

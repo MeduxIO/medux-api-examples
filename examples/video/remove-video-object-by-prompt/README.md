@@ -114,6 +114,21 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/remove-video-object-by-prompt](https://medux.io/playground/video/remove-video-object-by-prompt) |
+| Workshop | [medux.io/workshop/remove/video-object-by-prompt](https://medux.io/workshop/remove/video-object-by-prompt) |
+
+- MCP tool: `medux_remove_video_object_by_prompt`
+- Claude MCP example: [examples/claude/workshop/remove-video-object-by-prompt](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/workshop/remove-video-object-by-prompt)
+- Codex MCP example: [examples/codex/workshop/remove-video-object-by-prompt](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/workshop/remove-video-object-by-prompt)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/video/remove-video-object-by-prompt)

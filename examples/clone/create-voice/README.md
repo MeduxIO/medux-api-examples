@@ -124,6 +124,20 @@ Clone a reusable voice from the uploaded audio file {file_id}. Title it Official
 
 - No related endpoints documented.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/voice/voice-clone](https://medux.io/playground/voice/voice-clone) |
+
+- MCP tool: `medux_clone_voice`
+- Claude MCP example: [examples/claude/voice/clone-voice](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/voice/clone-voice)
+- Codex MCP example: [examples/codex/clone/clone-create-voice](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/clone/clone-create-voice)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/clone/create-voice)

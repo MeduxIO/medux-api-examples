@@ -131,6 +131,20 @@ Create a video guided by my reference image using Seedance 2.0 Mini.
 
 - No related endpoints documented.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/omni-reference-to-video](https://medux.io/playground/video/omni-reference-to-video) |
+
+- MCP tool: `medux_video_generate_omni_reference_to_video`
+- Claude MCP example: [examples/claude/workshop/create-omni-reference-to-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/workshop/create-omni-reference-to-video)
+- Codex MCP example: [examples/codex/workshop/create-omni-reference-to-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/workshop/create-omni-reference-to-video)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/generate/create-omni-reference-to-video)

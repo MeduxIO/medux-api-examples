@@ -130,6 +130,21 @@ Remove burned-in subtitles from the uploaded source video {file_id}. If the subt
 
 - No related endpoints documented.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/subtitle-removal](https://medux.io/playground/video/subtitle-removal) |
+| Workshop | [medux.io/workshop/remove/video-subtitles](https://medux.io/workshop/remove/video-subtitles) |
+
+- MCP tool: `medux_video_remove_subtitle`
+- Claude MCP example: [examples/claude/process/process-create-video-subtitle-removal](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/process/process-create-video-subtitle-removal)
+- Codex MCP example: [examples/codex/process/remove-subtitle](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/process/remove-subtitle)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/process/create-video-subtitle-removal)

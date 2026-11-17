@@ -120,6 +120,20 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/audio/merge-audio](https://medux.io/playground/audio/merge-audio) |
+
+- MCP tool: `medux_merge_audio`
+- Claude MCP example: [examples/claude/media/media-merge-audio](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/media/media-merge-audio)
+- Codex MCP example: [examples/codex/media/media-merge-audio](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/media/media-merge-audio)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/voice-audio/merge-audio)

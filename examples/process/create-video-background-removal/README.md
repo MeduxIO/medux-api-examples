@@ -130,6 +130,21 @@ Remove the background from the uploaded source video {file_id}.
 
 - No related endpoints documented.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/background-removal](https://medux.io/playground/video/background-removal) |
+| Workshop | [medux.io/workshop/remove/video-background](https://medux.io/workshop/remove/video-background) |
+
+- MCP tool: `medux_video_remove_background`
+- Claude MCP example: [examples/claude/process/process-create-video-background-removal](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/process/process-create-video-background-removal)
+- Codex MCP example: [examples/codex/process/process-create-video-background-removal](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/process/process-create-video-background-removal)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/process/create-video-background-removal)

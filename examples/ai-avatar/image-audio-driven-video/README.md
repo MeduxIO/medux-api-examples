@@ -117,6 +117,20 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/image-audio-driven-video](https://medux.io/playground/video/image-audio-driven-video) |
+
+- MCP tool: `medux_image_audio_driven_video`
+- Claude MCP example: [examples/claude/generate/generate-image-audio-driven-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/generate/generate-image-audio-driven-video)
+- Codex MCP example: [examples/codex/generate/generate-image-audio-driven-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/generate/generate-image-audio-driven-video)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/ai-avatar/image-audio-driven-video)

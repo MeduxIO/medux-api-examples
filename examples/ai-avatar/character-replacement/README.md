@@ -121,6 +121,21 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/video/character-replacement](https://medux.io/playground/video/character-replacement) |
+| Workshop | [medux.io/workshop/character-replacement](https://medux.io/workshop/character-replacement) |
+
+- MCP tool: `medux_video_character_replacement`
+- Claude MCP example: [examples/claude/workflows/character-replacement](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/workflows/character-replacement)
+- Codex MCP example: [examples/codex/edit/character-replacement](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/edit/character-replacement)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/ai-avatar/character-replacement)

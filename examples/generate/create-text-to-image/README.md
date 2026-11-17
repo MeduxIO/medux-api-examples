@@ -128,6 +128,21 @@ Generate one product image from my prompt using Seedream 4.0.
 
 - No related endpoints documented.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/image/text-to-image](https://medux.io/playground/image/text-to-image) |
+| Workshop | [medux.io/workshop/seedream](https://medux.io/workshop/seedream) |
+
+- MCP tool: `medux_image_generate_text_to_image`
+- Claude MCP example: [examples/claude/workshop/create-text-to-image](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/workshop/create-text-to-image)
+- Codex MCP example: [examples/codex/workshop/create-text-to-image](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/workshop/create-text-to-image)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/generate/create-text-to-image)

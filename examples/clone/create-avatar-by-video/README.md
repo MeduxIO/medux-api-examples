@@ -124,6 +124,20 @@ Clone a reusable avatar from the uploaded source video {file_id}. Title it Offic
 
 - No related endpoints documented.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/avatar/clone-by-video](https://medux.io/playground/avatar/clone-by-video) |
+
+- MCP tool: `medux_avatar_clone_by_video`
+- Claude MCP example: [examples/claude/clone/clone-create-avatar-by-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/clone/clone-create-avatar-by-video)
+- Codex MCP example: [examples/codex/clone/clone-create-avatar-by-video](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/clone/clone-create-avatar-by-video)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/clone/create-avatar-by-video)

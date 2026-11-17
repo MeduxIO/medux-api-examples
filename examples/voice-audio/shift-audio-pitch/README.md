@@ -122,6 +122,20 @@ The same capability is optionally available through Medux MCP.
 
 - [Sync Task](../../infra/sync-task/) — Refresh task state from the upstream provider.
 
+
+<!-- medux-pages:start -->
+## Try it on medux.io
+
+| Type | Page |
+| --- | --- |
+| Playground | [medux.io/playground/audio/shift-audio-pitch](https://medux.io/playground/audio/shift-audio-pitch) |
+
+- MCP tool: `medux_shift_audio_pitch`
+- Claude MCP example: [examples/claude/media/adjust-audio-pitch](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/claude/media/adjust-audio-pitch)
+- Codex MCP example: [examples/codex/media/media-shift-audio-pitch](https://github.com/MeduxIO/medux-mcp-examples/tree/main/examples/codex/media/media-shift-audio-pitch)
+- All pages: [Playground and Workshop pages](https://github.com/MeduxIO/medux-mcp-examples/blob/main/docs/workshop-pages.md)
+<!-- medux-pages:end -->
+
 ## Source of truth
 
 - [Official API Reference](https://medux.io/api-reference/voice-audio/shift-audio-pitch)
